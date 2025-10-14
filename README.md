@@ -57,10 +57,12 @@ oxygen_cli create myApp
 ### 开发
 
 - 写一个组件，先看看官方的组件是否有合适：https://docs.flutter.cn/reference/widgets
-- git clone 代码后先去`pubspec.yaml`注释掉`flutter_oxygen`
-- 然后执行：`make init`拉取子模块，`make install`重新拉取子模块
-- 修改实体层（entitys）后，执行代码生成命令：`make code`
 - 修改`lib/core/l10n/language.json`后，执行命令生成多语言：`make l10n`
+- 页面组件（`pages -> mobile -> screens`）：以首页举例
+  1. 入口文件统一命名：`home_screen/home_screen.dart`
+  2. 子组件放在`widgets`，文件名、对外暴露统一带`widget`，例如：`category_widget.dart`、`CategoryWidget`
+- 项目组件：`pages -> mobile -> widgets`，对外暴露的组件名不带`widget`，其子组件文件名、对外暴露统一带`widget`
+- 全局组件：`pages -> widgets`，以`ox_xxxx`文件夹形式命名，对外暴露组件名为：`OxXxxx`，其子组件文件名、对外暴露统一带`widget`
 
 - 测试 [常用断言类型](./docs/test.md)
 
