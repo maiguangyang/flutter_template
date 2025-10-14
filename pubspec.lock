@@ -387,9 +387,10 @@ packages:
   flutter_oxygen:
     dependency: "direct main"
     description:
-      path: "/Users/marlon.m/wwwroot/flutter_oxygen"
-      relative: false
-    source: path
+      name: flutter_oxygen
+      sha256: edfd9e5f695ded824befe52432327c4935e4b64725429764c171a3a222854897
+      url: "https://pub.flutter-io.cn"
+    source: hosted
     version: "0.0.1"
   flutter_riverpod:
     dependency: "direct main"
