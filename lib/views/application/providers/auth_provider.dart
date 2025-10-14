@@ -1,0 +1,26 @@
+/*
+ * @Author: Marlon.M
+ * @Email: maiguangyang@163.com
+ * @Date: 2025-09-26 08:42:07
+ */
+/*
+ * @Author: Marlon.M
+ * @Email: maiguangyang@163.com
+ * @Date: 2025-09-15 13:56:59
+ */
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sugar_talk/common/index.dart';
+import 'package:sugar_talk/views/data/api/index.dart';
+import 'package:sugar_talk/views/data/index.dart';
+
+/// 提供 AuthApi 实例
+final authApiProvider = Provider<AuthApi>((ref) {
+  final dio = ref.read(dioProvider);
+  return AuthApi(dio);
+});
+
+/// 提供 AuthRepository 实例
+final authRepositoryProvider = Provider<AuthRepository>((ref) {
+  final api = ref.read(authApiProvider);
+  return AuthRepository(api);
+});

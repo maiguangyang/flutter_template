@@ -1,0 +1,12 @@
+targets:
+  $default:
+    sources:
+      include:
+        - lib/**
+      exclude:
+        - lib/packages/**/android/**
+        - lib/packages/**/ios/**
+        - lib/packages/**/macos/**
+        - lib/packages/**/linux/**
+        - lib/packages/**/web/**
+        - lib/packages/**/windows/**

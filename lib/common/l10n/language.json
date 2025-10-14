@@ -1,0 +1,98 @@
+{
+  "sendTimeout": {
+    "zh": "连接超时",
+    "en": "Send Timeout",
+    "es": "Send Timeout",
+    "zh_TW": "连接超时"
+  },
+  "authException": {
+    "zh": "未授权",
+    "en": "Auth Exception",
+    "es": "Auth Exception",
+    "zh_TW": "未授权"
+  },
+  "serverException": {
+    "zh": "服务器错误",
+    "en": "Server Exception",
+    "es": "Server Exception",
+    "zh_TW": "服务器错误"
+  },
+  "networkException": {
+    "zh": "网络错误",
+    "en": "Network Exception",
+    "es": "Network Exception",
+    "zh_TW": "网络错误"
+  },
+  "appException": {
+    "zh": "未知错误",
+    "en": "App Exception",
+    "es": "App Exception",
+    "zh_TW": "未知错误"
+  },
+  "loading": {
+    "zh": "加载中",
+    "en": "Loading",
+    "es": "Cargando",
+    "zh_TW": "載入中"
+  },
+  "retry": {
+    "zh": "重试",
+    "en": "Retry",
+    "es": "Rever",
+    "zh_TW": "重試"
+  },
+  "page": {
+    "zh": "页",
+    "en": "Page",
+    "es": "Page",
+    "zh_TW": "頁"
+  },
+  "model": {
+    "zh": "模型",
+    "en": "Model",
+    "es": "Model",
+    "zh_TW": "模型"
+  },
+  "modelName": {
+    "zh": "模型名称",
+    "en": "Model Name",
+    "es": "Model Name",
+    "zh_TW": "模型名稱"
+  },
+  "type": {
+    "zh": "类型",
+    "en": "Type",
+    "es": "Type",
+    "zh_TW": "類型"
+  },
+  "status": {
+    "zh": "状态",
+    "en": "Status",
+    "es": "Status",
+    "zh_TW": "狀態"
+  },
+  "action": {
+    "zh": "操作",
+    "en": "Action",
+    "es": "Action",
+    "zh_TW": "操作"
+  },
+  "size": {
+    "zh": "尺寸",
+    "en": "Size",
+    "es": "Size",
+    "zh_TW": "尺寸"
+  },
+  "paramsSize": {
+    "zh": "参数量",
+    "en": "Params Size",
+    "es": "Params Size",
+    "zh_TW": "參數量"
+  },
+  "updateTime": {
+    "zh": "修改日期",
+    "en": "Update Time",
+    "es": "Update Time",
+    "zh_TW": "修改日期"
+  }
+}

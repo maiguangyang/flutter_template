@@ -1,0 +1,34 @@
+/*
+ * @Author: Marlon.M
+ * @Email: maiguangyang@163.com
+ * @Date: 2025-08-26 14:49:35
+ */
+import 'package:sugar_talk/abstracts/index.dart';
+
+class TestScreen extends CustomStatelessWidget {
+  const TestScreen({super.key});
+
+  @override
+  Widget buildView(BuildContext context, WidgetRef ref) {
+    final primary = ref.watch(themeProvider.select((s) => s.primary));
+
+    return Scaffold(
+      appBar: AppBar(title: Text(ref.lang.testPage)),
+      body: Container(
+        alignment: AlignmentGeometry.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+              onPressed: () {
+                NavigatorUtilsCore.go(Routes.login);
+              },
+              child: Text("打开登录页", style: TextStyle(color: primary)),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: null,
+    );
+  }
+}

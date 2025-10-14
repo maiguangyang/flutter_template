@@ -1,0 +1,29 @@
+{
+  "servers": [
+    {
+      "type": "cdn",
+      "port": 80,
+      "domain": [
+        "cdn.example.com"
+      ]
+    },
+    {
+      "type": "host",
+      "port": 80,
+      "entries": [
+        "index.html"
+      ],
+      "domain": [
+        "test.example.com"
+      ]
+    },
+    {
+      "type": "proxy",
+      "port": 80,
+      "proxy_url": "localhost:1988",
+      "domain": [
+        "dev.example.com"
+      ]
+    }
+  ]
+}

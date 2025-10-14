@@ -1,0 +1,1 @@
+extension IntOptionalExtensions on int? {}

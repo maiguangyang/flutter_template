@@ -1,0 +1,27 @@
+{
+  "homePage": {
+    "zh": "首页",
+    "en": "Home Page",
+    "es": "Home Page",
+    "zh_TW": "首頁"
+  },
+  "modelPage": {
+    "zh": "模型管理",
+    "en": "Model Page",
+    "es": "Model Page",
+    "zh_TW": "模型管理"
+  },
+  "loginPage": {
+    "zh": "登录页",
+    "en": "Login Page",
+    "es": "Login Page",
+    "zh_TW": "登录页"
+  },
+  "testPage": {
+    "zh": "测试页",
+    "en": "Test Page",
+    "es": "Test Page",
+    "zh_TW": "测试页"
+  }
+  
+}
