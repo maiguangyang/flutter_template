@@ -4,7 +4,7 @@
  * @Date: 2025-01-02 14:21:32
 -->
 
-# SugarTalk
+# FlutterTemplate
 
 ## 该项目使用 flutter >= 3.35.1 版本开发，后面有变化这里会更新，再通知大家
 
@@ -44,13 +44,15 @@ lib/
 
 ```
 
-### TODO 统一查漏补缺进行修改
+### 安装
 
-- 页面组件（`pages -> mobile -> screens`）：以首页举例
-  1. 入口文件统一命名：`home_screen/home_screen.dart`
-  2. 子组件放在`widgets`，文件名、对外暴露统一带`widget`，例如：`category_widget.dart`、`CategoryWidget`
-- 项目组件：`pages -> mobile -> widgets`，对外暴露的组件名不带`widget`，其子组件文件名、对外暴露统一带`widget`
-- 全局组件：`pages -> widgets`，以`ox_xxxx`文件夹形式命名，对外暴露组件名为：`OxXxxx`，其子组件文件名、对外暴露统一带`widget`
+```
+npm install -g @maiguangyang/oxygen_cli
+```
+
+```
+oxygen_cli create myApp
+```
 
 ### 开发
 
