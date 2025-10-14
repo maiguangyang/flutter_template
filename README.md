@@ -8,10 +8,6 @@
 
 ## 该项目使用 flutter >= 3.35.1 版本开发，后面有变化这里会更新，再通知大家
 
-## 每个月第 4 周对 flutter sdk 和 package 包版本进行一次升级
-
-## 谨记：UI 不直接调用 Repository 的方法，而是通过 Notifier 触发动作，并读取状态
-
 ### 目录结构
 
 ```
@@ -57,6 +53,7 @@ oxygen_cli create myApp
 ### 开发
 
 - 写一个组件，先看看官方的组件是否有合适：https://docs.flutter.cn/reference/widgets
+- 先看一下`.vscode/dart.code-snippets`代码片段，熟悉一下用法
 - 修改`lib/core/l10n/language.json`后，执行命令生成多语言：`make l10n`
 - 页面组件（`pages -> mobile -> screens`）：以首页举例
   1. 入口文件统一命名：`home_screen/home_screen.dart`
