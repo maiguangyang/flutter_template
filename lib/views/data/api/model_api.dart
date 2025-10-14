@@ -4,7 +4,7 @@
  * @Date: 2025-09-23 10:45:54
  */
 import 'package:dio/dio.dart';
-import 'package:sugar_talk/common/index.dart';
+import 'package:flutter_template/common/index.dart';
 
 import '../models/index.dart';
 

@@ -3,12 +3,12 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-09-03 10:47:44
  */
-import 'package:sugar_talk/abstracts/index.dart';
-import 'package:sugar_talk/views/application/index.dart';
-import 'package:sugar_talk/views/data/models/index.dart';
-import 'package:sugar_talk/views/pages/desktop/widgets/index.dart';
-import 'package:sugar_talk/views/widgets/index.dart';
-import 'package:sugar_talk/views/widgets/ox_table/table_column.dart';
+import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/views/application/index.dart';
+import 'package:flutter_template/views/data/models/index.dart';
+import 'package:flutter_template/views/pages/desktop/widgets/index.dart';
+import 'package:flutter_template/views/widgets/index.dart';
+import 'package:flutter_template/views/widgets/ox_table/table_column.dart';
 
 /// 入口层
 class ModelScreen extends CustomStatefulWidget {

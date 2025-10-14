@@ -5,7 +5,7 @@
  */
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:sugar_talk/views/data/index.dart';
+import 'package:flutter_template/views/data/index.dart';
 
 import '../providers/index.dart';
 

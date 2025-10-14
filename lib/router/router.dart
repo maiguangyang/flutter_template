@@ -6,7 +6,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sugar_talk/common/index.dart';
+import 'package:flutter_template/common/index.dart';
 
 import '../views/pages/desktop/routes.dart';
 import '../views/pages/mobile/routes.dart';

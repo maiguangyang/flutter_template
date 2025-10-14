@@ -4,8 +4,8 @@
  * @Date: 2025-09-02 09:42:01
  */
 
-import 'package:sugar_talk/abstracts/index.dart';
-import 'package:sugar_talk/views/data/models/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/views/data/models/index.dart';
 
 import 'menu_item_child_widget.dart';
 

@@ -3,7 +3,7 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-09-10 15:42:35
  */
-import 'package:sugar_talk/abstracts/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
 
 import 'draggable_header_widget.dart';
 

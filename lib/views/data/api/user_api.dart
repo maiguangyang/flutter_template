@@ -5,7 +5,7 @@
  */
 
 import 'package:dio/dio.dart';
-import 'package:sugar_talk/common/index.dart';
+import 'package:flutter_template/common/index.dart';
 
 import '../models/index.dart';
 

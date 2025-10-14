@@ -3,7 +3,7 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-09-05 13:56:05
  */
-import 'package:sugar_talk/abstracts/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
 
 class DraggableHeaderWidget extends CustomStatelessWidget {
   const DraggableHeaderWidget({

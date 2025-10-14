@@ -5,8 +5,8 @@
  */
 
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:sugar_talk/abstracts/index.dart';
-import 'package:sugar_talk/theme/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/theme/index.dart';
 
 import 'config/config.dart';
 

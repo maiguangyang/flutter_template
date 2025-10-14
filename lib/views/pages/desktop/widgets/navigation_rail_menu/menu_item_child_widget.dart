@@ -4,8 +4,8 @@
  * @Date: 2025-09-04 15:27:03
  */
 import 'package:animated_flip_counter/animated_flip_counter.dart';
-import 'package:sugar_talk/abstracts/index.dart';
-import 'package:sugar_talk/views/data/models/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/views/data/models/index.dart';
 
 import 'menu_item_icon_widget.dart';
 

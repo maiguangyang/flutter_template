@@ -6,7 +6,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' as riverpod;
-import 'package:sugar_talk/common/index.dart';
+import 'package:flutter_template/common/index.dart';
 
 class AppLocalizationWrapper extends riverpod.ConsumerWidget {
   const AppLocalizationWrapper({super.key, required this.child});

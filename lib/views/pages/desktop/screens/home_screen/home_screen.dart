@@ -1,6 +1,6 @@
-import 'package:sugar_talk/abstracts/index.dart';
-import 'package:sugar_talk/views/application/index.dart';
-import 'package:sugar_talk/views/pages/desktop/widgets/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/views/application/index.dart';
+import 'package:flutter_template/views/pages/desktop/widgets/index.dart';
 
 /// 入口层
 class HomeScreen extends CustomStatefulWidget {

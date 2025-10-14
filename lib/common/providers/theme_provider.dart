@@ -9,7 +9,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_oxygen/flutter_oxygen.dart';
 import 'package:riverpod/riverpod.dart';
-import 'package:sugar_talk/config/config.dart';
+import 'package:flutter_template/config/config.dart';
 
 /// 主题状态
 class ThemeState {

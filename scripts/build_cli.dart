@@ -7,8 +7,8 @@ import 'package:flutter_oxygen/scripts/builds/index.dart';
 import 'package:flutter_oxygen/scripts/params.dart';
 import 'package:flutter_oxygen/scripts/utils.dart';
 import 'package:recase/recase.dart';
-import 'package:sugar_talk/config/android_config.dart';
-import 'package:sugar_talk/config/config.dart';
+import 'package:flutter_template/config/android_config.dart';
+import 'package:flutter_template/config/config.dart';
 
 /// pubspec.yaml
 const String pubspecPath = "pubspec.yaml";

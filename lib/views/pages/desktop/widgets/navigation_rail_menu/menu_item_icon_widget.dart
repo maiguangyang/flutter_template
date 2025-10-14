@@ -3,8 +3,8 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-09-04 15:27:54
  */
-import 'package:sugar_talk/abstracts/index.dart';
-import 'package:sugar_talk/views/data/models/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/views/data/models/index.dart';
 
 class MenuItemIconWidget extends CustomStatelessWidget {
   const MenuItemIconWidget({

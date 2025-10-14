@@ -1,5 +1,5 @@
-import 'package:sugar_talk/abstracts/index.dart';
-import 'package:sugar_talk/views/widgets/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/views/widgets/index.dart';
 
 class FooterWidget<T> extends CustomStatelessWidget {
   const FooterWidget({super.key, required this.data});

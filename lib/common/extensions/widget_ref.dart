@@ -5,8 +5,8 @@
  */
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sugar_talk/common/index.dart';
-import 'package:sugar_talk/views/application/index.dart';
+import 'package:flutter_template/common/index.dart';
+import 'package:flutter_template/views/application/index.dart';
 
 extension WidgetRefExtension on WidgetRef {
   /// **********

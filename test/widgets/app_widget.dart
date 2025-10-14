@@ -5,10 +5,10 @@
  */
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:sugar_talk/providers_setup.dart';
-import 'package:sugar_talk/router.dart';
+import 'package:flutter_template/providers_setup.dart';
+import 'package:flutter_template/router.dart';
 import 'package:provider/provider.dart';
-import 'package:sugar_talk/utils/index.dart';
+import 'package:flutter_template/utils/index.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' as riverpod;
 
 class TestAppWidget extends riverpod.ConsumerWidget {

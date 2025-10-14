@@ -1,5 +1,5 @@
 import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
-import 'package:sugar_talk/abstracts/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
 
 import 'ox_button_enum.dart';
 

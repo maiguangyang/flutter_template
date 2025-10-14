@@ -4,7 +4,7 @@
  * @Date: 2025-08-22 13:37:54
  */
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sugar_talk/common/index.dart';
+import 'package:flutter_template/common/index.dart';
 
 final langProvider = Provider<AppLocalizations>((ref) {
   // 读取当前语言

@@ -4,7 +4,7 @@
  * @Date: 2025-07-07 20:32:30
  */
 
-import 'package:sugar_talk/abstracts/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
 
 import 'app_localization_wrapper.dart';
 

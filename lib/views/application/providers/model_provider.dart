@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sugar_talk/common/index.dart';
-import 'package:sugar_talk/views/data/api/index.dart';
-import 'package:sugar_talk/views/data/index.dart';
+import 'package:flutter_template/common/index.dart';
+import 'package:flutter_template/views/data/api/index.dart';
+import 'package:flutter_template/views/data/index.dart';
 
 /// 提供 ModelApi 实例
 final modelApiProvider = Provider<ModelApi>((ref) {

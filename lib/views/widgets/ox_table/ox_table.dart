@@ -5,9 +5,9 @@
  */
 import 'package:material_table_view/material_table_view.dart' hide TableColumn;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:sugar_talk/abstracts/index.dart';
-import 'package:sugar_talk/theme/index.dart';
-import 'package:sugar_talk/views/data/models/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/theme/index.dart';
+import 'package:flutter_template/views/data/models/index.dart';
 
 import 'header_widget.dart';
 import 'row_widget.dart';

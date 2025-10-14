@@ -4,7 +4,7 @@
  * @Date: 2025-09-17 13:24:27
  */
 import 'package:flutter_oxygen/flutter_oxygen.dart';
-import 'package:sugar_talk/abstracts/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
 
 class ModelDialogWidget extends CustomStatelessWidget {
   const ModelDialogWidget({super.key});

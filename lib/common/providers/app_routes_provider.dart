@@ -5,8 +5,8 @@
  */
 import 'package:flutter_oxygen/flutter_oxygen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sugar_talk/views/pages/desktop/routes.dart';
-import 'package:sugar_talk/views/pages/mobile/routes.dart';
+import 'package:flutter_template/views/pages/desktop/routes.dart';
+import 'package:flutter_template/views/pages/mobile/routes.dart';
 
 import 'device_type_provider.dart';
 

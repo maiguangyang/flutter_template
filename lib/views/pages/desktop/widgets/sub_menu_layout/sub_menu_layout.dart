@@ -3,9 +3,9 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-09-17 08:41:51
  */
-import 'package:sugar_talk/abstracts/index.dart';
-import 'package:sugar_talk/views/data/models/index.dart';
-import 'package:sugar_talk/views/pages/desktop/widgets/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/views/data/models/index.dart';
+import 'package:flutter_template/views/pages/desktop/widgets/index.dart';
 
 class SubMenuLayout extends CustomStatelessWidget {
   const SubMenuLayout({

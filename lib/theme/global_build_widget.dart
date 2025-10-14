@@ -5,7 +5,7 @@
  */
 import 'package:flutter/services.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:sugar_talk/abstracts/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
 
 /// 全局build组件
 class GlobalBuildWidget {

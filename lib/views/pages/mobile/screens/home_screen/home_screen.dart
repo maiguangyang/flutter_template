@@ -1,5 +1,5 @@
-import 'package:sugar_talk/abstracts/index.dart';
-import 'package:sugar_talk/views/application/notifiers/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/views/application/notifiers/index.dart';
 
 import 'widgets/app_header_bar.dart';
 

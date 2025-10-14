@@ -1,5 +1,5 @@
 import 'package:ellipsized_text/ellipsized_text.dart';
-import 'package:sugar_talk/abstracts/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
 
 import 'table_column.dart';
 

@@ -3,8 +3,8 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-09-04 14:11:55
  */
-import 'package:sugar_talk/abstracts/index.dart';
-import 'package:sugar_talk/views/application/index.dart';
+import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/views/application/index.dart';
 
 import 'menu_attach_item_widget.dart';
 

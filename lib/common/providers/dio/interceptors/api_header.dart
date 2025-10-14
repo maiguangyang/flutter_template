@@ -4,7 +4,7 @@
  * @Date: 2024-04-29 09:42:15
  */
 import 'package:dio/dio.dart';
-import 'package:sugar_talk/common/index.dart';
+import 'package:flutter_template/common/index.dart';
 
 class ApiHeader extends Interceptor {
   @override

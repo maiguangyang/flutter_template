@@ -4,9 +4,9 @@ import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:sugar_talk/app.dart';
-import 'package:sugar_talk/common/index.dart';
-import 'package:sugar_talk/views/pages/mobile/screens/home_screen/home_screen.dart';
+import 'package:flutter_template/app.dart';
+import 'package:flutter_template/common/index.dart';
+import 'package:flutter_template/views/pages/mobile/screens/home_screen/home_screen.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();

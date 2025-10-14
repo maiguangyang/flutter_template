@@ -3,7 +3,7 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-09-23 10:23:01
  */
-import 'package:sugar_talk/views/data/api/index.dart';
+import 'package:flutter_template/views/data/api/index.dart';
 
 import '../models/index.dart';
 
