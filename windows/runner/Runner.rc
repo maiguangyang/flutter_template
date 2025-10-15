@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.proton.flutterTemplate.dev" "\0"
-            VALUE "FileDescription", "FLUTTER TEMPLATE Dev" "\0"
+            VALUE "CompanyName", "com.proton.myApp.dev" "\0"
+            VALUE "FileDescription", "My App Dev" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "FLUTTER TEMPLATE Dev" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2025 com.proton.flutterTemplate.dev. All rights reserved." "\0"
-            VALUE "OriginalFilename", "FLUTTER TEMPLATE Dev.exe" "\0"
-            VALUE "ProductName", "FLUTTER TEMPLATE Dev" "\0"
+            VALUE "InternalName", "My App Dev" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 com.proton.myApp.dev. All rights reserved." "\0"
+            VALUE "OriginalFilename", "My App Dev.exe" "\0"
+            VALUE "ProductName", "My App Dev" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

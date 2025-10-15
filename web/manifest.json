@@ -1,11 +1,11 @@
 {
-    "name": "FLUTTER TEMPLATE Dev",
-    "short_name": "FLUTTER TEMPLATE Dev",
+    "name": "My App Dev",
+    "short_name": "My App Dev",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new FLUTTER TEMPLATE Dev project.",
+    "description": "A new My App Dev project.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

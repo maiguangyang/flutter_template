@@ -109,7 +109,7 @@ code:
 watch:
 	dart run build_runner watch --delete-conflicting-outputs
 
-switch:
+config:
 	dart ./scripts/build_cli.dart projectName="$(name)"
 	dart run flutter_launcher_icons
 

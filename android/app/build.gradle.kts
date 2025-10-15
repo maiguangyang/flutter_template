@@ -23,14 +23,14 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.proton.flutterTemplate.dev"
+        applicationId = "com.proton.myApp.dev"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
-        resValue("string", "application_name", "FLUTTER TEMPLATE Dev")
+        resValue("string", "application_name", "My App Dev")
     }
 
     signingConfigs {
@@ -43,7 +43,7 @@ android {
             // signingConfig = signingConfigs.debug
             isMinifyEnabled = false
             isShrinkResources = false
-            resValue("string", "app_name", "FLUTTER TEMPLATE Dev")
+            resValue("string", "app_name", "My App Dev")
             signingConfig = signingConfigs.getByName("debug")
         }
     }
