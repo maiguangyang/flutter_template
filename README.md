@@ -49,6 +49,11 @@ npm install -g @maiguangyang/oxygen_cli
 ```
 oxygen_cli create myApp
 ```
+或者
+```
+npx oxygen_cli create myApp
+```
+
 
 ### 开发
 
