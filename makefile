@@ -109,6 +109,10 @@ code:
 watch:
 	dart run build_runner watch --delete-conflicting-outputs
 
+switch:
+	dart ./scripts/build_cli.dart projectName="$(name)"
+	dart run flutter_launcher_icons
+
 l10n:
 	make version
 	rm -rf ./lib/core/l10n/*.arb && dart ./scripts/generate_l10n.dart 
