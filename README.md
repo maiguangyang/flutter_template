@@ -51,7 +51,7 @@ oxygen_cli create myApp
 ```
 或者
 ```
-npx oxygen_cli create myApp
+npx @maiguangyang/oxygen_cli create myApp
 ```
 
 
