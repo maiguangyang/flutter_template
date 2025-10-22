@@ -16,8 +16,8 @@ class DownloadRepository {
   Future<void> initialize() => _service.init();
 
   /// 开始下载
-  Future<bool> startDownload(String url, String filename) async {
-    final task = _service.createTask(url, filename);
+  Future<bool> startDownload(String url, {String? filename}) async {
+    final task = _service.createTask(url, filename: filename);
     return await _service.enqueue(task);
   }
 

@@ -19,10 +19,12 @@ class DownloadService {
     await _downloader.ready;
   }
 
-  DownloadTask createTask(String url, String filename) {
+  DownloadTask createTask(String url, {String? filename}) {
+    final parsedName = filename ?? extractFilenameFromUrl(url);
+
     return DownloadTask(
       url: url,
-      filename: filename,
+      filename: parsedName,
       updates: Updates.statusAndProgress, // 请求状态+进度更新
     );
   }
@@ -54,4 +56,12 @@ class DownloadService {
   Future<bool> pause(DownloadTask task) => _downloader.pause(task);
   Future<bool> resume(DownloadTask task) => _downloader.resume(task);
   Future<bool> cancel(DownloadTask task) => _downloader.cancel(task);
+
+  /// 从 URL 中提取文件名
+  String extractFilenameFromUrl(String url) {
+    final uri = Uri.parse(url);
+    final pathSegments = uri.pathSegments;
+    if (pathSegments.isEmpty) return 'unknown_file';
+    return pathSegments.last;
+  }
 }

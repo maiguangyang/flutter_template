@@ -8,13 +8,24 @@ import 'package:flutter_template/views/data/index.dart';
 
 class AuthRepository {
   final AuthApiService _api;
-  AuthRepository(this._api);
+
+  /// 是否使用mock
+  final bool useMock;
+
+  AuthRepository(this._api, {this.useMock = false});
 
   /// 登录
   Future<BaseResponse<UserEntity>?> login(
     String username,
     String password,
   ) async {
+    // mock 数据
+    if (useMock) {
+      return BaseResponse()
+        ..code = 200
+        ..data = null;
+    }
+
     // 构建请求 DTO
     final request = LoginRequestDto(username: username, password: password);
 

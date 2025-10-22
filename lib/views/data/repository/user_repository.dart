@@ -8,12 +8,23 @@ import 'package:flutter_template/views/data/index.dart';
 
 class UserRepository {
   final UserApiService _api;
-  UserRepository(this._api);
+
+  /// 是否使用mock
+  final bool useMock;
+
+  UserRepository(this._api, {this.useMock = false});
 
   /// 获取用户列表
   Future<BaseResponse<List<UserEntity>>?> getUsers() async {
     // 构建请求 DTO
     final request = GetUsersRequestDto();
+
+    // mock 数据
+    if (useMock) {
+      return BaseResponse()
+        ..code = 200
+        ..data = [];
+    }
 
     // 调用 API，返回 UserDto
     final userDto = await _api.getUserList(request);

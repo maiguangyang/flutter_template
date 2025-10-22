@@ -2,7 +2,7 @@
   "CustomStatelessWidget": {
     "prefix": "sw",
     "body": [
-      "import 'package:sugar_talk/abstracts/index.dart';",
+      "import 'package:flutter_template/abstracts/index.dart';",
       "",
       "class ${1:name} extends CustomStatelessWidget {",
       "  const ${1:name}({super.key});",
@@ -18,7 +18,7 @@
   "CustomStatefulWidget": {
     "prefix": "sfw",
     "body": [
-      "import 'package:sugar_talk/abstracts/index.dart';",
+      "import 'package:flutter_template/abstracts/index.dart';",
       "",
       "/// 入口层",
       "class ${1:name} extends CustomStatefulWidget {",
@@ -49,7 +49,7 @@
   "Repository": {
     "prefix": "rep",
     "body": [
-      "import 'package:sugar_talk/views/data/index.dart';",
+      "import 'package:flutter_template/views/data/index.dart';",
       "",
       "class ${1:name}Repository {",
       "  final ${1:name}ApiService _api;",
@@ -83,8 +83,8 @@
     "prefix": "api",
     "body": [
       "import 'package:dio/dio.dart';",
-      "import 'package:sugar_talk/core/constants/index.dart';",
-      "import 'package:sugar_talk/views/data/models/index.dart';",
+      "import 'package:flutter_template/core/constants/index.dart';",
+      "import 'package:flutter_template/views/data/models/index.dart';",
       "",
       "class ${1:name}ApiService {",
       "  final Dio _dio;",
@@ -118,13 +118,13 @@
     "prefix": "prd",
     "body": [
       "import 'package:flutter_riverpod/flutter_riverpod.dart';",
-      "import 'package:sugar_talk/core/providers/index.dart';",
-      "import 'package:sugar_talk/views/data/index.dart';",
+      "import 'package:flutter_template/common/index.dart';",
+      "import 'package:flutter_template/views/data/index.dart';",
       "",
-      "/// 提供 ${1:name}ApiService 实例",
-      "final ${2:value}ApiProvider = Provider<${1:name}ApiService>((ref) {",
+      "/// 提供 ${1:name}Service 实例",
+      "final ${2:value}ApiProvider = Provider<${1:name}Service>((ref) {",
       "  final dio = ref.read(dioProvider);",
-      "  return ${1:name}ApiService(dio);",
+      "  return ${1:name}Service(dio);",
       "});",
       "",
       "/// 提供 ${1:name}Repository 实例",
@@ -140,8 +140,9 @@
   "Notifier": {
     "prefix": "ntf",
     "body": [
+      "import 'package:flutter_template/views/application/index.dart';",
+      "import 'package:flutter_template/views/data/index.dart';",
       "import 'package:riverpod_annotation/riverpod_annotation.dart';",
-      "import 'package:sugar_talk/views/data/index.dart';",
       "",
       "import '../providers/index.dart';",
       "",
@@ -153,14 +154,14 @@
       "  ${1:name}Repository get _repository => ref.watch(${2:value}RepositoryProvider);",
       "  ",
       "  @override",
-      "  FutureOr<List<${1:name}Entity>> build() async {",
+      "  FutureOr<${1:name}Entity?> build() async {",
       "    return _fetchData();",
       "  }",
       "",
       "  // 内部私有方法，只返回数据，不操作 state",
-      "  Future<List<${1:name}Entity>> _fetchData() async {",
+      "  Future<${1:name}Entity?> _fetchData() async {",
       "    final result = await _repository.${3:func}();",
-      "    return result?.data ?? [];",
+      "    return result?.data;",
       "  }",
       "",
       "  /// ${3:func}",
