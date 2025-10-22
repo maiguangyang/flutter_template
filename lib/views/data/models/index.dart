@@ -5,6 +5,7 @@
  */
 export 'base_entity.dart';
 export 'base_response.dart';
+export 'download_task_model.dart';
 export 'menu/index.dart';
 export 'model/index.dart';
 export 'user/index.dart';

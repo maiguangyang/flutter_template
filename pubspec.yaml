@@ -54,6 +54,7 @@ dependencies:
   riverpod_annotation: ^3.0.0
   mobkit_dashed_border: ^0.0.8
   flutter_oxygen: ^0.0.2
+  background_downloader: ^9.2.6
 dev_dependencies:
   flutter_test:
     sdk: flutter
