@@ -6,11 +6,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_template/common/index.dart';
 
-import '../models/index.dart';
+import '../../models/index.dart';
 
-class ModelApi {
+class ModelApiService {
   final Dio _dio;
-  ModelApi(this._dio);
+  ModelApiService(this._dio);
 
   /// 登录接口
   Future<BaseResponse<List<ModelResponseDto>>?> getModel(

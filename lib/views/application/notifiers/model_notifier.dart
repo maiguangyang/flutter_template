@@ -4,8 +4,8 @@
  * @Date: 2025-09-17 20:34:56
  */
 
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter_template/views/data/index.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../providers/index.dart';
 

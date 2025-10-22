@@ -7,11 +7,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_template/common/index.dart';
 
-import '../models/index.dart';
+import '../../models/index.dart';
 
-class AuthApi {
+class AuthApiService {
   final Dio _dio;
-  AuthApi(this._dio);
+  AuthApiService(this._dio);
 
   /// 登录接口
   Future<BaseResponse<UserResponseDto>?> login(LoginRequestDto request) async {

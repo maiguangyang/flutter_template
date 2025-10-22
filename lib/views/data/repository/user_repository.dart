@@ -4,12 +4,10 @@
  * @Date: 2025-08-26 08:33:42
  */
 
-import 'package:flutter_template/views/data/api/index.dart';
-
-import '../models/index.dart';
+import 'package:flutter_template/views/data/index.dart';
 
 class UserRepository {
-  final UserApi _api;
+  final UserApiService _api;
   UserRepository(this._api);
 
   /// 获取用户列表

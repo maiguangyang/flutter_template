@@ -7,11 +7,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_template/common/index.dart';
 
-import '../models/index.dart';
+import '../../models/index.dart';
 
-class UserApi {
+class UserApiService {
   final Dio _dio;
-  UserApi(this._dio);
+  UserApiService(this._dio);
 
   Future<BaseResponse<List<UserResponseDto>>?> getUserList(
     GetUsersRequestDto request,

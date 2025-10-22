@@ -3,12 +3,11 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-08-26 08:33:42
  */
-import 'package:flutter_template/views/data/api/index.dart';
 
-import '../models/index.dart';
+import 'package:flutter_template/views/data/index.dart';
 
 class AuthRepository {
-  final AuthApi _api;
+  final AuthApiService _api;
   AuthRepository(this._api);
 
   /// 登录

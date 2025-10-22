@@ -10,13 +10,12 @@
  */
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template/common/index.dart';
-import 'package:flutter_template/views/data/api/index.dart';
 import 'package:flutter_template/views/data/index.dart';
 
-/// 提供 AuthApi 实例
-final authApiProvider = Provider<AuthApi>((ref) {
+/// 提供 AuthApiService 实例
+final authApiProvider = Provider<AuthApiService>((ref) {
   final dio = ref.read(dioProvider);
-  return AuthApi(dio);
+  return AuthApiService(dio);
 });
 
 /// 提供 AuthRepository 实例
