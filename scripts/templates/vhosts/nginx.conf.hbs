@@ -11,7 +11,7 @@ server {
 
   location ~* /(.*)$ {
     access_log off;
-    expires max;
+    expires 365d;
     add_header Cache-Control public;
     try_files $uri /$1 =404;
   }
@@ -19,6 +19,27 @@ server {
   location @fallback {
     try_files /error.html =500;
   }
+
+  gzip on;
+  gzip_comp_level 6;
+  gzip_min_length 256;
+  gzip_vary on;
+  gzip_types
+    text/plain
+    text/css
+    application/json
+    application/javascript
+    application/wasm
+    text/xml
+    application/xml
+    application/xml+rss
+    text/javascript
+    font/ttf
+    font/otf
+    font/woff
+    application/font-woff
+    application/octet-stream
+    application/font-woff2;
 }
   {{/cdn}}
   {{#host}}
@@ -48,6 +69,34 @@ server {
   location @fallback {
     try_files /error.html =500;
   }
+
+  # 静态资源缓存
+  location ~* \.(?:ico|css|js|gif|jpe?g|png|woff2?|eot|ttf|svg|mp4|webp)$ {
+    expires 365d;
+    add_header Cache-Control "public";
+    access_log off;
+  }
+
+  gzip on;
+  gzip_comp_level 6;
+  gzip_min_length 256;
+  gzip_vary on;
+  gzip_types
+    text/plain
+    text/css
+    application/json
+    application/javascript
+    application/wasm
+    text/xml
+    application/xml
+    application/xml+rss
+    text/javascript
+    font/ttf
+    font/otf
+    font/woff
+    application/font-woff
+    application/octet-stream
+    application/font-woff2;
 }
   {{/host}}
   {{#proxy}}
@@ -74,6 +123,34 @@ server {
   location @fallback {
     try_files /error.html =500;
   }
+
+  # 静态资源缓存
+  location ~* \.(?:ico|css|js|gif|jpe?g|png|woff2?|eot|ttf|svg|mp4|webp)$ {
+    expires 365d;
+    add_header Cache-Control "public";
+    access_log off;
+  }
+
+  gzip on;
+  gzip_comp_level 6;
+  gzip_min_length 256;
+  gzip_vary on;
+  gzip_types
+    text/plain
+    text/css
+    application/json
+    application/javascript
+    application/wasm
+    text/xml
+    application/xml
+    application/xml+rss
+    text/javascript
+    font/ttf
+    font/otf
+    font/woff
+    application/font-woff
+    application/octet-stream
+    application/font-woff2;
 }
     {{/proxy}}
   {{/type}}

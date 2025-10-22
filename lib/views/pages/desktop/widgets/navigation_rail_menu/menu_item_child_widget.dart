@@ -35,7 +35,7 @@ class MenuItemChildWidget extends CustomStatelessWidget {
                     ? AnimatedFlipCounter(value: item.badgeCount!)
                     : null,
                 backgroundColor: item.hasBadgeCount ? theme.errorColor : null,
-                textColor: item.hasBadgeCount ? theme.white : null,
+                textColor: item.hasBadgeCount ? Colors.white : null,
                 largeSize: theme.fontSize12,
                 offset: Offset(2, -6),
                 child: MenuItemIconWidget(item: item, isHovered: isHovered),

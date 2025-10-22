@@ -11,8 +11,8 @@ ThemeData createLightTheme({required bool isDark, required WidgetRef ref}) {
   final themeStore = ref.watch(themeProvider);
 
   return ThemeData(
-    // fontFamily: 'NunitoSans',
-    // fontFamilyFallback: ['PingFangSC', 'sans-serif'],
+    fontFamily: 'NunitoSans',
+    fontFamilyFallback: ['Roboto', 'NotoSansSC'],
     brightness: !isDark ? Brightness.light : Brightness.dark,
     useMaterial3: true,
     primaryColor: themeStore.primary,

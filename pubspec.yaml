@@ -112,12 +112,18 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: NunitoSans
-      fonts:
-        - asset: fonts/NunitoSans.ttf
     - family: IconFont
       fonts:
         - asset: assets/fonts/iconfont.ttf
+    - family: NunitoSans
+      fonts:
+        - asset: fonts/NunitoSans.ttf
+    - family: Roboto
+      fonts:
+        - asset: fonts/KFOmCnqEu92Fr1Me4GZLCzYlKw.ttf
+    - family: NotoSansSC
+      fonts:
+        - asset: fonts/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FnYxNbPzS5HE.ttf
 
   #   - family: Schyler
   #     fonts:

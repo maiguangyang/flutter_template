@@ -97,7 +97,7 @@ create_dist:
 	if [ ! -d "$(distPath)" ]; then mkdir $(distPath); fi
 
 html:
-	@$(FLUTTER) build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=/canvaskit/ --no-tree-shake-icons --no-tree-shake-icons --release && make nginx && make zipHtml
+	@$(FLUTTER) build web --release --no-web-resources-cdn && make nginx && make zipHtml
 
 zipHtml:
 	tar -cJf $(appFileName).tar.xz -C build/web .
