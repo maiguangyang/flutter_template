@@ -6,8 +6,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_template/abstracts/index.dart';
 
-import 'app_exception.dart';
-
 /// 把 Dio 或其他异常转成统一的 AppException
 class ErrorMapper {
   final WidgetRef ref;

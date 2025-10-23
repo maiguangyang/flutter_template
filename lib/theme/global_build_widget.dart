@@ -4,8 +4,8 @@
  * @Date: 2025-09-25 10:43:50
  */
 import 'package:flutter/services.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter_template/abstracts/index.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 /// 全局build组件
 class GlobalBuildWidget {

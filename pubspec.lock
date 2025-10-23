@@ -249,6 +249,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.6"
+  cupertino_icons:
+    dependency: "direct main"
+    description:
+      name: cupertino_icons
+      sha256: ba631d1c7f7bef6b729a622b7b752645a2d076dba9976925b8f25725a30e1ee6
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.8"
   custom_lint:
     dependency: "direct dev"
     description:
@@ -467,10 +475,10 @@ packages:
     dependency: "direct main"
     description:
       name: go_router
-      sha256: e1d7ffb0db475e6e845eb58b44768f50b830e23960e3df6908924acd8f7f70ea
+      sha256: d8f590a69729f719177ea68eb1e598295e8dbc41bbc247fed78b2c8a25660d7c
       url: "https://pub.dev"
     source: hosted
-    version: "16.2.5"
+    version: "16.3.0"
   graphs:
     dependency: transitive
     description:
@@ -672,10 +680,10 @@ packages:
     dependency: transitive
     description:
       name: mustache_template
-      sha256: d9aa84d114368b7f1727b7014b85bb0b234daeafe1518824c82d32703b3964f6
+      sha256: daa42be75f2ccfb287c24a75e7ac594f2ea0b32bf9ebe7c15154aa45b2dfb2de
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.2"
   node_preamble:
     dependency: transitive
     description:

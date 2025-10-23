@@ -57,7 +57,7 @@ app:
 
 mac:
 	make quit
-	@$(FLUTTER) build macos --release --no-tree-shake-icons --build-name=$(combined_variable) --build-number=$(buildNumber) && make dmg
+	@$(FLUTTER) build macos --release --build-name=$(combined_variable) --build-number=$(buildNumber) && make dmg
 
 dmg:
 	rm -rf "$(dirPath)/$(macAppName).dmg" && hdiutil create -size 100m -fs APFS -volname "$(macAppName)" -attach "$(dirPath)/$(macAppName).dmg" && make copy && make ln && make quit && make format
@@ -97,7 +97,7 @@ create_dist:
 	if [ ! -d "$(distPath)" ]; then mkdir $(distPath); fi
 
 html:
-	@$(FLUTTER) build web --release --no-web-resources-cdn && make nginx && make zipHtml
+	@$(FLUTTER) build web --release --no-web-resources-cdn --no-wasm-dry-run && make nginx && make zipHtml
 
 zipHtml:
 	tar -cJf $(appFileName).tar.xz -C build/web .
