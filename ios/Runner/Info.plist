@@ -46,6 +46,6 @@
     <key>UIApplicationSupportsIndirectInputEvents</key>
     <true/>
     <key>FLTEnableImpeller</key>
-    <string>true</string>
+    <true/>
   </dict>
 </plist>

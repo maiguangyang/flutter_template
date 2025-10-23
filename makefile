@@ -84,7 +84,7 @@ zipApk:
 	make create_dist && rm -rf $(distPath)/$(buildAppFileName)_*.apk && cp -f build/app/outputs/flutter-apk/app-release.apk $(appFileName).apk
 
 ipa:
-	@$(FLUTTER) build ipa --release --build-name=$(combined_variable) --build-number=$(buildNumber) --export-method=$(exportMethod) && make zipIpa
+	@$(FLUTTER) build ipa --release --build-name=$(combined_variable) --build-number=$(buildNumber) --export-method=$(exportMethod) --split-debug-info=build/symbols --tree-shake-icons --obfuscate && make zipIpa
 
 zipIpa:
 	make create_dist && rm -rf $(distPath)/$(buildAppFileName)_*.ipa && cp -f "build/ios/ipa/$(projectName).ipa" $(appFileName).ipa
