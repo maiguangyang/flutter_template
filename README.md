@@ -13,31 +13,34 @@
 ```
 assets/                   # 静态文件
 lib/
-|-- abstracts             # 抽象类：很少用，目前就用在代码片段
-|-- config                # 配置文件
-|-- common                  # 核心文件夹
-    |-- constants         # 常量
-    |-- enums             # 枚举
-    |-- errors            # 枚举
-    |-- l10n              # 国际化配置
-    |-- providers         # 全局providers
-    |-- services          # 全局services
-    |-- utils             # 工具类
-    |-- extensions        # 扩展
-    |-- middleware        # 中间件
-|-- router                # 路由配置
-|-- theme                 # 模板配置
-|-- views/                # 表示层
-    |-- application       # 应用层（Notifiers, Providers）
-      |-- notifiers       # 管理 可变状态
-      |-- providers       # 提供 不可变、可复用的数据或依赖
-    |-- data              #  数据层（Repository, API, Model）
-    |-- pages             # 屏幕/页面
-    |-- widgets           # 可复用的UI组件
-|-- app.dart              # App 根组件
-|-- bootstrap.dart        # 启动初始化逻辑 (依赖注入, 全局配置等)
-|-- main.dart             # 入口文件
-
+├── abstracts             # 抽象类：很少用，目前就用在代码片段
+├── config                # 配置文件
+├── common                  # 核心文件夹
+    ├── constants         # 常量
+    ├── enums             # 枚举
+    ├── errors            # 枚举
+    ├── l10n              # 国际化配置
+    ├── providers         # 全局providers
+    ├── services          # 全局services
+    ├── utils             # 工具类
+    ├── extensions        # 扩展
+    └── middleware        # 中间件
+├── router                # 路由配置
+├── theme                 # 模板配置
+├── views/                # 表示层
+    ├── application       # 应用层负责业务逻辑与状态调度，是连接 View 与 Repository 的桥梁
+      ├── notifiers       # 保存 UI 状态，调用 Repository 更新数据
+      └── providers       # 将 repository、service 提供给上层使用
+    ├── data              #  数据层（Repository, API, Model）
+      ├── mock            # 模拟数据，方便开发与测试
+      ├── models          # 数据模型定义
+      ├── repository      # 聚合多个 service 或数据源，并转换为业务可用的实体
+      └── services        # 底层服务（如 API 调用、数据库、本地存储）
+    ├── pages             # 屏幕/页面
+    └── widgets           # 可复用的UI组件
+├── app.dart              # App 根组件
+├── bootstrap.dart        # 启动初始化逻辑 (依赖注入, 全局配置等)
+└── main.dart             # 入口文件
 ```
 
 ### 安装
