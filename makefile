@@ -57,7 +57,7 @@ app:
 
 mac:
 	make quit
-	@$(FLUTTER) build macos --release --build-name=$(combined_variable) --build-number=$(buildNumber) && make dmg
+	@$(FLUTTER) build macos --release --build-name=$(combined_variable) --build-number=$(buildNumber) --split-debug-info=build/symbols && make dmg
 
 dmg:
 	rm -rf "$(dirPath)/$(macAppName).dmg" && hdiutil create -size 100m -fs APFS -volname "$(macAppName)" -attach "$(dirPath)/$(macAppName).dmg" && make copy && make ln && make quit && make format
@@ -78,7 +78,7 @@ format:
 	make create_dist && rm -rf $(distPath)/$(buildAppFileName)_*.dmg && hdiutil convert "$(dirPath)/$(macAppName).dmg" -format UDZO -o $(appFileName).dmg && rm -rf "$(dirPath)/$(macAppName).dmg"
 
 apk:
-	@$(FLUTTER) build apk --build-name=$(combined_variable) --build-number=$(buildNumber) && make zipApk
+	@$(FLUTTER) build apk --build-name=$(combined_variable) --build-number=$(buildNumber) --split-debug-info=build/symbols && make zipApk
 
 zipApk:
 	make create_dist && rm -rf $(distPath)/$(buildAppFileName)_*.apk && cp -f build/app/outputs/flutter-apk/app-release.apk $(appFileName).apk
