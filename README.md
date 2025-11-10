@@ -31,7 +31,7 @@ lib/
     ├── application       # 应用层负责业务逻辑与状态调度，是连接 View 与 Repository 的桥梁
       ├── notifiers       # 保存 UI 状态，调用 Repository 更新数据
       └── providers       # 将 repository、service 提供给上层使用
-    ├── data              #  数据层（Repository, API, Model）
+    ├── data              # 数据层（Repository, API, Model）
       ├── mock            # 模拟数据，方便开发与测试
       ├── models          # 数据模型定义
       ├── repository      # 聚合多个 service 或数据源，并转换为业务可用的实体
