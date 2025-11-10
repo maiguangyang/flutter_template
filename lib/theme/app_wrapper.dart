@@ -6,6 +6,7 @@
 
 import 'package:flutter_template/abstracts/index.dart';
 
+import 'app_lifecycle_wrapper.dart';
 import 'app_localization_wrapper.dart';
 
 class AppWrapper extends CustomStatelessWidget {
@@ -18,7 +19,7 @@ class AppWrapper extends CustomStatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () => FocusScope.of(context).unfocus(),
-      child: AppLocalizationWrapper(child: child),
+      child: AppLifecycleWrapper(child: AppLocalizationWrapper(child: child)),
     );
   }
 }
