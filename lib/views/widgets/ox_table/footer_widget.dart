@@ -1,3 +1,8 @@
+/*
+ * @Author: Marlon.M
+ * @Email: maiguangyang@163.com
+ * @Date: 2025-09-26 08:42:07
+ */
 import 'package:flutter_template/abstracts/index.dart';
 import 'package:flutter_template/views/widgets/index.dart';
 
@@ -16,7 +21,7 @@ class FooterWidget<T> extends CustomStatelessWidget {
       pageSizeOptions: [10, 20, 50],
       showSizeChanger: true,
       onPageChanged: (page, size) {
-        print("当前页: $page, 每页: $size");
+        debugPrint("当前页: $page, 每页: $size");
       },
     );
   }

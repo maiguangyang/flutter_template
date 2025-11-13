@@ -4,11 +4,11 @@
  * @Date: 2025-08-22 13:37:54
  */
 
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter_template/abstracts/index.dart';
 import 'package:flutter_template/views/data/index.dart';
 import 'package:flutter_template/views/pages/desktop/dialogs/index.dart';
 import 'package:flutter_template/views/widgets/index.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'model_menu_notifier.g.dart';
 
@@ -72,7 +72,7 @@ class AsyncModelMenuNotifier extends _$AsyncModelMenuNotifier {
             },
           );
 
-          print("result $result");
+          debugPrint("result $result");
         },
       ),
     ];

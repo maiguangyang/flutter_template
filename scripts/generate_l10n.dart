@@ -20,8 +20,9 @@ void generateL10n() {
   }
 
   // 解析 language.json
-  Map<String, dynamic> languageData =
-      json.decode(languageFile.readAsStringSync());
+  Map<String, dynamic> languageData = json.decode(
+    languageFile.readAsStringSync(),
+  );
 
   /// meta_seo.json
   String metaSeoJson = "$path/meta_seo.json";
@@ -58,7 +59,8 @@ void generateL10n() {
 
       childJsonData[key] = text;
       file.writeAsStringSync(
-          const JsonEncoder.withIndent('  ').convert(childJsonData));
+        const JsonEncoder.withIndent('  ').convert(childJsonData),
+      );
       file.exists();
     });
   });

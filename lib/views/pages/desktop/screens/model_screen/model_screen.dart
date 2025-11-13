@@ -69,7 +69,7 @@ class _ModelScreenView
 
                   return TextButton(
                     onPressed: () {
-                      print("user-2 $user");
+                      debugPrint("user-2 $user");
                     },
                     child: Text("Delete", style: TextStyle(color: Colors.red)),
                   );
@@ -81,7 +81,7 @@ class _ModelScreenView
               total: 200,
               showSizeChanger: true,
               onPageChanged: (page, size) {
-                print("当前页: $page, 每页: $size");
+                debugPrint("当前页: $page, 每页: $size");
               },
             ),
           ),
