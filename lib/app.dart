@@ -59,8 +59,10 @@ class _MyAppView extends CustomStatefulView<MyApp, _MyAppState> {
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final themeMode = ref.watch(themeProvider.select((s) => s.themeMode));
-    final isDark = ref.watch(themeProvider.select((s) => s.isDark));
+    // final themeMode = ref.watch(themeProvider.select((s) => s.themeMode));
+    // final isDark = ref.watch(themeProvider.select((s) => s.isDark));
+
+    final theme = ref.watch(themeProvider);
 
     final appRoutes = ref.watch(flutterRouterListProvider);
 
@@ -70,9 +72,9 @@ class _MyAppView extends CustomStatefulView<MyApp, _MyAppState> {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       debugShowCheckedModeBanner: false,
-      themeMode: themeMode,
-      theme: createLightTheme(isDark: isDark, ref: ref),
-      darkTheme: createLightTheme(isDark: isDark, ref: ref),
+      theme: theme.themeData,
+      darkTheme: theme.themeData,
+      themeMode: theme.themeMode,
       builder: NavigatorUtilsCore.init(
         // 初始化路由
         routers: appRoutes,

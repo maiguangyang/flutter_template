@@ -16,7 +16,11 @@ part 'model_menu_notifier.g.dart';
 class AsyncModelMenuNotifier extends _$AsyncModelMenuNotifier {
   @override
   FutureOr<List<MenuEntity>> build() {
-    final theme = ref.watch(themeProvider);
+    // final theme = ref.watch(themeProvider);
+
+    // final theme = ref.watch(themeProvider);
+
+    final colors = ref.watch(themeProvider.select((t) => t.colors));
 
     final menus = [
       /// ***********
@@ -25,21 +29,21 @@ class AsyncModelMenuNotifier extends _$AsyncModelMenuNotifier {
       MenuEntity(
         label: "聊天",
         icon: Icons.chat_bubble_outline,
-        iconColor: theme.orange.withValues(alpha: 0.8),
+        iconColor: colors.orange.withValues(alpha: 0.8),
         route: Routes.test,
         isHideLabel: true,
       ),
       MenuEntity(
         label: "开发者",
         icon: Icons.terminal_outlined,
-        iconColor: theme.green.withValues(alpha: 0.8),
+        iconColor: colors.green.withValues(alpha: 0.8),
         route: Routes.test,
         isHideLabel: true,
       ),
       MenuEntity(
         label: "模型",
         icon: Icons.folder_copy_outlined,
-        iconColor: theme.geekBlue.withValues(alpha: 0.8),
+        iconColor: colors.geekBlue.withValues(alpha: 0.8),
         route: Routes.model,
         isHideLabel: true,
       ),

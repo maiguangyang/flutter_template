@@ -34,7 +34,7 @@ final class AsyncModelMenuNotifierProvider
 }
 
 String _$asyncModelMenuNotifierHash() =>
-    r'66401f9996ac2b52661eb94e38099eb680ab6f23';
+    r'080e2f550079ce7fa582aad0abce096133822ecd';
 
 abstract class _$AsyncModelMenuNotifier
     extends $AsyncNotifier<List<MenuEntity>> {

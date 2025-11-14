@@ -4,6 +4,7 @@
  * @Date: 2025-08-22 10:56:18
  */
 
+export 'package:flex_color_scheme/flex_color_scheme.dart';
 // 导出 Flutter 核心
 export 'package:flutter/material.dart' hide Route;
 // 导出 Riverpod 核心

@@ -17,7 +17,7 @@ class Clients {
       projectName: 'my_app',
       appName: 'My App',
       apiUrl: 'http://192.168.1.2:8081',
-      primaryColor: "#0672FF",
+      primaryColor: "shadBlue", // 全部主题色都在 docs/colors.md
       version: '0.0.1',
       defaultLanguage: 'en_US',
       password: '123456',
