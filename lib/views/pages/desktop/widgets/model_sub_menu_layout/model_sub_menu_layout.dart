@@ -16,7 +16,8 @@ class ModelSubMenuLayout extends CustomStatelessWidget {
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(themeProvider);
+    final spacing = ref.watch(themeProvider.select((t) => t.spacing));
+    final colors = ref.watch(themeProvider.select((t) => t.colors));
 
     final menuStore = ref.watch(asyncModelMenuProvider);
     final menus = menuStore.value ?? [];
@@ -25,20 +26,20 @@ class ModelSubMenuLayout extends CustomStatelessWidget {
       width: 55,
       paddingTop: 0,
       menus: menus,
-      bgColor: theme.white,
+      bgColor: colors.white,
       divider: true,
       child: child,
       leading: Container(
-        margin: EdgeInsets.only(top: theme.spacing8, bottom: theme.spacing6),
-        padding: EdgeInsets.only(left: theme.spacing4),
+        margin: EdgeInsets.only(top: spacing.s8, bottom: spacing.s6),
+        padding: EdgeInsets.only(left: spacing.s4),
         decoration: BoxDecoration(
-          color: theme.grey.withValues(alpha: 0.1),
-          borderRadius: BorderRadius.all(Radius.circular(theme.spacing4)),
+          color: colors.grey.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.all(Radius.circular(spacing.s4)),
         ),
         child: BackButtonWidget(
           showBack: true,
           paddingLeft: 0,
-          backIconColor: theme.black.withValues(alpha: 0.5),
+          backIconColor: colors.black.withValues(alpha: 0.5),
         ),
       ),
     );

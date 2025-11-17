@@ -29,7 +29,8 @@ class GlobalBuildWidget {
     $AsyncNotifierProvider? provider,
     Widget? child,
   }) {
-    final theme = ref.watch(themeProvider);
+    final spacing = ref.watch(themeProvider.select((t) => t.spacing));
+    final colorScheme = ref.watch(themeProvider.select((t) => t.colorScheme));
 
     if (child != null) {
       return child;
@@ -39,17 +40,17 @@ class GlobalBuildWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(error.toString()),
-        SizedBox(height: theme.spacing20),
+        SizedBox(height: spacing.s20),
         if (provider != null)
           GestureDetector(
             child: Container(
               padding: EdgeInsets.symmetric(
-                vertical: theme.spacing10,
-                horizontal: theme.spacing20,
+                vertical: spacing.s10,
+                horizontal: spacing.s20,
               ),
               decoration: BoxDecoration(
-                color: theme.primary,
-                borderRadius: BorderRadius.circular(theme.spacing4),
+                color: colorScheme.primary,
+                borderRadius: BorderRadius.circular(spacing.s4),
               ),
               child: Text(
                 ref.lang.retry,

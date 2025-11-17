@@ -62,7 +62,7 @@ class _MenuAttachItemWidgetView
         child: Container(
           decoration: BoxDecoration(
             // color: theme.primary.withValues(alpha: 0.1),
-            borderRadius: BorderRadius.circular(theme.spacing4),
+            borderRadius: BorderRadius.circular(theme.spacing.s4),
           ),
           child: Center(
             child: MenuItemChildWidget(

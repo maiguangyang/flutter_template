@@ -21,7 +21,10 @@ class MenuItemChildWidget extends CustomStatelessWidget {
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(themeProvider);
+    final spacing = ref.watch(themeProvider.select((t) => t.spacing));
+    final fontSize = ref.watch(themeProvider.select((t) => t.fontSize));
+    final colors = ref.watch(themeProvider.select((t) => t.colors));
+    final colorScheme = ref.watch(themeProvider.select((t) => t.colorScheme));
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -34,20 +37,20 @@ class MenuItemChildWidget extends CustomStatelessWidget {
                     : item.badgeCount.isNotNullAndZero
                     ? AnimatedFlipCounter(value: item.badgeCount!)
                     : null,
-                backgroundColor: item.hasBadgeCount ? theme.errorColor : null,
+                backgroundColor: item.hasBadgeCount ? colorScheme.error : null,
                 textColor: item.hasBadgeCount ? Colors.white : null,
-                largeSize: theme.fontSize12,
+                largeSize: fontSize.f12,
                 offset: Offset(2, -6),
                 child: MenuItemIconWidget(item: item, isHovered: isHovered),
               ),
 
-        if (!item.isHideLabel) SizedBox(height: theme.spacing4),
+        if (!item.isHideLabel) SizedBox(height: spacing.s4),
         if (!item.isHideLabel)
           Text(
             item.label,
             style: TextStyle(
-              fontSize: theme.fontSize10,
-              color: isHovered ? theme.primary : theme.grey,
+              fontSize: fontSize.f10,
+              color: isHovered ? colorScheme.primary : colors.grey,
             ),
           ),
       ],

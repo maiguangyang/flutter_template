@@ -57,6 +57,23 @@ oxygen_cli create myApp
 npx @maiguangyang/oxygen_cli create myApp
 ```
 
+```
+  /// 自定义颜色
+  final colors = ref.watch(themeProvider.select((t) => t.colors));
+
+  /// 自定义间距
+  final spacing = ref.watch(themeProvider.select((t) => t.spacing));
+
+  /// 自定义字体
+  final fontSize = ref.watch(themeProvider.select((t) => t.fontSize));
+
+  /// 自定义字体粗细
+  final fontWeight = ref.watch(themeProvider.select((t) => t.fontWeight));
+
+  /// 主题自带颜色方案
+  final colorScheme = ref.watch(themeProvider.select((t) => t.colorScheme));
+```
+
 
 ### 开发
 

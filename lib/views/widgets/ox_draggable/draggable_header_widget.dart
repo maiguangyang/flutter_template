@@ -28,7 +28,7 @@ class DraggableHeaderWidget extends CustomStatelessWidget {
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(themeProvider);
+    final colorScheme = ref.watch(themeProvider.select((s) => s.colorScheme));
 
     return MouseRegion(
       cursor: canMove == true
@@ -49,7 +49,10 @@ class DraggableHeaderWidget extends CustomStatelessWidget {
                 onPressed: onCancel != null
                     ? onCancel
                     : () => DialogUtilsCore.dismiss(),
-                icon: Icon(Icons.close, color: theme.iconSecondaryColor),
+                icon: Icon(
+                  Icons.close,
+                  color: colorScheme.onSecondaryContainer,
+                ),
                 style: ButtonStyle(
                   splashFactory: NoSplash.splashFactory,
                   overlayColor: WidgetStateProperty.all<Color>(

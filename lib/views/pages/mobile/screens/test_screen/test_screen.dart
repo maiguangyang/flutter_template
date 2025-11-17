@@ -10,7 +10,8 @@ class TestScreen extends CustomStatelessWidget {
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final primary = ref.watch(themeProvider.select((s) => s.primary));
+    final colorScheme = ref.watch(themeProvider.select((s) => s.colorScheme));
+    final primary = colorScheme.primary;
 
     return Scaffold(
       appBar: AppBar(title: Text(ref.lang.testPage)),

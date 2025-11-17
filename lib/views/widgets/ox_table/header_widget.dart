@@ -44,14 +44,15 @@ class HeaderWidget extends CustomStatelessWidget {
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(themeProvider);
+    final colors = ref.watch(themeProvider.select((s) => s.colors));
+    final colorScheme = ref.watch(themeProvider.select((s) => s.colorScheme));
 
     /// 背景色
-    final Color bgColor = theme.cardBackgroundColor;
+    final Color bgColor = colorScheme.surface;
 
     /// 边框颜色
     final borderColor = divider
-        ? theme.grey.withValues(alpha: 0.15)
+        ? colors.grey.withValues(alpha: 0.15)
         : Colors.transparent;
 
     return Container(
@@ -72,9 +73,9 @@ class HeaderWidget extends CustomStatelessWidget {
             ? Checkbox(
                 value: allSelected,
                 onChanged: rowCount > 0 ? toggleSelectAll : null,
-                activeColor: theme.blue,
-                checkColor: theme.white,
-                side: BorderSide(color: theme.grey, width: 0.5),
+                activeColor: colors.blue,
+                checkColor: colors.white,
+                side: BorderSide(color: colors.grey, width: 0.5),
               )
             : HeaderCellWidget(column: column, borderColor: borderColor);
       }),

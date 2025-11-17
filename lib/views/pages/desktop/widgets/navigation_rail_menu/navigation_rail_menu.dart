@@ -44,11 +44,11 @@ class NavigationRailMenu extends CustomStatelessWidget {
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(themeProvider);
+    final colors = ref.watch(themeProvider.select((t) => t.colors));
+    final spacing = ref.watch(themeProvider.select((t) => t.spacing));
+    final colorScheme = ref.watch(themeProvider.select((t) => t.colorScheme));
 
-    final cardBackgroundColor = ref.watch(
-      themeProvider.select((s) => s.cardBackgroundColor),
-    );
+    final cardBackgroundColor = colorScheme.surface;
 
     /// 获取所有类型为 destination 的导航栏项目
     final destinationItems = destinations
@@ -63,16 +63,16 @@ class NavigationRailMenu extends CustomStatelessWidget {
     return Container(
       width: width ?? 65,
       padding: EdgeInsets.only(
-        top: paddingTop ?? theme.spacing16,
-        bottom: theme.spacing16,
-        left: theme.spacing4,
-        right: theme.spacing4,
+        top: paddingTop ?? spacing.s16,
+        bottom: spacing.s16,
+        left: spacing.s4,
+        right: spacing.s4,
       ),
       decoration: BoxDecoration(
         color: bgColor ?? cardBackgroundColor,
         border: divider
             ? Border(
-                right: BorderSide(color: theme.grey.withValues(alpha: 0.15)),
+                right: BorderSide(color: colors.grey.withValues(alpha: 0.15)),
               )
             : null,
       ),

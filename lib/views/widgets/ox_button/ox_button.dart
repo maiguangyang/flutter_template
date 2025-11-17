@@ -1,5 +1,5 @@
-import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 import 'package:flutter_template/abstracts/index.dart';
+import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 
 import 'ox_button_enum.dart';
 
@@ -210,11 +210,13 @@ class OxButton extends CustomStatelessWidget {
   /// 获取按钮的默认样式\
   /// 根据按钮的尺寸和状态计算默认的内边距、背景颜色、文本颜色和边框颜色
   ButtonStyle _getDefaultsStyle(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(themeProvider);
+    final fontSize = ref.watch(themeProvider.select((s) => s.fontSize));
+    final colors = ref.watch(themeProvider.select((s) => s.colors));
+    final colorScheme = ref.watch(themeProvider.select((s) => s.colorScheme));
 
     /// 颜色逻辑
-    final mainColor = danger ? theme.errorColor : theme.primary;
-    final textColor = danger ? theme.errorColor : theme.white;
+    final mainColor = danger ? colorScheme.error : colorScheme.primary;
+    final textColor = danger ? colorScheme.error : colors.white;
 
     /// 尺寸逻辑
     final padding = switch (size) {
@@ -235,7 +237,7 @@ class OxButton extends CustomStatelessWidget {
     return ButtonStyle(
       padding: WidgetStateProperty.all(padding),
       textStyle: WidgetStatePropertyAll(
-        TextStyle(color: theme.white, fontSize: theme.fontSize14),
+        TextStyle(color: colors.white, fontSize: fontSize.f14),
       ),
       backgroundColor: WidgetStateProperty.resolveWith((states) {
         if (type == OxButtonType.primary &&
@@ -246,15 +248,15 @@ class OxButton extends CustomStatelessWidget {
       }),
       foregroundColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.disabled)) {
-          return theme.textPrimaryColor.withValues(alpha: 0.25);
+          return colorScheme.primary.withValues(alpha: 0.25);
         }
-        return type == OxButtonType.primary ? textColor : theme.primary;
+        return type == OxButtonType.primary ? textColor : colorScheme.primary;
       }),
       side: WidgetStateProperty.resolveWith((states) {
         if (type == OxButtonType.defaults) {
           return BorderSide(
             color: states.contains(WidgetState.disabled)
-                ? theme.textPrimaryColor.withValues(alpha: 0.25)
+                ? colorScheme.primary.withValues(alpha: 0.25)
                 : mainColor,
           );
         }
@@ -327,18 +329,20 @@ class OxButton extends CustomStatelessWidget {
   /// 辅助方法：获取链接颜色
   Color _getLinkColor(BuildContext context, WidgetRef ref) {
     final isDisabled = onPressed == null;
-    final theme = ref.watch(themeProvider);
+    final colorScheme = ref.watch(themeProvider.select((s) => s.colorScheme));
 
-    if (isDisabled) return theme.textPrimaryColor.withValues(alpha: 0.25);
-    return danger ? theme.errorColor : theme.primary;
+    if (isDisabled)
+      return colorScheme.onPrimaryContainer.withValues(alpha: 0.25);
+    return danger ? colorScheme.error : colorScheme.primary;
   }
 
   /// 辅助方法：获取边框颜色
   Color _getBorderColor(BuildContext context, WidgetRef ref) {
     final isDisabled = onPressed == null;
-    final theme = ref.watch(themeProvider);
+    final colorScheme = ref.watch(themeProvider.select((s) => s.colorScheme));
 
-    if (isDisabled) return theme.textPrimaryColor.withValues(alpha: 0.25);
-    return danger ? theme.errorColor : theme.primary;
+    if (isDisabled)
+      return colorScheme.onPrimaryContainer.withValues(alpha: 0.25);
+    return danger ? colorScheme.error : colorScheme.primary;
   }
 }

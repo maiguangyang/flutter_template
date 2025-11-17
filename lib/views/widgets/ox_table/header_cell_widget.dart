@@ -26,7 +26,9 @@ class HeaderCellWidget extends CustomStatelessWidget {
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(themeProvider);
+    final spacing = ref.watch(themeProvider.select((s) => s.spacing));
+    final colors = ref.watch(themeProvider.select((s) => s.colors));
+    final fontWeight = ref.watch(themeProvider.select((s) => s.fontWeight));
 
     return Container(
       width: column.width > 0 ? width : null,
@@ -35,14 +37,14 @@ class HeaderCellWidget extends CustomStatelessWidget {
         border: Border(left: BorderSide(color: borderColor)),
       ),
       child: Padding(
-        padding: EdgeInsets.all(theme.spacing8),
+        padding: EdgeInsets.all(spacing.s8),
         child: column.title == null
             ? SizedBox.shrink()
             : Text(
                 column.title!,
                 style: TextStyle(
-                  color: theme.black.withValues(alpha: 0.9),
-                  fontWeight: theme.fontWeightBold,
+                  color: colors.black.withValues(alpha: 0.9),
+                  fontWeight: fontWeight.bold,
                 ),
               ),
       ),

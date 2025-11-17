@@ -11,7 +11,8 @@ class LoginScreen extends CustomStatelessWidget {
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final primary = ref.watch(themeProvider.select((s) => s.primary));
+    final colorScheme = ref.watch(themeProvider.select((t) => t.colorScheme));
+    final primary = colorScheme.primary;
 
     return Scaffold(
       body: MainLayout(

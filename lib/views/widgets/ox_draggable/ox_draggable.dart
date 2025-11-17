@@ -87,7 +87,7 @@ class _OxDraggableView
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(themeProvider);
+    final colors = ref.watch(themeProvider.select((s) => s.colors));
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -100,9 +100,9 @@ class _OxDraggableView
               child: Container(
                 key: state._boxKey,
                 decoration: BoxDecoration(
-                  color: theme.white,
+                  color: colors.white,
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: theme.grey.withValues(alpha: 0.2)),
+                  border: Border.all(color: colors.grey.withValues(alpha: 0.2)),
                 ),
                 child: Column(
                   children: [

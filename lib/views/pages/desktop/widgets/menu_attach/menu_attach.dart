@@ -13,7 +13,9 @@ class MenuAttach extends CustomStatelessWidget {
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(themeProvider);
+    final spacing = ref.watch(themeProvider.select((t) => t.spacing));
+    final colors = ref.watch(themeProvider.select((t) => t.colors));
+
     final menuStore = ref.watch(asyncMenuProvider);
     final menus = menuStore.value ?? [];
 
@@ -24,21 +26,21 @@ class MenuAttach extends CustomStatelessWidget {
 
     return Container(
       width: 200,
-      margin: EdgeInsets.only(left: theme.spacing10),
+      margin: EdgeInsets.only(left: spacing.s10),
       padding: EdgeInsets.symmetric(
-        vertical: theme.spacing10,
-        horizontal: theme.spacing10,
+        vertical: spacing.s10,
+        horizontal: spacing.s10,
       ),
       decoration: BoxDecoration(
-        color: theme.white,
+        color: colors.white,
         border: Border.all(
-          color: theme.grey.withValues(alpha: 0.3),
+          color: colors.grey.withValues(alpha: 0.3),
           width: 0.5,
         ),
-        borderRadius: BorderRadius.circular(theme.spacing4),
+        borderRadius: BorderRadius.circular(spacing.s4),
         boxShadow: [
           BoxShadow(
-            color: theme.grey.withValues(alpha: 0.3), // 阴影颜色
+            color: colors.grey.withValues(alpha: 0.3), // 阴影颜色
             spreadRadius: 2, // 阴影扩散程度
             blurRadius: 10, // 阴影模糊半径
             offset: Offset(0, 4), // 阴影偏移量
@@ -47,8 +49,8 @@ class MenuAttach extends CustomStatelessWidget {
       ),
       child: GridView.count(
         crossAxisCount: 3, // 3列
-        crossAxisSpacing: theme.spacing8, // 列间距
-        mainAxisSpacing: theme.spacing8, // 行间距
+        crossAxisSpacing: spacing.s8, // 列间距
+        mainAxisSpacing: spacing.s8, // 行间距
         shrinkWrap: true, // 根据内容调整大小
         physics: NeverScrollableScrollPhysics(), // 禁止滚动
         children: controllerItems.map((menu) {

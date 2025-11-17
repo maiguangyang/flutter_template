@@ -20,10 +20,12 @@ class _HomeScreenState extends CustomState<HomeScreen> {
 
   /// 切换颜色
   void handleColorSwitch() {
-    final primary = ref.read(themeProvider).primary;
+    final flexScheme = ref.read(themeProvider).flexScheme;
 
-    ref.theme.setPrimaryColor(
-      primary.toARGB32() == Colors.blue.toARGB32() ? Colors.red : Colors.blue,
+    ref.theme.changeScheme(
+      flexScheme == FlexScheme.shadBlue
+          ? FlexScheme.mandyRed
+          : FlexScheme.shadBlue,
     );
   }
 
@@ -54,7 +56,8 @@ class _HomeScreenView extends CustomStatefulView<HomeScreen, _HomeScreenState> {
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final primary = ref.watch(themeProvider.select((s) => s.primary));
+    final colorScheme = ref.watch(themeProvider.select((s) => s.colorScheme));
+    final primary = colorScheme.primary;
 
     return Scaffold(
       appBar: AppHeaderBar(),

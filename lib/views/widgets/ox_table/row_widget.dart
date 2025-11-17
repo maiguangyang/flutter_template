@@ -52,17 +52,17 @@ class RowWidget<T> extends CustomStatelessWidget {
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(themeProvider);
+    final colors = ref.watch(themeProvider.select((s) => s.colors));
 
     final Color bgColor = selected
-        ? theme.blue.withValues(alpha: 0.05)
+        ? colors.blue.withValues(alpha: 0.05)
         : index % 2 == 0
-        ? theme.white
-        : theme.grey.withValues(alpha: 0.045);
+        ? colors.white
+        : colors.grey.withValues(alpha: 0.045);
 
     /// 边框颜色
     final borderColor = divider
-        ? theme.grey.withValues(alpha: 0.15)
+        ? colors.grey.withValues(alpha: 0.15)
         : Colors.transparent;
 
     return GestureDetector(
@@ -77,7 +77,9 @@ class RowWidget<T> extends CustomStatelessWidget {
                   bottom: BorderSide(color: borderColor),
                 )
               : Border(
-                  bottom: BorderSide(color: theme.grey.withValues(alpha: 0.15)),
+                  bottom: BorderSide(
+                    color: colors.grey.withValues(alpha: 0.15),
+                  ),
                 ),
         ),
         child: contentBuilder(context, (context, colIndex) {
@@ -85,9 +87,9 @@ class RowWidget<T> extends CustomStatelessWidget {
           return column.title == ''
               ? Checkbox(
                   value: selected,
-                  activeColor: theme.blue,
-                  checkColor: theme.white,
-                  side: BorderSide(color: theme.grey, width: 0.5),
+                  activeColor: colors.blue,
+                  checkColor: colors.white,
+                  side: BorderSide(color: colors.grey, width: 0.5),
                   onChanged: (_) => toggleRowSelection(index),
                 )
               : RowCellWidget(

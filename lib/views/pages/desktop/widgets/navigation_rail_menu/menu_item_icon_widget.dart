@@ -18,7 +18,10 @@ class MenuItemIconWidget extends CustomStatelessWidget {
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(themeProvider);
+    final colors = ref.watch(themeProvider.select((t) => t.colors));
+    final fontSize = ref.watch(themeProvider.select((t) => t.fontSize));
+    final fontWeight = ref.watch(themeProvider.select((t) => t.fontWeight));
+    final colorScheme = ref.watch(themeProvider.select((t) => t.colorScheme));
 
     // 如果有图标，显示图标；否则显示首字母
     if (item.icon != null) {
@@ -27,8 +30,8 @@ class MenuItemIconWidget extends CustomStatelessWidget {
         color: item.iconColor != null
             ? item.iconColor
             : isHovered
-            ? theme.primary
-            : theme.grey.withValues(alpha: 0.65),
+            ? colorScheme.primary
+            : colors.grey.withValues(alpha: 0.65),
       );
     }
 
@@ -43,8 +46,8 @@ class MenuItemIconWidget extends CustomStatelessWidget {
       height: 28,
       decoration: BoxDecoration(
         color: isHovered
-            ? theme.primary.withValues(alpha: 0.1)
-            : theme.grey.withValues(alpha: 0.1),
+            ? colorScheme.primary.withValues(alpha: 0.1)
+            : colors.grey.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(4),
       ),
       child: Center(
@@ -52,10 +55,10 @@ class MenuItemIconWidget extends CustomStatelessWidget {
           firstLetter,
           style: TextStyle(
             color: isHovered
-                ? theme.primary
-                : theme.grey.withValues(alpha: 0.65),
-            fontSize: theme.fontSize12,
-            fontWeight: theme.fontWeightBold,
+                ? colorScheme.primary
+                : colors.grey.withValues(alpha: 0.65),
+            fontSize: fontSize.f12,
+            fontWeight: fontWeight.bold,
           ),
         ),
       ),

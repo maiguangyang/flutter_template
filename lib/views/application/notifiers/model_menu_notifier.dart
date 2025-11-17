@@ -16,10 +16,6 @@ part 'model_menu_notifier.g.dart';
 class AsyncModelMenuNotifier extends _$AsyncModelMenuNotifier {
   @override
   FutureOr<List<MenuEntity>> build() {
-    // final theme = ref.watch(themeProvider);
-
-    // final theme = ref.watch(themeProvider);
-
     final colors = ref.watch(themeProvider.select((t) => t.colors));
 
     final menus = [

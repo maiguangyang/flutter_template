@@ -15,10 +15,30 @@ class AppColors extends ThemeExtension<AppColors> {
   /// 极客蓝
   final Color geekBlue;
 
+  /// 灰色
+  final Color grey;
+
+  /// 黑色
+  final Color black;
+
+  /// 白色
+  final Color white;
+
+  /// 蓝色
+  final Color blue;
+
+  /// 红色
+  final Color red;
+
   const AppColors({
     required this.orange,
     required this.green,
     required this.geekBlue,
+    required this.grey,
+    required this.black,
+    required this.white,
+    required this.blue,
+    required this.red,
   });
 
   @override

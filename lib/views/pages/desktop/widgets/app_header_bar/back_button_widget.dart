@@ -64,8 +64,8 @@ class BackButtonWidget extends CustomStatelessWidget {
           onPressed: onPressed,
           icon: Icon(
             icon,
-            size: iconSize ?? theme.fontSize20,
-            color: backIconColor ?? theme.black.withValues(alpha: 0.7),
+            size: iconSize ?? theme.fontSize.f20,
+            color: backIconColor ?? theme.colors.black.withValues(alpha: 0.7),
           ),
           style: ButtonStyle(
             overlayColor: WidgetStateProperty.all<Color>(Colors.transparent),

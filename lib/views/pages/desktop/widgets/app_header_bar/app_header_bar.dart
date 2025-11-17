@@ -66,14 +66,14 @@ class AppHeaderBar extends CustomStatelessWidget
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(themeProvider);
+    final colors = ref.watch(themeProvider.select((t) => t.colors));
 
     return Container(
       decoration: BoxDecoration(
         border: divider
             ? Border(
                 bottom: BorderSide(
-                  color: theme.grey.withValues(alpha: 0.2),
+                  color: colors.grey.withValues(alpha: 0.2),
                   width: 1,
                 ),
               )

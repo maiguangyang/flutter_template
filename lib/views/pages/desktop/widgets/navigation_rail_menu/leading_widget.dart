@@ -10,19 +10,21 @@ class LeadingWidget extends CustomStatelessWidget {
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final spacing24 = ref.watch(themeProvider.select((s) => s.spacing24));
-    final spacing10 = ref.watch(themeProvider.select((s) => s.spacing10));
-    final primary = ref.watch(themeProvider.select((s) => s.primary));
+    final spacing = ref.watch(themeProvider.select((t) => t.spacing));
+    final colorScheme = ref.watch(themeProvider.select((t) => t.colorScheme));
 
     return Container(
-      padding: EdgeInsetsDirectional.only(top: spacing24, bottom: spacing10),
+      padding: EdgeInsetsDirectional.only(
+        top: spacing.s24,
+        bottom: spacing.s10,
+      ),
       child: CircleAvatar(
         radius: 20,
-        backgroundColor: primary.withValues(alpha: 0.1),
+        backgroundColor: colorScheme.primary.withValues(alpha: 0.1),
         child: Icon(
           Icons.account_circle,
           size: 40,
-          color: primary.withValues(alpha: 0.7),
+          color: colorScheme.primary.withValues(alpha: 0.7),
         ),
       ),
     );

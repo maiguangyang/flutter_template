@@ -140,7 +140,9 @@ class _OxPaginationView
   const _OxPaginationView(super.state);
 
   Widget _buildPageButton(WidgetRef ref, int page) {
-    final theme = ref.watch(themeProvider);
+    final spacing = ref.watch(themeProvider.select((s) => s.spacing));
+    final fontSize = ref.watch(themeProvider.select((s) => s.fontSize));
+    final colorScheme = ref.watch(themeProvider.select((s) => s.colorScheme));
 
     bool isActive = page == state._currentPage;
     return GestureDetector(
@@ -148,14 +150,14 @@ class _OxPaginationView
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 4),
         padding: EdgeInsets.symmetric(
-          vertical: theme.spacing4,
-          horizontal: theme.spacing10,
+          vertical: spacing.s4,
+          horizontal: spacing.s10,
         ),
         decoration: BoxDecoration(
-          color: isActive ? theme.primaryColor : Colors.transparent,
+          color: isActive ? colorScheme.primary : Colors.transparent,
           borderRadius: BorderRadius.circular(4),
           border: Border.all(
-            color: isActive ? theme.primaryColor : theme.inputBorderColor,
+            color: isActive ? colorScheme.primary : colorScheme.outline,
           ),
         ),
         child: Text(
@@ -163,8 +165,8 @@ class _OxPaginationView
           style: TextStyle(
             color: isActive
                 ? Colors.white
-                : theme.textTitleColor.withValues(alpha: 0.8),
-            fontSize: theme.fontSize14,
+                : colorScheme.onSurface.withValues(alpha: 0.8),
+            fontSize: fontSize.f14,
           ),
         ),
       ),
@@ -226,7 +228,9 @@ class _OxPaginationView
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(themeProvider);
+    final fontSize = ref.watch(themeProvider.select((s) => s.fontSize));
+    final colors = ref.watch(themeProvider.select((s) => s.colors));
+    final colorScheme = ref.watch(themeProvider.select((s) => s.colorScheme));
 
     if (widget.hideOnSinglePage && state._pageCount <= 1) {
       return const SizedBox.shrink();
@@ -244,8 +248,8 @@ class _OxPaginationView
           GestureDetector(
             child: Icon(
               Icons.chevron_left,
-              color: theme.grey,
-              size: theme.fontSize24,
+              color: colors.grey,
+              size: fontSize.f24,
             ),
             onTap: state._currentPage > 1
                 ? () => state._goToPage(state._currentPage - 1)
@@ -257,7 +261,7 @@ class _OxPaginationView
         else
           Text(
             "${state._currentPage} / ${state._pageCount}",
-            style: TextStyle(fontSize: theme.fontSize14),
+            style: TextStyle(fontSize: fontSize.f14),
           ),
 
         // Next button
@@ -265,8 +269,8 @@ class _OxPaginationView
           GestureDetector(
             child: Icon(
               Icons.chevron_right,
-              color: theme.grey,
-              size: theme.fontSize24,
+              color: colors.grey,
+              size: fontSize.f24,
             ),
             onTap: state._currentPage < state._pageCount
                 ? () => state._goToPage(state._currentPage + 1)
@@ -286,8 +290,8 @@ class _OxPaginationView
             child: DropdownButton<int>(
               value: state._pageSize,
               style: TextStyle(
-                fontSize: theme.fontSize,
-                color: theme.textTitleColor.withValues(alpha: 0.8),
+                fontSize: fontSize.f14,
+                color: colorScheme.onSurface.withValues(alpha: 0.8),
               ),
               items: pageSizeOptions
                   .map(

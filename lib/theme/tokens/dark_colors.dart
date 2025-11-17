@@ -10,6 +10,12 @@ import 'dart:ui';
 import 'app_colors.dart';
 
 const AppColors darkColors = AppColors(
-  orange: Color(0xFF79E07D),
-  green: Color(0xFFE0B879),
+  orange: Color(0xFFD76B0A),
+  green: Color(0xFF2D6B0D),
+  geekBlue: Color(0xFF2A4D8A),
+  grey: Color(0xFF999999),
+  black: Color(0xFFFFFFFF),
+  white: Color(0xFF000000),
+  blue: Color(0xFF145BBF),
+  red: Color(0xFFCF1C1F),
 );

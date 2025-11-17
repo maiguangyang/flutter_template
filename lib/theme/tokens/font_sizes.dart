@@ -1,3 +1,8 @@
+/*
+ * @Author: Marlon.M
+ * @Email: maiguangyang@163.com
+ * @Date: 2025-11-14 09:31:02
+ */
 /// 字体大小 (Font Sizes)
 class FontSizes {
   const FontSizes();
@@ -36,14 +41,11 @@ class FontSizes {
   double get f68 => 68.0;
 
   /// 小字体 12px
-  double get fontSizeSmall => f12;
-
-  /// 默认字体大小 14px
-  double get fontSize => f14;
+  double get small => f12;
 
   /// 中字体 16px
-  double get fontSizeMedium => f16;
+  double get medium => f16;
 
   /// 大字体 20px
-  double get fontSizeLarge => f20;
+  double get large => f20;
 }

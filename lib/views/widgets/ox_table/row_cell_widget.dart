@@ -1,3 +1,8 @@
+/*
+ * @Author: Marlon.M
+ * @Email: maiguangyang@163.com
+ * @Date: 2025-09-26 08:42:07
+ */
 import 'package:ellipsized_text/ellipsized_text.dart';
 import 'package:flutter_template/abstracts/index.dart';
 
@@ -22,7 +27,8 @@ class RowCellWidget extends CustomStatelessWidget {
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
-    final theme = ref.watch(themeProvider);
+    final spacing = ref.watch(themeProvider.select((s) => s.spacing));
+    final colors = ref.watch(themeProvider.select((s) => s.colors));
     final render = column.render;
 
     return Container(
@@ -33,7 +39,7 @@ class RowCellWidget extends CustomStatelessWidget {
         border: Border(left: BorderSide(color: borderColor)),
       ),
       child: Padding(
-        padding: EdgeInsets.all(theme.spacing8),
+        padding: EdgeInsets.all(spacing.s8),
         child: render != null
             ? render(context, row)
             : row.containsKey(column.label)
@@ -41,7 +47,7 @@ class RowCellWidget extends CustomStatelessWidget {
                 row[column.label].toString(),
                 type: EllipsisType.end,
               )
-            : Text("error", style: TextStyle(color: theme.red)),
+            : Text("error", style: TextStyle(color: colors.red)),
       ),
     );
   }

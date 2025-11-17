@@ -64,6 +64,7 @@ class _MenuItemWidgetView
 
   Widget buildIcon(WidgetRef ref) {
     final theme = ref.watch(themeProvider);
+
     final item = widget.item;
     final currentRoute = NavigatorUtilsCore.instance.currentRoute;
     final isChecked = currentRoute?.name == item.route?.name;
@@ -71,8 +72,8 @@ class _MenuItemWidgetView
     return Icon(
       item.icon,
       color: state.isHovered || isChecked
-          ? theme.primary
-          : theme.grey.withValues(alpha: 0.65),
+          ? theme.colorScheme.primary
+          : theme.colors.grey.withValues(alpha: 0.65),
     );
   }
 
@@ -94,15 +95,15 @@ class _MenuItemWidgetView
           duration: const Duration(milliseconds: 200),
           curve: Curves.easeInOut,
           padding: EdgeInsets.only(
-            top: item.isHideLabel ? theme.spacing10 : theme.spacing8,
-            bottom: item.isHideLabel ? theme.spacing10 : theme.spacing8,
-            left: theme.spacing8,
-            right: theme.spacing8,
+            top: item.isHideLabel ? theme.spacing.s10 : theme.spacing.s8,
+            bottom: item.isHideLabel ? theme.spacing.s10 : theme.spacing.s8,
+            left: theme.spacing.s8,
+            right: theme.spacing.s8,
           ),
           decoration: item.isHideLabel
               ? BoxDecoration(
                   color: state.isHovered || isChecked
-                      ? theme.primary.withValues(alpha: 0.1)
+                      ? theme.colorScheme.primary.withValues(alpha: 0.1)
                       : Colors.transparent,
                   borderRadius: BorderRadius.circular(4),
                 )
