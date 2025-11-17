@@ -3,7 +3,6 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-09-17 13:24:27
  */
-import 'package:flutter_oxygen/flutter_oxygen.dart';
 import 'package:flutter_template/abstracts/index.dart';
 
 class ModelDialogWidget extends CustomStatelessWidget {
@@ -21,7 +20,7 @@ class ModelDialogWidget extends CustomStatelessWidget {
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () => DialogUtilsCore.dismiss(result: "123434"),
-            child: Text("关闭", style: TextStyle(color: Colors.white)),
+            child: Text("关闭"),
           ),
         ],
       ),
