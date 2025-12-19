@@ -2,15 +2,15 @@
 
 # =============================================================================
 # Git Pre-commit Hook
-# 在提交前自动检查测试文件是否存在
+# 每次提交前检查所有测试文件是否存在且场景完整
 # =============================================================================
 
 # 获取项目根目录
 ROOT_DIR=$(git rev-parse --show-toplevel)
 
-# 运行测试检查脚本
+# 运行测试检查脚本 - 使用 all 模式检查所有文件
 if [[ -f "$ROOT_DIR/scripts/check_tests.sh" ]]; then
-  bash "$ROOT_DIR/scripts/check_tests.sh" staged
+  bash "$ROOT_DIR/scripts/check_tests.sh" all
   exit $?
 else
   echo "⚠️  找不到 scripts/check_tests.sh"

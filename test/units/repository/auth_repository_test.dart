@@ -86,6 +86,18 @@ void main() {
       });
     });
 
+    // ✅ 空数据测试
+    group('empty data', () {
+      test('返回空用户数据应该正常处理', () async {
+        mockApi.mockUser = null;
+
+        final result = await repository.login('user', 'pass');
+
+        expect(result, isNotNull);
+        expect(result!.data, isNull);
+      });
+    });
+
     group('mock mode', () {
       test('useMock=true 应该返回 mock 响应', () async {
         final mockRepository = AuthRepository(mockApi, useMock: true);

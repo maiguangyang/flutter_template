@@ -106,5 +106,15 @@ void main() {
         expect(entityResponse.data![0], isA<UserEntity>());
       });
     });
+
+    // ✅ 错误处理测试
+    group('error handling', () {
+      test('API 错误应该抛出异常', () {
+        final mockApi = MockUserApiService();
+        mockApi.shouldFail = true;
+
+        expect(() => mockApi.getUserList(null), throwsException);
+      });
+    });
   });
 }

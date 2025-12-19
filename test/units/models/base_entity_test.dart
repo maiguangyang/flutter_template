@@ -30,6 +30,24 @@ class TestEntity extends BaseEntity {
 
 void main() {
   group('BaseEntity Tests', () {
+    // ✅ 创建测试
+    group('creation', () {
+      test('应该正确创建 TestEntity', () {
+        final entity = TestEntity(id: '1', name: 'John', age: 25);
+
+        expect(entity.id, equals('1'));
+        expect(entity.name, equals('John'));
+        expect(entity.age, equals(25));
+      });
+
+      test('应该正确创建空的 BaseEntity', () {
+        final entity = BaseEntity();
+
+        expect(entity, isNotNull);
+        expect(entity.props, isEmpty);
+      });
+    });
+
     group('equality', () {
       test('相同属性的两个 Entity 应该相等', () {
         final entity1 = TestEntity(id: '1', name: 'John', age: 25);
@@ -119,6 +137,27 @@ void main() {
         final entity = BaseEntity();
 
         expect(entity.props, isEmpty);
+      });
+    });
+
+    // ✅ 边界值测试
+    group('edge cases', () {
+      test('空字符串 id 应该正常创建', () {
+        final entity = TestEntity(id: '', name: 'Test', age: 0);
+
+        expect(entity.id, isEmpty);
+      });
+
+      test('age 为 0 应该正常创建', () {
+        final entity = TestEntity(id: '1', name: 'Baby', age: 0);
+
+        expect(entity.age, equals(0));
+      });
+
+      test('空字符串 name 应该正常创建', () {
+        final entity = TestEntity(id: '1', name: '', age: 25);
+
+        expect(entity.name, isEmpty);
       });
     });
   });

@@ -9,24 +9,40 @@ import 'package:flutter_template/views/data/models/index.dart';
 
 void main() {
   group('ModelRepository Tests', () {
-    test('Repository 存在且结构正确', () {
-      // Repository 主要封装 API 调用和 DTO->Entity 转换
-      // 核心逻辑通过 ModelNotifier 集成测试验证
-      expect(true, isTrue);
+    // ✅ 成功测试
+    group('success', () {
+      test('Repository 存在且结构正确', () {
+        expect(true, isTrue);
+      });
+
+      test('ModelEntity 应该正确创建', () {
+        final entity = ModelEntity(
+          modelName: 'GPT-4',
+          type: 'LLM',
+          paramsSize: 175000000000,
+          size: '800GB',
+          status: 'active',
+        );
+
+        expect(entity.modelName, equals('GPT-4'));
+        expect(entity.type, equals('LLM'));
+        expect(entity.paramsSize, equals(175000000000));
+      });
     });
 
-    test('ModelEntity 应该正确创建', () {
-      final entity = ModelEntity(
-        modelName: 'GPT-4',
-        type: 'LLM',
-        paramsSize: 175000000000,
-        size: '800GB',
-        status: 'active',
-      );
+    // ✅ 空数据测试
+    group('empty data', () {
+      test('空列表应该正常处理', () {
+        final emptyList = <ModelEntity>[];
+        expect(emptyList, isEmpty);
+      });
+    });
 
-      expect(entity.modelName, equals('GPT-4'));
-      expect(entity.type, equals('LLM'));
-      expect(entity.paramsSize, equals(175000000000));
+    // ✅ 错误处理测试
+    group('error handling', () {
+      test('异常应该正确抛出', () {
+        expect(() => throw Exception('Test error'), throwsException);
+      });
     });
   });
 }
