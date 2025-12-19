@@ -99,6 +99,53 @@ check_notifier_scenarios() {
 }
 
 # =============================================================================
+# 检查 Widget 测试场景
+# 必须包含: 渲染测试, 交互测试, 主题测试, 状态测试
+# =============================================================================
+check_widget_scenarios() {
+  local test_file=$1
+  local missing_scenarios=()
+  
+  # 1. 渲染测试
+  if ! grep -qE "(rendering|渲染|findsOneWidget|findsWidgets)" "$test_file" 2>/dev/null; then
+    missing_scenarios+=("渲染测试 (rendering)")
+  fi
+  
+  # 2. 交互测试
+  if ! grep -qE "(interaction|交互|tap|press|点击)" "$test_file" 2>/dev/null; then
+    missing_scenarios+=("交互测试 (interaction)")
+  fi
+  
+  # 3. 主题或状态测试
+  if ! grep -qE "(theme|主题|state|状态|loading|error)" "$test_file" 2>/dev/null; then
+    missing_scenarios+=("主题/状态测试")
+  fi
+  
+  echo "${missing_scenarios[@]}"
+}
+
+# =============================================================================
+# 检查 E2E 测试场景
+# 必须包含: 应用启动, 导航, 用户交互
+# =============================================================================
+check_e2e_scenarios() {
+  local test_file=$1
+  local missing_scenarios=()
+  
+  # 1. 应用启动
+  if ! grep -qE "(launch|启动|MaterialApp|Scaffold)" "$test_file" 2>/dev/null; then
+    missing_scenarios+=("应用启动测试")
+  fi
+  
+  # 2. 用户交互
+  if ! grep -qE "(tap|press|drag|点击|滚动)" "$test_file" 2>/dev/null; then
+    missing_scenarios+=("用户交互测试")
+  fi
+  
+  echo "${missing_scenarios[@]}"
+}
+
+# =============================================================================
 # 检查测试文件是否存在，并验证场景覆盖
 # =============================================================================
 check_test_exists() {
@@ -148,6 +195,18 @@ check_test_exists() {
     file_type="service"
   fi
 
+  # Screen 文件 -> Widget 测试
+  if [[ $source_file == *"_screen.dart" ]] || [[ $source_file == *"_screen/"*".dart" ]]; then
+    local name=$(basename "$source_file" .dart)
+    # 跳过非主文件
+    if [[ $name != *"_screen" ]]; then
+      return 0
+    fi
+    test_file="test/widgets/screens/${name}_test.dart"
+    test_type="Widget测试"
+    file_type="widget"
+  fi
+
   # Response DTO 文件
   if [[ $source_file == *"_response_dto.dart" ]]; then
     return 0
@@ -155,7 +214,6 @@ check_test_exists() {
 
   # 如果有需要检查的测试文件
   if [[ -n "$test_file" ]]; then
-
     # 1. 检查文件是否存在
     if [[ ! -f "$test_file" ]]; then
       MISSING_TESTS+=("$source_file -> $test_file ($test_type)")
@@ -174,6 +232,9 @@ check_test_exists() {
         ;;
       "notifier")
         missing_scenarios=$(check_notifier_scenarios "$test_file")
+        ;;
+      "widget")
+        missing_scenarios=$(check_widget_scenarios "$test_file")
         ;;
     esac
     

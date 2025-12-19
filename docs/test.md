@@ -89,6 +89,25 @@ test/
 | 3 | **单例缓存** | 同一 container 返回相同实例 | ✅ |
 | 4 | **Override** | 可以成功 override 进行测试 | ✅ |
 
+### Widget 测试清单
+
+| # | 场景 | 说明 | 必须 |
+|---|------|------|:----:|
+| 1 | **渲染测试** | Widget 正确渲染、显示预期元素 | ✅ |
+| 2 | **交互测试** | 点击、输入等交互正常响应 | ✅ |
+| 3 | **主题测试** | Light/Dark 主题正确应用 | ✅ |
+| 4 | **状态测试** | Loading/Error/Empty 状态正确显示 | ✅ |
+| 5 | **布局测试** | 组件布局符合预期 | 可选 |
+
+### E2E 测试清单
+
+| # | 场景 | 说明 | 必须 |
+|---|------|------|:----:|
+| 1 | **应用启动** | 应用成功启动并显示主页面 | ✅ |
+| 2 | **导航流程** | 页面跳转正常工作 | ✅ |
+| 3 | **用户交互** | 按钮点击、滚动等响应正常 | ✅ |
+| 4 | **关键业务流程** | 登录、主题切换等核心功能 | ✅ |
+
 ---
 
 ## 📐 测试用例编写规范
@@ -211,10 +230,6 @@ void main() {
       test('应该正确创建实体', () {
         expect(testUser.id, equals('1'));
         expect(testUser.name, equals('Test User'));
-        expect(testUser.sex, equals('男'));
-        expect(testUser.age, equals(25));
-        expect(testUser.city, equals('上海'));
-        expect(testUser.email, equals('test@example.com'));
       });
     });
 
@@ -223,64 +238,106 @@ void main() {
       test('toJson 应该正确序列化', () {
         final json = testUser.toJson();
         expect(json['id'], equals('1'));
-        expect(json['name'], equals('Test User'));
-        expect(json['email'], equals('test@example.com'));
       });
 
       test('fromJson 应该正确反序列化', () {
-        final json = {
-          'id': '1',
-          'name': 'Test User',
-          'sex': '男',
-          'age': 25,
-          'city': '上海',
-          'email': 'test@example.com',
-        };
+        final json = {'id': '1', 'name': 'Test User', ...};
         final entity = UserEntity.fromJson(json);
         expect(entity.id, equals('1'));
-        expect(entity.name, equals('Test User'));
       });
 
       test('序列化往返应该保持数据一致', () {
         final json = testUser.toJson();
         final restored = UserEntity.fromJson(json);
-        // 如果实现了 props，可以直接比较
         expect(restored.id, equals(testUser.id));
-        expect(restored.name, equals(testUser.name));
       });
     });
 
     // ✅ 5. 业务方法测试
     group('business logic', () {
-      test('isEmailVerified 当 email 不为空应该返回 true', () {
+      test('isEmailVerified 应该正确判断', () {
         expect(testUser.isEmailVerified, isTrue);
-      });
-
-      test('isEmailVerified 当 email 为空应该返回 false', () {
-        final user = UserEntity(
-          id: '2', name: 'Test', sex: '男',
-          age: 20, city: '北京', email: '',
-        );
-        expect(user.isEmailVerified, isFalse);
       });
     });
 
     // ✅ 6. 边界值测试
     group('edge cases', () {
       test('age 为 0 应该正常创建', () {
-        final user = UserEntity(
-          id: '1', name: 'Baby', sex: '男',
-          age: 0, city: '上海', email: 'test@example.com',
-        );
+        final user = UserEntity(id: '1', name: 'Baby', ...age: 0...);
         expect(user.age, equals(0));
       });
+    });
+  });
+}
+```
 
-      test('name 为空字符串应该正常创建', () {
-        final user = UserEntity(
-          id: '1', name: '', sex: '男',
-          age: 25, city: '上海', email: 'test@example.com',
-        );
-        expect(user.name, isEmpty);
+### Repository 完整测试模板
+
+```dart
+import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_template/views/data/models/index.dart';
+import 'package:flutter_template/views/data/repository/user_repository.dart';
+import 'package:flutter_template/views/data/services/api/user_api_service.dart';
+
+/// Mock ApiService
+class MockUserApiService implements UserApiService {
+  bool shouldFail = false;
+  List<UserResponseDto> mockUsers = [];
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
+
+  @override
+  Future<BaseResponse<List<UserResponseDto>>?> getUserList(request) async {
+    if (shouldFail) throw Exception('API Error');
+    return BaseResponse<List<UserResponseDto>>()
+      ..code = 200
+      ..data = mockUsers;
+  }
+}
+
+void main() {
+  group('UserRepository Tests', () {
+    late UserRepository repository;
+    late MockUserApiService mockApi;
+
+    setUp(() {
+      mockApi = MockUserApiService();
+      repository = UserRepository(mockApi);
+    });
+
+    // ✅ 1. 成功请求
+    group('success', () {
+      test('应该返回 Entity 列表', () async {
+        mockApi.mockUsers = [UserResponseDto(id: '1', username: 'test', ...)];
+        final result = await repository.getUsers();
+        expect(result!.data, hasLength(1));
+      });
+    });
+
+    // ✅ 2. 空数据
+    group('empty data', () {
+      test('空列表应该正常返回', () async {
+        mockApi.mockUsers = [];
+        final result = await repository.getUsers();
+        expect(result!.data, isEmpty);
+      });
+    });
+
+    // ✅ 3. 错误处理
+    group('error handling', () {
+      test('API 错误应该抛出异常', () async {
+        mockApi.shouldFail = true;
+        expect(() => repository.getUsers(), throwsException);
+      });
+    });
+
+    // ✅ 4. DTO→Entity 转换
+    group('DTO conversion', () {
+      test('应该正确将 DTO 转换为 Entity', () async {
+        mockApi.mockUsers = [UserResponseDto(id: '1', username: 'test', ...)];
+        final result = await repository.getUsers();
+        expect(result!.data![0], isA<UserEntity>());
       });
     });
   });
@@ -310,9 +367,7 @@ class MockUserRepository implements UserRepository {
   @override
   Future<BaseResponse<List<UserEntity>>?> getUsers() async {
     if (shouldFail) throw Exception('Failed');
-    return BaseResponse<List<UserEntity>>()
-      ..code = 200
-      ..data = mockUsers;
+    return BaseResponse<List<UserEntity>>()..code = 200..data = mockUsers;
   }
 }
 
@@ -324,33 +379,25 @@ void main() {
     setUp(() {
       mockRepository = MockUserRepository();
       container = ProviderContainer(
-        overrides: [
-          userRepositoryProvider.overrideWithValue(mockRepository),
-        ],
+        overrides: [userRepositoryProvider.overrideWithValue(mockRepository)],
       );
     });
 
-    tearDown(() {
-      container.dispose();
-    });
+    tearDown(() => container.dispose());
 
     // ✅ 1. 初始状态
     group('initial state', () {
       test('初始化应该自动加载数据', () async {
-        mockRepository.mockUsers = [
-          UserEntity(id: '1', name: 'User1', sex: '男', age: 25, city: '上海', email: 'a@b.com'),
-        ];
+        mockRepository.mockUsers = [UserEntity(...)];
         final users = await container.read(asyncUserProvider.future);
         expect(users, hasLength(1));
       });
     });
 
-    // ✅ 2-3. Loading 和成功状态
+    // ✅ 2-3. 成功状态
     group('success', () {
       test('加载成功应该返回数据', () async {
-        mockRepository.mockUsers = [
-          UserEntity(id: '1', name: 'User1', sex: '男', age: 25, city: '上海', email: 'a@b.com'),
-        ];
+        mockRepository.mockUsers = [UserEntity(...)];
         final users = await container.read(asyncUserProvider.future);
         expect(users[0].name, equals('User1'));
       });
@@ -360,14 +407,7 @@ void main() {
     group('error', () {
       test('加载失败应该显示错误状态', () async {
         mockRepository.shouldFail = true;
-        
-        // 初始加载会失败
-        try {
-          await container.read(asyncUserProvider.future);
-        } catch (e) {
-          // 预期会抛出异常
-        }
-        
+        try { await container.read(asyncUserProvider.future); } catch (_) {}
         final state = container.read(asyncUserProvider);
         expect(state.hasError, isTrue);
       });
@@ -378,34 +418,224 @@ void main() {
       test('刷新应该重新加载数据', () async {
         mockRepository.mockUsers = [];
         await container.read(asyncUserProvider.future);
-        
-        mockRepository.mockUsers = [
-          UserEntity(id: '1', name: 'New', sex: '男', age: 25, city: '上海', email: 'a@b.com'),
-        ];
-        
-        final notifier = container.read(asyncUserProvider.notifier);
-        await notifier.getUsers();
-        
-        final state = container.read(asyncUserProvider);
-        expect(state.value, hasLength(1));
+        mockRepository.mockUsers = [UserEntity(...)];
+        await container.read(asyncUserProvider.notifier).getUsers();
+        expect(container.read(asyncUserProvider).value, hasLength(1));
       });
     });
 
     // ✅ 6. 状态转换
     group('state transitions', () {
       test('应该从 loading 变为 data', () async {
-        mockRepository.mockUsers = [
-          UserEntity(id: '1', name: 'Test', sex: '男', age: 25, city: '上海', email: 'a@b.com'),
-        ];
-        
-        final states = <AsyncValue<List<UserEntity>>>[];
-        container.listen(asyncUserProvider, (_, next) => states.add(next), fireImmediately: true);
-        
+        final states = <AsyncValue>[];
+        container.listen(asyncUserProvider, (_, next) => states.add(next));
         await container.read(asyncUserProvider.future);
-        
         expect(states.any((s) => s.isLoading), isTrue);
         expect(states.last.hasValue, isTrue);
       });
+    });
+  });
+}
+```
+
+### Provider 完整测试模板
+
+```dart
+import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_template/views/application/providers/index.dart';
+import 'package:flutter_template/views/data/repository/user_repository.dart';
+import 'package:flutter_template/views/data/services/api/user_api_service.dart';
+
+void main() {
+  group('Provider Chain Tests', () {
+    late ProviderContainer container;
+    late Dio testDio;
+
+    setUp(() {
+      testDio = Dio(BaseOptions(baseUrl: 'https://test.api.com'));
+      container = ProviderContainer(
+        overrides: [dioProvider.overrideWithValue(testDio)],
+      );
+    });
+
+    tearDown(() => container.dispose());
+
+    // ✅ 1. 创建实例
+    group('instance creation', () {
+      test('Provider 应该返回正确类型', () {
+        final repository = container.read(userRepositoryProvider);
+        expect(repository, isA<UserRepository>());
+      });
+    });
+
+    // ✅ 2. 依赖链
+    group('dependency chain', () {
+      test('Dio → Api → Repository 应该正确连接', () {
+        final api = container.read(userApiProvider);
+        final repository = container.read(userRepositoryProvider);
+        expect(api, isA<UserApiService>());
+        expect(repository, isA<UserRepository>());
+      });
+    });
+
+    // ✅ 3. 单例缓存
+    group('singleton', () {
+      test('同一 container 应该返回相同实例', () {
+        final api1 = container.read(userApiProvider);
+        final api2 = container.read(userApiProvider);
+        expect(identical(api1, api2), isTrue);
+      });
+    });
+
+    // ✅ 4. Override
+    group('override', () {
+      test('应该能成功 override provider', () {
+        final mockDio = Dio();
+        final container2 = ProviderContainer(
+          overrides: [dioProvider.overrideWithValue(mockDio)],
+        );
+        final dio = container2.read(dioProvider);
+        expect(identical(dio, mockDio), isTrue);
+        container2.dispose();
+      });
+    });
+  });
+}
+```
+
+### Widget 完整测试模板
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+/// 测试辅助函数
+Widget createTestableWidget(Widget child, {ThemeData? theme}) {
+  return ProviderScope(
+    child: MaterialApp(
+      theme: theme ?? ThemeData.light(),
+      home: Scaffold(body: child),
+    ),
+  );
+}
+
+void main() {
+  group('HomeScreen Widget Tests', () {
+    // ✅ 1. 渲染测试
+    group('rendering', () {
+      testWidgets('应该正确渲染页面', (tester) async {
+        await tester.pumpWidget(createTestableWidget(
+          Column(children: [TextButton(onPressed: () {}, child: Text('按钮'))]),
+        ));
+        expect(find.text('按钮'), findsOneWidget);
+        expect(find.byType(TextButton), findsOneWidget);
+      });
+    });
+
+    // ✅ 2. 交互测试
+    group('interaction', () {
+      testWidgets('点击按钮应该触发回调', (tester) async {
+        bool pressed = false;
+        await tester.pumpWidget(createTestableWidget(
+          TextButton(onPressed: () => pressed = true, child: Text('点击')),
+        ));
+        await tester.tap(find.text('点击'));
+        await tester.pump();
+        expect(pressed, isTrue);
+      });
+    });
+
+    // ✅ 3. 主题测试
+    group('theming', () {
+      testWidgets('应该应用 Dark 主题', (tester) async {
+        await tester.pumpWidget(createTestableWidget(
+          Builder(builder: (context) {
+            expect(Theme.of(context).brightness, Brightness.dark);
+            return Container();
+          }),
+          theme: ThemeData.dark(),
+        ));
+      });
+    });
+
+    // ✅ 4. 状态测试
+    group('state', () {
+      testWidgets('Loading 状态应该显示加载指示器', (tester) async {
+        await tester.pumpWidget(createTestableWidget(
+          CircularProgressIndicator(),
+        ));
+        expect(find.byType(CircularProgressIndicator), findsOneWidget);
+      });
+
+      testWidgets('Error 状态应该显示错误信息', (tester) async {
+        await tester.pumpWidget(createTestableWidget(Text('发生错误')));
+        expect(find.text('发生错误'), findsOneWidget);
+      });
+    });
+  });
+}
+```
+
+### E2E 完整测试模板
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:integration_test/integration_test.dart';
+import 'package:flutter_template/main.dart' as app;
+
+void main() {
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+
+  group('App E2E Tests', () {
+    // ✅ 1. 应用启动
+    testWidgets('应用应该成功启动', (tester) async {
+      app.main();
+      await tester.pumpAndSettle(Duration(seconds: 3));
+      expect(find.byType(MaterialApp), findsOneWidget);
+      expect(find.byType(Scaffold), findsWidgets);
+    });
+
+    // ✅ 2. 导航流程
+    testWidgets('应该能够导航到不同页面', (tester) async {
+      app.main();
+      await tester.pumpAndSettle(Duration(seconds: 3));
+      
+      final button = find.text('打开测试页');
+      if (button.evaluate().isNotEmpty) {
+        await tester.tap(button);
+        await tester.pumpAndSettle();
+        expect(find.byType(Scaffold), findsWidgets);
+      }
+    });
+
+    // ✅ 3. 用户交互
+    testWidgets('按钮点击应该有响应', (tester) async {
+      app.main();
+      await tester.pumpAndSettle(Duration(seconds: 3));
+      
+      final buttons = find.byType(TextButton);
+      if (buttons.evaluate().isNotEmpty) {
+        await tester.tap(buttons.first);
+        await tester.pumpAndSettle();
+        expect(find.byType(MaterialApp), findsOneWidget);
+      }
+    });
+
+    // ✅ 4. 关键业务流程 - 主题切换
+    testWidgets('主题切换应该正常工作', (tester) async {
+      app.main();
+      await tester.pumpAndSettle(Duration(seconds: 3));
+      
+      final themeButton = find.text('切换主题');
+      if (themeButton.evaluate().isNotEmpty) {
+        await tester.tap(themeButton);
+        await tester.pumpAndSettle();
+        expect(find.byType(MaterialApp), findsOneWidget);
+      }
     });
   });
 }
@@ -461,20 +691,9 @@ expect(state.isLoading, isTrue);
 expect(state.hasValue, isTrue);
 expect(state.hasError, isTrue);
 expect(state.value, equals(expected));
+
+// Widget 测试
+expect(find.text('文本'), findsOneWidget);
+expect(find.byType(Button), findsNWidgets(3));
+expect(find.byKey(Key('key')), findsNothing);
 ```
-
----
-
-## 当前测试覆盖
-
-| 模块 | 测试数 | 状态 |
-|------|--------|------|
-| BaseEntity | 12 | ✅ |
-| AppException | 13 | ✅ |
-| UserEntity/DTO | 9 | ✅ |
-| BaseResponse | 8 | ✅ |
-| Repository | 3 | ✅ |
-| AuthNotifier | 5 | ✅ |
-| UserNotifier | 5 | ✅ |
-| Provider Chain | 8 | ✅ |
-| **Total** | **63** | ✅ |

@@ -160,7 +160,26 @@ hook:
 check_tests:
 	@./scripts/check_tests.sh all
 
-# 运行测试
+# 运行单元测试和集成测试
 test:
 	@flutter test test/units/ test/integration/
+
+# 运行 Widget 测试
+test_widget:
+	@flutter test test/widgets/
+
+# 运行 E2E 测试 (需要设备或模拟器)
+test_e2e:
+	@flutter test integration_test/
+
+# 运行所有测试
+test_all:
+	@echo "🧪 Running all tests..."
+	@flutter test test/units/ test/integration/ test/widgets/
+	@echo "✅ All tests passed!"
+
+# 运行测试并生成覆盖率报告
+test_coverage:
+	@flutter test --coverage test/units/ test/integration/ test/widgets/
+	@echo "📊 Coverage report generated at coverage/lcov.info"
 
