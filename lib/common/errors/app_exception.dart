@@ -32,3 +32,36 @@ class ServerException extends AppException {
   ServerException(String message, {String? code, Exception? original})
     : super(message, code: code, original: original);
 }
+
+/// 数据验证错误（表单验证、参数校验）
+class ValidationException extends AppException {
+  /// 字段级错误信息
+  final Map<String, String>? fieldErrors;
+
+  ValidationException(
+    String message, {
+    String? code,
+    Exception? original,
+    this.fieldErrors,
+  }) : super(message, code: code, original: original);
+
+  @override
+  String toString() {
+    if (fieldErrors != null && fieldErrors!.isNotEmpty) {
+      return 'ValidationException($code): $message, fields: $fieldErrors';
+    }
+    return 'ValidationException($code): $message';
+  }
+}
+
+/// 业务逻辑错误（余额不足、库存不够等）
+class BusinessException extends AppException {
+  BusinessException(String message, {String? code, Exception? original})
+    : super(message, code: code, original: original);
+}
+
+/// 缓存/存储错误
+class CacheException extends AppException {
+  CacheException(String message, {String? code, Exception? original})
+    : super(message, code: code, original: original);
+}

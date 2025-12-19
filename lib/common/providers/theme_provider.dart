@@ -60,7 +60,16 @@ class ThemeProvider extends Notifier<AppTheme> {
   /// 设置主题模式
   void setThemeMode(ThemeMode value) {
     if (state.themeMode != value) {
-      state = state.copyWith(themeMode: value);
+      // 重新生成 themeData
+      final brightness = _getBrightness(value);
+      final themeData = _generateThemeData(state.flexScheme, brightness);
+
+      state = state.copyWith(
+        themeMode: value,
+        themeData: themeData,
+        colorScheme: themeData.colorScheme,
+        colors: themeData.extension<AppColors>()!,
+      );
       CacheServiceCore.setInt("themeModeIndex", value.index);
     }
   }
@@ -68,9 +77,37 @@ class ThemeProvider extends Notifier<AppTheme> {
   // 提供一个方法来改变颜色方案
   void changeScheme(FlexScheme scheme) {
     if (state.flexScheme != scheme) {
-      state = state.copyWith(flexScheme: scheme);
+      // 重新生成 themeData
+      final brightness = _getBrightness(state.themeMode);
+      final themeData = _generateThemeData(scheme, brightness);
+
+      state = state.copyWith(
+        flexScheme: scheme,
+        themeData: themeData,
+        colorScheme: themeData.colorScheme,
+        colors: themeData.extension<AppColors>()!,
+      );
       CacheServiceCore.setString("primaryColor", scheme.name);
     }
+  }
+
+  /// 生成 ThemeData
+  ThemeData _generateThemeData(FlexScheme scheme, Brightness brightness) {
+    return brightness == Brightness.light
+        ? FlexThemeData.light(
+            scheme: scheme,
+            useMaterial3: true,
+            fontFamily: 'NunitoSans',
+            fontFamilyFallback: ['Roboto', 'NotoSansSC'],
+            extensions: const <ThemeExtension<AppColors>>[lightColors],
+          )
+        : FlexThemeData.dark(
+            scheme: scheme,
+            useMaterial3: true,
+            fontFamily: 'NunitoSans',
+            fontFamilyFallback: ['Roboto', 'NotoSansSC'],
+            extensions: const <ThemeExtension<AppColors>>[darkColors],
+          );
   }
 }
 

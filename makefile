@@ -149,4 +149,18 @@ install_figlet:
 	fi
 	@clear
 
+# 安装 pre-commit hook
+hook:
+	@echo "🔧 Installing pre-commit hook..."
+	@cp scripts/pre-commit .git/hooks/pre-commit
+	@chmod +x .git/hooks/pre-commit
+	@echo "✅ Pre-commit hook installed!"
+
+# 检查测试文件
+check_tests:
+	@./scripts/check_tests.sh all
+
+# 运行测试
+test:
+	@flutter test test/units/ test/integration/
 

@@ -29,25 +29,8 @@ class UserApiService {
       // return UserResponseDto.fromJson(data);
 
       return response.data;
-    } on DioException catch (_) {
-      // 可以在这里抛出或映射异常
-      // throw e;
-
-      // 下面是测试数据，后面记得删除
-      List<UserResponseDto> users = [];
-
-      users.add(
-        UserResponseDto(
-          id: "1",
-          sex: "男",
-          age: 18,
-          city: "上海",
-          email: "1@qq.com",
-          username: "Marlon.M",
-        ),
-      );
-
-      return BaseResponse()..data = users;
+    } on DioException catch (e) {
+      throw e;
     }
   }
 }
