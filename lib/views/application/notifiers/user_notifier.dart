@@ -13,10 +13,10 @@ import '../providers/index.dart';
 part 'user_notifier.g.dart';
 
 /// Notifier 管理 UserState
-/// - autoDispose: 页面离开时自动释放
+/// - keepAlive: true 表示持久化
 /// - PaginationMixin: 提供分页能力
 /// - 缓存由 Repository 层负责
-@riverpod
+@Riverpod(keepAlive: true)
 class AsyncUserNotifier extends _$AsyncUserNotifier with PaginationMixin {
   UserRepository get _repository => ref.watch(userRepositoryProvider);
 

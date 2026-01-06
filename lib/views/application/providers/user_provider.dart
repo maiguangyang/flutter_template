@@ -11,7 +11,6 @@ import 'package:flutter_template/views/data/index.dart';
 /// 提供 UserListCache 实例（使用 CacheStrategy）
 final userListCacheProvider = Provider<CacheStrategy<List<UserEntity>>>((ref) {
   return CacheStrategy<List<UserEntity>>(
-    mode: CacheMode.hybrid,
     cacheKey: 'user_list_cache',
     maxSize: 20,
     expiration: const Duration(minutes: 5),
@@ -25,7 +24,6 @@ final userListCacheProvider = Provider<CacheStrategy<List<UserEntity>>>((ref) {
 /// 提供 UserCache 实例（使用 CacheStrategy）
 final userCacheProvider = Provider<CacheStrategy<UserEntity>>((ref) {
   return CacheStrategy<UserEntity>(
-    mode: CacheMode.hybrid,
     cacheKey: 'user_cache',
     maxSize: 100,
     expiration: const Duration(hours: 1),
