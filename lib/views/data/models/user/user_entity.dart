@@ -3,7 +3,6 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-08-26 08:32:10
  */
-// features/auth/data/models/user.dart
 
 import 'package:json_annotation/json_annotation.dart';
 
@@ -46,5 +45,6 @@ class UserEntity extends BaseEntity {
   factory UserEntity.fromJson(Map<String, dynamic> json) =>
       _$UserEntityFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$UserEntityToJson(this);
 }

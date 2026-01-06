@@ -4,19 +4,36 @@
  * @Date: 2025-10-10 10:42:52
  */
 
+import 'dart:async';
+
 import 'package:background_downloader/background_downloader.dart';
 
 class DownloadService {
   // 可传入自定义 FileDownloader（例如带 custom PersistentStorage），否则使用默认实例
   final FileDownloader _downloader;
 
+  /// 使用 broadcast StreamController 允许多次订阅
+  final StreamController<TaskUpdate> _updatesController =
+      StreamController<TaskUpdate>.broadcast();
+
+  /// 内部订阅，用于将单订阅 Stream 转发到 broadcast
+  StreamSubscription<TaskUpdate>? _internalSubscription;
+
   DownloadService({FileDownloader? fileDownloader})
     : _downloader = fileDownloader ?? FileDownloader();
 
-  /// 等待插件初始化完成（注意：如果使用自定义 persistentStorage，
-  /// 在创建 FileDownloader 时传入后也需要等待 ready）
+  /// 等待插件初始化完成并启动中心化监听
+  /// 注意：init 只应被调用一次
   Future<void> init() async {
     await _downloader.ready;
+
+    // 只在第一次 init 时启动订阅
+    if (_internalSubscription == null) {
+      _internalSubscription = _downloader.updates.listen(
+        (update) => _updatesController.add(update),
+        onError: (error, stack) => _updatesController.addError(error, stack),
+      );
+    }
   }
 
   DownloadTask createTask(String url, {String? filename}) {
@@ -49,8 +66,8 @@ class DownloadService {
     );
   }
 
-  /// 用于中心化监听（注意：updates 流只能被监听一次——官方建议在单例处启动订阅）
-  Stream<TaskUpdate> get updates => _downloader.updates;
+  /// 使用 broadcast Stream，支持多次订阅
+  Stream<TaskUpdate> get updates => _updatesController.stream;
 
   /// 其它常用封装（pause/resume/cancel 等）
   Future<bool> pause(DownloadTask task) => _downloader.pause(task);
@@ -63,5 +80,11 @@ class DownloadService {
     final pathSegments = uri.pathSegments;
     if (pathSegments.isEmpty) return 'unknown_file';
     return pathSegments.last;
+  }
+
+  /// 清理资源
+  Future<void> dispose() async {
+    await _internalSubscription?.cancel();
+    await _updatesController.close();
   }
 }

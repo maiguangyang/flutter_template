@@ -10,6 +10,21 @@ import 'package:go_router/go_router.dart';
 import '../../router/index.dart';
 import '../constants/index.dart';
 
+/// 缓存的 RouteStrategy 单例引用
+/// 由 routeProvider 在初始化时设置
+RouteStrategy? _cachedRouteStrategy;
+
+/// 设置缓存的 RouteStrategy（由 routeProvider 调用）
+void setRouteStrategyCache(RouteStrategy strategy) {
+  _cachedRouteStrategy = strategy;
+}
+
+/// 获取缓存的 RouteStrategy
+RouteStrategy get cachedRouteStrategy {
+  assert(_cachedRouteStrategy != null, 'RouteStrategy not initialized');
+  return _cachedRouteStrategy!;
+}
+
 String? authRedirectMiddleware(BuildContext context, GoRouterState state) {
   final token = CacheServiceCore.getString(CacheKeys.token);
 
@@ -22,8 +37,8 @@ String? authRedirectMiddleware(BuildContext context, GoRouterState state) {
   /// 是否在登录页
   final isLoginPage = currentRouteName == Routes.login.name;
 
-  /// 所有路由
-  final routes = RouteStrategy().allRoutes;
+  /// 使用缓存的 RouteStrategy 而不是创建新实例
+  final routes = cachedRouteStrategy.allRoutes;
 
   /// 当前路由
   final currentRoute = routes
@@ -32,7 +47,7 @@ String? authRedirectMiddleware(BuildContext context, GoRouterState state) {
 
   /// 设置初始化路由
   if (currentRoute != null) {
-    RouteStrategy().initRoute = currentRoute;
+    cachedRouteStrategy.initRoute = currentRoute;
   }
 
   /// 已登录但在登录页 -> 重定向到首页

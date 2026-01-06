@@ -8,5 +8,6 @@ export 'base_response.dart';
 export 'download_task_model.dart';
 export 'menu/index.dart';
 export 'model/index.dart';
+export 'page_request.dart';
 export 'user/index.dart';
 export 'welcome/index.dart';

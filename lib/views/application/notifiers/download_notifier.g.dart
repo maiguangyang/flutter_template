@@ -11,13 +11,13 @@ part of 'download_notifier.dart';
 /// 管理下载任务状态
 
 @ProviderFor(DownloadNotifier)
-const downloadProvider = DownloadNotifierProvider._();
+final downloadProvider = DownloadNotifierProvider._();
 
 /// 管理下载任务状态
 final class DownloadNotifierProvider
     extends $AsyncNotifierProvider<DownloadNotifier, List<DownloadTaskModel>> {
   /// 管理下载任务状态
-  const DownloadNotifierProvider._()
+  DownloadNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -36,7 +36,7 @@ final class DownloadNotifierProvider
   DownloadNotifier create() => DownloadNotifier();
 }
 
-String _$downloadNotifierHash() => r'405efb6e9b0d9985669ef82536af23dc40fc54e6';
+String _$downloadNotifierHash() => r'b420e358ac719c01d51e542bf011d5a531df1180';
 
 /// 管理下载任务状态
 
@@ -46,7 +46,6 @@ abstract class _$DownloadNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref =
         this.ref
             as $Ref<
@@ -64,6 +63,6 @@ abstract class _$DownloadNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

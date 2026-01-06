@@ -97,6 +97,12 @@ class _OxTableState<T> extends CustomState<OxTable> {
   }
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) => _OxTableView<T>(this);
 }
 

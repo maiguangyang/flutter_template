@@ -30,6 +30,9 @@ final routeProvider = Provider<RouteStrategy>((ref) {
     deviceType: deviceType,
   );
 
+  // 设置缓存供 middleware 使用，避免每次创建新实例
+  setRouteStrategyCache(routeStrategy);
+
   // 注入中间件
   routeStrategy.observers = [RouteMiddlewareCore(), RouteObserver<PageRoute>()];
 

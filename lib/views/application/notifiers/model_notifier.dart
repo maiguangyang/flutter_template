@@ -12,7 +12,8 @@ import '../providers/index.dart';
 part 'model_notifier.g.dart';
 
 /// Notifier 管理 ModelState
-@Riverpod(keepAlive: true)
+/// 使用 autoDispose 在页面离开时自动释放内存
+@riverpod
 class AsyncModelNotifier extends _$AsyncModelNotifier {
   ModelRepository get _repository => ref.watch(modelRepositoryProvider);
 

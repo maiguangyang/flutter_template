@@ -6,14 +6,18 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+import '../page_request.dart';
+
 part 'user_request_dto.g.dart';
 
+/// 获取用户列表请求
 @JsonSerializable(explicitToJson: true)
-class GetUsersRequestDto {
-  GetUsersRequestDto();
+class GetUsersRequestDto extends PageRequest {
+  GetUsersRequestDto({super.page, super.size});
 
   factory GetUsersRequestDto.fromJson(Map<String, dynamic> json) =>
       _$GetUsersRequestDtoFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$GetUsersRequestDtoToJson(this);
 }

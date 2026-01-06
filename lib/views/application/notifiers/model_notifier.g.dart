@@ -9,21 +9,24 @@ part of 'model_notifier.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 /// Notifier 管理 ModelState
+/// 使用 autoDispose 在页面离开时自动释放内存
 
 @ProviderFor(AsyncModelNotifier)
-const asyncModelProvider = AsyncModelNotifierProvider._();
+final asyncModelProvider = AsyncModelNotifierProvider._();
 
 /// Notifier 管理 ModelState
+/// 使用 autoDispose 在页面离开时自动释放内存
 final class AsyncModelNotifierProvider
     extends $AsyncNotifierProvider<AsyncModelNotifier, List<ModelEntity>> {
   /// Notifier 管理 ModelState
-  const AsyncModelNotifierProvider._()
+  /// 使用 autoDispose 在页面离开时自动释放内存
+  AsyncModelNotifierProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
         name: r'asyncModelProvider',
-        isAutoDispose: false,
+        isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -37,16 +40,16 @@ final class AsyncModelNotifierProvider
 }
 
 String _$asyncModelNotifierHash() =>
-    r'987d81ba8167c17320f6d004c7781e973ccad5e0';
+    r'f56ddb4c8afcbb747cb44632b73b67816b8b04f1';
 
 /// Notifier 管理 ModelState
+/// 使用 autoDispose 在页面离开时自动释放内存
 
 abstract class _$AsyncModelNotifier extends $AsyncNotifier<List<ModelEntity>> {
   FutureOr<List<ModelEntity>> build();
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref =
         this.ref as $Ref<AsyncValue<List<ModelEntity>>, List<ModelEntity>>;
     final element =
@@ -57,6 +60,6 @@ abstract class _$AsyncModelNotifier extends $AsyncNotifier<List<ModelEntity>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

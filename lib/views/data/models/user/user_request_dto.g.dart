@@ -7,7 +7,10 @@ part of 'user_request_dto.dart';
 // **************************************************************************
 
 GetUsersRequestDto _$GetUsersRequestDtoFromJson(Map<String, dynamic> json) =>
-    GetUsersRequestDto();
+    GetUsersRequestDto(
+      page: (json['page'] as num?)?.toInt() ?? 1,
+      size: (json['size'] as num?)?.toInt() ?? 20,
+    );
 
 Map<String, dynamic> _$GetUsersRequestDtoToJson(GetUsersRequestDto instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{'page': instance.page, 'size': instance.size};

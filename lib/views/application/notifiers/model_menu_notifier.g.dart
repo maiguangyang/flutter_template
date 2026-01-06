@@ -10,11 +10,11 @@ part of 'model_menu_notifier.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(AsyncModelMenuNotifier)
-const asyncModelMenuProvider = AsyncModelMenuNotifierProvider._();
+final asyncModelMenuProvider = AsyncModelMenuNotifierProvider._();
 
 final class AsyncModelMenuNotifierProvider
     extends $AsyncNotifierProvider<AsyncModelMenuNotifier, List<MenuEntity>> {
-  const AsyncModelMenuNotifierProvider._()
+  AsyncModelMenuNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -42,7 +42,6 @@ abstract class _$AsyncModelMenuNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref =
         this.ref as $Ref<AsyncValue<List<MenuEntity>>, List<MenuEntity>>;
     final element =
@@ -53,6 +52,6 @@ abstract class _$AsyncModelMenuNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

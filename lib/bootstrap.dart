@@ -8,8 +8,8 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_template/common/index.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // 只在网络问题或超时才重试
 final networkErrorTypes = [
@@ -67,6 +67,10 @@ Future<ProviderContainer> bootstrap() async {
       return const Duration(milliseconds: 5000);
     },
   );
+
+  // 初始化所有已注册的缓存并清理过期数据
+  await CacheRegistry.initAll();
+  await CacheRegistry.cleanExpiredAll();
 
   return container;
 }

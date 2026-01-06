@@ -8,4 +8,5 @@ export 'errors/index.dart';
 export 'extensions/index.dart';
 export 'l10n/index.dart';
 export 'middleware/index.dart';
+export 'mixins/index.dart';
 export 'providers/index.dart';

@@ -23,7 +23,11 @@ class MockUserRepository implements UserRepository {
   dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 
   @override
-  Future<BaseResponse<List<UserEntity>>?> getUsers() async {
+  Future<BaseResponse<List<UserEntity>>?> getUsers({
+    int page = 1,
+    int size = 20,
+    bool forceRefresh = false,
+  }) async {
     if (shouldFail) {
       throw Exception('Failed to fetch users');
     }

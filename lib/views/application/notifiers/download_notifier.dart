@@ -44,6 +44,12 @@ class DownloadNotifier extends _$DownloadNotifier {
         state = AsyncValue.error(error, stack);
       },
     );
+
+    // 使用 ref.onDispose 确保订阅被正确取消
+    ref.onDispose(() {
+      _sub?.cancel();
+    });
+
     return [];
   }
 
@@ -65,10 +71,5 @@ class DownloadNotifier extends _$DownloadNotifier {
   /// 重新下载
   Future<void> retryDownload(DownloadTaskModel task) async {
     await _repository.retryDownload(task);
-  }
-
-  /// 销毁
-  void dispose() {
-    _sub?.cancel();
   }
 }

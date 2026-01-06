@@ -11,13 +11,13 @@ part of 'auth_notifier.dart';
 /// Notifier 管理 AuthState
 
 @ProviderFor(AsyncAuthNotifier)
-const asyncAuthProvider = AsyncAuthNotifierProvider._();
+final asyncAuthProvider = AsyncAuthNotifierProvider._();
 
 /// Notifier 管理 AuthState
 final class AsyncAuthNotifierProvider
     extends $AsyncNotifierProvider<AsyncAuthNotifier, UserEntity?> {
   /// Notifier 管理 AuthState
-  const AsyncAuthNotifierProvider._()
+  AsyncAuthNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -45,7 +45,6 @@ abstract class _$AsyncAuthNotifier extends $AsyncNotifier<UserEntity?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<UserEntity?>, UserEntity?>;
     final element =
         ref.element
@@ -55,6 +54,6 @@ abstract class _$AsyncAuthNotifier extends $AsyncNotifier<UserEntity?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
