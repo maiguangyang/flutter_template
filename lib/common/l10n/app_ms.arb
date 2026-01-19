@@ -1,0 +1,23 @@
+{
+  "sendTimeout": "Sambungan melebihi tempoh masa yang ditetapkan.",
+  "authException": "Tidak diberi kuasa.",
+  "serverException": "Ralat pelayan.",
+  "networkException": "Ralat rangkaian.",
+  "appException": "Ralat yang tidak diketahui",
+  "loading": "Sedang dimuat turun.",
+  "retry": "Cuba lagi.",
+  "page": "halaman",
+  "model": "model",
+  "modelName": "Nama model",
+  "type": "Jenis",
+  "status": "keadaan",
+  "action": "operasi",
+  "size": "Saiz",
+  "paramsSize": "bilangan parameter",
+  "updateTime": "Tarikh pengubahsuaian",
+  "homePage": "Halaman Utama",
+  "modelPage": "Pengurusan Model",
+  "loginPage": "Halaman log masuk",
+  "testPage": "Halaman ujian",
+  "@@locale": "ms"
+}

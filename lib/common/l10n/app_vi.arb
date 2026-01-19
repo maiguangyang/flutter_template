@@ -1,0 +1,23 @@
+{
+  "sendTimeout": "Thời gian kết nối hết hạn",
+  "authException": "Chưa được cấp quyền",
+  "serverException": "Lỗi máy chủ",
+  "networkException": "Lỗi mạng",
+  "appException": "Lỗi chưa được xác định",
+  "loading": "Đang tải...",
+  "retry": "Thử lại",
+  "page": "trang",
+  "model": "mô hình",
+  "modelName": "Tên mô hình",
+  "type": "Loại hình",
+  "status": "trạng thái",
+  "action": "thao tác",
+  "size": "Kích thước",
+  "paramsSize": "Số lượng tham số",
+  "updateTime": "Ngày sửa đổi",
+  "homePage": "Trang chủ",
+  "modelPage": "Quản lý mô hình",
+  "loginPage": "Trang đăng nhập",
+  "testPage": "Trang kiểm thử",
+  "@@locale": "vi"
+}

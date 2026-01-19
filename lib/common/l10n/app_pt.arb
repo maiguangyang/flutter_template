@@ -1,0 +1,23 @@
+{
+  "sendTimeout": "Tempo de espera para conexão expirou.",
+  "authException": "Não autorizado",
+  "serverException": "Erro no servidor",
+  "networkException": "Erro de rede",
+  "appException": "Erro desconhecido",
+  "loading": "Carregando…",
+  "retry": "Tentar novamente",
+  "page": "página",
+  "model": "Modelo",
+  "modelName": "Nome do modelo",
+  "type": "tipo",
+  "status": "estado",
+  "action": "Operação",
+  "size": "Tamanho",
+  "paramsSize": "Quantidade de parâmetros",
+  "updateTime": "Data de modificação",
+  "homePage": "Página inicial",
+  "modelPage": "Gerenciamento de modelos",
+  "loginPage": "Página de login",
+  "testPage": "Página de teste",
+  "@@locale": "pt"
+}

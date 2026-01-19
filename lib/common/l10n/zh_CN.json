@@ -1,5 +1,4 @@
 {
-  "@@locale": "zh",
   "sendTimeout": "连接超时",
   "authException": "未授权",
   "serverException": "服务器错误",

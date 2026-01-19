@@ -1,0 +1,23 @@
+{
+  "sendTimeout": "接続タイムアウト",
+  "authException": "無許可",
+  "serverException": "サーバーエラー",
+  "networkException": "ネットワークエラー",
+  "appException": "不明なエラー",
+  "loading": "ロード中です",
+  "retry": "再試行",
+  "page": "ページ",
+  "model": "モデル",
+  "modelName": "モデル名",
+  "type": "タイプ",
+  "status": "状態",
+  "action": "操作",
+  "size": "サイズ",
+  "paramsSize": "パラメータの数",
+  "updateTime": "変更日",
+  "homePage": "ホームページ",
+  "modelPage": "モデル管理",
+  "loginPage": "ログインページ",
+  "testPage": "テストページ",
+  "@@locale": "ja"
+}

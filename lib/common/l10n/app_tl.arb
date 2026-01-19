@@ -1,0 +1,23 @@
+{
+  "sendTimeout": "Nagkaroon ng timeout sa pagkonekta",
+  "authException": "Hindi awtorisadong gumawa nito.",
+  "serverException": "Mga error sa server",
+  "networkException": "Mga error sa network",
+  "appException": "Di-kilalang error",
+  "loading": "Naglo-load…",
+  "retry": "Subukang muli",
+  "page": "pahina",
+  "model": "Modelo",
+  "modelName": "Pangalan ng modelo",
+  "type": "uri",
+  "status": "kalagayan",
+  "action": "pagpapatakbo",
+  "size": "Laki",
+  "paramsSize": "Halaga ng parametro",
+  "updateTime": "Tarikh ng pagbabago",
+  "homePage": "Pangunahing Pahina",
+  "modelPage": "Pamamahala ng mga modelong pang-teknoloiya",
+  "loginPage": "Pahina ng Pag-log-in",
+  "testPage": "Pahina para sa pagsubok",
+  "@@locale": "tl"
+}

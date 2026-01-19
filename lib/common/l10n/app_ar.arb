@@ -1,0 +1,23 @@
+{
+  "sendTimeout": "انتهاء وقت الاتصال",
+  "authException": "غير مصرح به",
+  "serverException": "خطأ في الخادم",
+  "networkException": "خطأ في الشبكة",
+  "appException": "خطأ غير معروف",
+  "loading": "يتم التحميل حالياً.",
+  "retry": "إعادة المحاولة",
+  "page": "صفحة",
+  "model": "نموذج",
+  "modelName": "اسم النموذج",
+  "type": "النوع",
+  "status": "الحالة",
+  "action": "التشغيل",
+  "size": "الأبعاد",
+  "paramsSize": "كمية المعاملات",
+  "updateTime": "تاريخ التعديل",
+  "homePage": "الصفحة الرئيسية",
+  "modelPage": "إدارة النماذج",
+  "loginPage": "صفحة تسجيل الدخول",
+  "testPage": "صفحة الاختبار",
+  "@@locale": "ar"
+}

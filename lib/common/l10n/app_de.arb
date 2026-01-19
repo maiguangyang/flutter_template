@@ -1,0 +1,23 @@
+{
+  "sendTimeout": "Verbindungszeitüberschreitung",
+  "authException": "Nicht autorisiert",
+  "serverException": "Serverfehler",
+  "networkException": "Netzwerkfehler",
+  "appException": "Unbekannter Fehler",
+  "loading": "Ladet sich gerade…",
+  "retry": "Wiederholen",
+  "page": "Seite",
+  "model": "Modell",
+  "modelName": "Modellname",
+  "type": "Typ",
+  "status": "Zustand",
+  "action": "Bedienung",
+  "size": "Abmessungen",
+  "paramsSize": "Anzahl der Parameter",
+  "updateTime": "Änderungsdatum",
+  "homePage": "Startseite",
+  "modelPage": "Modellmanagement",
+  "loginPage": "Anmeldeseite",
+  "testPage": "Testseite",
+  "@@locale": "de"
+}

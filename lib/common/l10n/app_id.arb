@@ -1,0 +1,23 @@
+{
+  "sendTimeout": "Terkaitan gagal karena waktu tunggu melebihi batas.",
+  "authException": "Tidak berwenang",
+  "serverException": "Kesalahan server",
+  "networkException": "Kesalahan jaringan",
+  "appException": "Kesalahan yang tidak diketahui",
+  "loading": "Sedang diunduh…",
+  "retry": "Coba lagi.",
+  "page": "halaman",
+  "model": "model",
+  "modelName": "Nama model",
+  "type": "tipe",
+  "status": "keadaan",
+  "action": "operasikan",
+  "size": "ukuran",
+  "paramsSize": "jumlah parameter",
+  "updateTime": "Tanggal perubahan",
+  "homePage": "Halaman Utama",
+  "modelPage": "Manajemen Model",
+  "loginPage": "Halaman login",
+  "testPage": "Halaman uji coba",
+  "@@locale": "id"
+}

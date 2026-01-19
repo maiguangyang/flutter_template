@@ -79,6 +79,7 @@ npx @maiguangyang/oxygen_cli create myApp
 
 - 写一个组件，先看看官方的组件是否有合适：https://docs.flutter.cn/reference/widgets
 - 先看一下`.vscode/dart.code-snippets`代码片段，熟悉一下用法
+- 修改`lib/core/l10n/zh_CN.json`后，执行命令自动翻译并生成多语言：`make lang`
 - 修改`lib/core/l10n/language.json`后，执行命令生成多语言：`make l10n`
 - 页面组件（`pages -> mobile -> screens`）：以首页举例
   1. 入口文件统一命名：`home_screen/home_screen.dart`

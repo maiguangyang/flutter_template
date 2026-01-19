@@ -1,0 +1,23 @@
+{
+  "sendTimeout": "Expiration de la connexion",
+  "authException": "Non autorisé",
+  "serverException": "Erreur du serveur",
+  "networkException": "Erreur de réseau",
+  "appException": "Erreur inconnue",
+  "loading": "En chargement…",
+  "retry": "Essayer à nouveau",
+  "page": "page",
+  "model": "modèle",
+  "modelName": "Nom du modèle",
+  "type": "Type",
+  "status": "état",
+  "action": "Manipulation",
+  "size": "Dimensions",
+  "paramsSize": "Nombre de paramètres",
+  "updateTime": "Date de modification",
+  "homePage": "Page d'accueil",
+  "modelPage": "Gestion des modèles",
+  "loginPage": "Page d'accueil",
+  "testPage": "Page de test",
+  "@@locale": "fr"
+}

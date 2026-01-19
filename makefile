@@ -118,6 +118,11 @@ l10n:
 	rm -rf ./lib/core/l10n/*.arb && dart ./scripts/generate_l10n.dart 
 	@$(FLUTTER) gen-l10n
 
+lang:
+	make version
+	dart run scripts/translate_l10n.dart
+	@$(FLUTTER) gen-l10n
+
 icon:
 	make version
 	dart scripts/generate_icon.dart

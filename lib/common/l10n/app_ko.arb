@@ -1,0 +1,23 @@
+{
+  "sendTimeout": "연결 시간 초과",
+  "authException": "권한이 없음",
+  "serverException": "서버 오류",
+  "networkException": "네트워크 오류",
+  "appException": "알 수 없는 오류",
+  "loading": "로딩 중입니다.",
+  "retry": "재시도",
+  "page": "페이지",
+  "model": "모델",
+  "modelName": "모델 이름",
+  "type": "유형",
+  "status": "상태",
+  "action": "조작",
+  "size": "크기",
+  "paramsSize": "매개변수의 수",
+  "updateTime": "수정 날짜",
+  "homePage": "홈페이지",
+  "modelPage": "모델 관리",
+  "loginPage": "로그인 페이지",
+  "testPage": "테스트 페이지",
+  "@@locale": "ko"
+}

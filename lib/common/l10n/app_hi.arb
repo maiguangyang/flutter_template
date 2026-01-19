@@ -1,0 +1,23 @@
+{
+  "sendTimeout": "कनेक्शन टाइमआउट हो गया।",
+  "authException": "अनधिकृत",
+  "serverException": "सर्वर में त्रुटि है।",
+  "networkException": "नेटवर्क त्रुटि",
+  "appException": "अज्ञात त्रुटि",
+  "loading": "लोड हो रहा है…",
+  "retry": "पुनः प्रयास करें।",
+  "page": "पृष्ठ",
+  "model": "मॉडल",
+  "modelName": "मॉडल का नाम",
+  "type": "प्रकार",
+  "status": "स्थिति",
+  "action": "संचालन",
+  "size": "आकार",
+  "paramsSize": "पैरामीटर की मात्रा",
+  "updateTime": "संशोधन तिथि",
+  "homePage": "होम पेज",
+  "modelPage": "मॉडल प्रबंधन",
+  "loginPage": "लॉगिन पेज",
+  "testPage": "परीक्षण पृष्ठ",
+  "@@locale": "hi"
+}

@@ -9,62 +9,62 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
-  String get sendTimeout => 'Send Timeout';
+  String get sendTimeout => 'Tiempo de espera de conexión agotado';
 
   @override
-  String get authException => 'Auth Exception';
+  String get authException => 'No autorizado';
 
   @override
-  String get serverException => 'Server Exception';
+  String get serverException => 'Error del servidor';
 
   @override
-  String get networkException => 'Network Exception';
+  String get networkException => 'Error de red';
 
   @override
-  String get appException => 'App Exception';
+  String get appException => 'Error desconocido';
 
   @override
-  String get loading => 'Cargando';
+  String get loading => 'Cargando...';
 
   @override
-  String get retry => 'Rever';
+  String get retry => 'Intentar de nuevo';
 
   @override
-  String get page => 'Page';
+  String get page => 'página';
 
   @override
-  String get model => 'Model';
+  String get model => 'Modelo';
 
   @override
-  String get modelName => 'Model Name';
+  String get modelName => 'Nombre del modelo';
 
   @override
-  String get type => 'Type';
+  String get type => 'Tipo';
 
   @override
-  String get status => 'Status';
+  String get status => 'estado';
 
   @override
-  String get action => 'Action';
+  String get action => 'Operación';
 
   @override
-  String get size => 'Size';
+  String get size => 'Tamaño';
 
   @override
-  String get paramsSize => 'Params Size';
+  String get paramsSize => 'Cantidad de parámetros';
 
   @override
-  String get updateTime => 'Update Time';
+  String get updateTime => 'Fecha de modificación';
 
   @override
-  String get homePage => 'Home Page';
+  String get homePage => 'Página principal';
 
   @override
-  String get modelPage => 'Model Page';
+  String get modelPage => 'Gestión de modelos';
 
   @override
-  String get loginPage => 'Login Page';
+  String get loginPage => 'Página de inicio';
 
   @override
-  String get testPage => 'Test Page';
+  String get testPage => 'Página de prueba';
 }
