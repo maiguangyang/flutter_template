@@ -78,10 +78,10 @@ format:
 	make create_dist && rm -rf $(distPath)/$(buildAppFileName)_*.dmg && hdiutil convert "$(dirPath)/$(macAppName).dmg" -format UDZO -o $(appFileName).dmg && rm -rf "$(dirPath)/$(macAppName).dmg"
 
 apk:
-	@$(FLUTTER) build apk --build-name=$(combined_variable) --build-number=$(buildNumber) --split-debug-info=build/symbols && make zipApk
+	@$(FLUTTER) build apk --build-name=$(combined_variable) --build-number=$(buildNumber) --split-debug-info=build/symbols --split-per-abi && make zipApk
 
 zipApk:
-	make create_dist && rm -rf $(distPath)/$(buildAppFileName)_*.apk && cp -f build/app/outputs/flutter-apk/app-release.apk $(appFileName).apk
+	make create_dist && rm -rf $(distPath)/$(buildAppFileName)_*.apk && cp -f build/app/outputs/flutter-apk/app-arm64-v8a-release.apk $(appFileName).apk
 
 ipa:
 	@$(FLUTTER) build ipa --release --build-name=$(combined_variable) --build-number=$(buildNumber) --export-method=$(exportMethod) --split-debug-info=build/symbols --tree-shake-icons --obfuscate && make zipIpa
