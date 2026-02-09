@@ -103,7 +103,7 @@ lib/
 │   │   └── desktop/
 │   ├── widgets/             # 全局通用组件 (Ox前缀)
 │   ├── application/         # Notifiers & Providers
-│   └── data/                # Repositories, APIs, DTOs
+│   └── data/                # Repository, APIs, DTOs
 ```
 
 ### 2. 命名规则
@@ -132,6 +132,60 @@ lib/
 - **缓存策略**: 必须使用 `CacheStrategy` 包装 Entity。
 - **依赖注入**: Repository 必须通过 `Provider` 注入 API 和 Cache。
 
+#### CacheStrategy 使用指南 (CacheStrategy Guide)
+
+**1. CacheStrategy (Unified Entry)**
+
+统一的缓存入口，支持三种模式：
+
+| 模式 | 说明 | 重启后 |
+|------|------|--------|
+| `CacheMode.memory` | 纯内存 LRU | 数据丢失 |
+| `CacheMode.persistent` | 仅磁盘 | 数据保留 |
+| `CacheMode.hybrid` | 内存 + 磁盘 | 数据保留 ✅ |
+
+**基本用法**:
+
+```dart
+import 'package:whats_ai/common/index.dart';
+
+// 创建缓存（自动注册到 CacheRegistry）
+final userCache = CacheStrategy<UserEntity>(
+  mode: CacheMode.hybrid,
+  cacheKey: 'user_cache',
+  maxSize: 100,
+  expiration: Duration(hours: 1),
+  fromJson: UserEntity.fromJson,
+  toJson: (e) => e.toJson(),
+);
+
+// 初始化
+await userCache.init();
+
+// 存取
+await userCache.put('user_1', user);
+final user = userCache.get('user_1');
+
+// 清理过期
+await userCache.cleanExpired();
+```
+
+**2. CacheRegistry (Unified Management)**
+
+所有 `CacheStrategy` 默认自动注册，可统一管理：
+
+```dart
+// App 启动时（在 bootstrap.dart 中）
+await CacheRegistry.initAll();       // 初始化所有缓存
+await CacheRegistry.cleanExpiredAll(); // 清理所有过期数据
+
+// 查看已注册的缓存
+print(CacheRegistry.registeredKeys);
+
+// 清空所有缓存
+await CacheRegistry.clearAll();
+```
+
 ---
 
 ## V. 代码红线 (Strict Code Standards)
@@ -143,10 +197,12 @@ lib/
 - ❌ **禁止**使用 `FutureProvider` 进行写操作（增删改）。
 
 ### 必须事项 (Do)
-- ✅ **数据模型**: 所有 Entity/DTO 必须使用 `freezed` 生成，禁止手写 `fromJson`。
+- ✅ **数据模型**: 所有 Entity/DTO 必须使用 `json_annotation` 生成，禁止手写 `fromJson`。
+- ✅ **导出规范**: 严禁隐藏文件。所有目录下的文件（如 `abc.dart`）必须在同级 `index.dart` 中导出 (`export 'abc.dart';`)，外部调用必须通过目录级 `index.dart` 引用。
+- ✅ **依赖管理**: 项目中禁止使用 `freezed` 及其相关依赖（`freezed_annotation`, `build_runner` 不受限，但不得运行 freezed 生成器）。
 - ✅ **ID 类型**: 超过 15 位的 ID 或所有业务 ID 必须使用 `String` 类型。
 - ✅ **注释**: 核心类和方法必须有文档注释。
-- ✅ **Import**: 禁止使用相对路径导入上级目录，禁止 `package:` 导入同级文件。
+- ✅ **Import**: 禁止使用相对路径导入上级目录。**同级目录下的文件引用必须使用相对路径**，禁止使用 `package:` 全路径导入同级文件。
 
 ---
 
@@ -186,4 +242,17 @@ make check_tests # 检查覆盖率
 1. **Constitutional Primacy**: 此文档优于任何口头约定。
 2. **Review Gate**: 不符合本规范的代码（如直接在 UI 写逻辑、未用 Freezed、页面未使用三层分离）将被拒绝。
 
-**Version**: 1.3.0 | **Last Updated**: 2026-01-22
+## IX. 计划合规性检查 (Plan Compliance Checklist)
+
+所有 Implementation Plan (`plan.md`) **必须**包含以下检查表，AI 需在生成计划时逐项自检：
+
+| 维度 | 检查项 (Checkpoints) | Pass? |
+|------|----------------------|-------|
+| **Interfaces** | Repository 是否返回 `Future<BaseResponse<T>>`？是否包含 `useMock`？ | [ ] |
+| **Providers** | Provider 是否使用了 `CacheStrategy` 包装 Entity？ | [ ] |
+| **Snippets** | 是否为每个新文件指定了正确的 Snippet (`sw/sfw/ntf/rep/prd`)？ | [ ] |
+| **Data Flow** | 是否明确 Repository 负责 `DTO -> Entity` 转换？ | [ ] |
+| **UI Rules** | 是否明确禁止硬编码颜色/尺寸，强制使用 `ref.theme`？ | [ ] |
+| **Testing** | 计划中是否明确包含 Entity(100%) 和 Repository(80%) 测试？ | [ ] |
+
+**Version**: 1.0.1 | **Ratified**: 2026-01-22 | **Last Amended**: 2026-01-22

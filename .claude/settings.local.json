@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl:*)",
+      "Bash(./build_all.sh:*)",
+      "Bash(go list:*)",
+      "Bash(go doc:*)",
+      "Bash(make:*)",
+      "Bash(flutter build:*)",
+      "Bash(git clone:*)",
+      "Bash(go get:*)",
+      "Bash(go mod tidy:*)",
+      "Bash(git fetch:*)",
+      "Bash(.specify/scripts/bash/create-new-feature.sh:*)",
+      "Bash(chmod:*)",
+      "Bash(.specify/scripts/bash/check-prerequisites.sh:*)",
+      "Bash(.specify/scripts/bash/setup-plan.sh:*)"
+    ]
+  }
+}
