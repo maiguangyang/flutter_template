@@ -1,17 +1,18 @@
 import 'package:flutter_template/core/index.dart';
+import 'package:flutter_template/shared/index.dart';
 import 'package:flutter_template/views/application/index.dart';
 import 'package:flutter_template/views/pages/desktop/widgets/index.dart';
 
 /// 入口层
-class HomeScreen extends CustomStatefulWidget {
-  const HomeScreen({super.key});
+class DesktopScreen extends CustomStatefulWidget {
+  const DesktopScreen({super.key});
 
   @override
-  CustomState<HomeScreen> createState() => _HomeScreenState();
+  CustomState<DesktopScreen> createState() => _DesktopScreenState();
 }
 
 /// 逻辑层
-class _HomeScreenState extends CustomState<HomeScreen> {
+class _DesktopScreenState extends CustomState<DesktopScreen> {
   /// 切换颜色
   void handleColorSwitch() {
     // final primary = ref.read(themeProvider).primary;
@@ -59,12 +60,13 @@ class _HomeScreenState extends CustomState<HomeScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => _HomeScreenView(this);
+  Widget build(BuildContext context) => _DesktopScreenView(this);
 }
 
 /// UI层
-class _HomeScreenView extends CustomStatefulView<HomeScreen, _HomeScreenState> {
-  const _HomeScreenView(super.state);
+class _DesktopScreenView
+    extends CustomStatefulView<DesktopScreen, _DesktopScreenState> {
+  const _DesktopScreenView(super.state);
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {

@@ -1,18 +1,19 @@
 import 'package:flutter_template/core/index.dart';
+import 'package:flutter_template/shared/index.dart';
 import 'package:flutter_template/views/application/notifiers/index.dart';
 
 import 'widgets/app_header_bar.dart';
 
 /// 入口层
-class HomeScreen extends CustomStatefulWidget {
-  const HomeScreen({super.key});
+class MobileScreen extends CustomStatefulWidget {
+  const MobileScreen({super.key});
 
   @override
-  CustomState<HomeScreen> createState() => _HomeScreenState();
+  CustomState<MobileScreen> createState() => _MobileScreenState();
 }
 
 /// 逻辑层
-class _HomeScreenState extends CustomState<HomeScreen> {
+class _MobileScreenState extends CustomState<MobileScreen> {
   @override
   void initState() {
     super.initState();
@@ -47,12 +48,13 @@ class _HomeScreenState extends CustomState<HomeScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => _HomeScreenView(this);
+  Widget build(BuildContext context) => _MobileScreenView(this);
 }
 
 /// UI层
-class _HomeScreenView extends CustomStatefulView<HomeScreen, _HomeScreenState> {
-  const _HomeScreenView(super.state);
+class _MobileScreenView
+    extends CustomStatefulView<MobileScreen, _MobileScreenState> {
+  const _MobileScreenView(super.state);
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {

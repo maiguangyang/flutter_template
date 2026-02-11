@@ -4,9 +4,10 @@
  * @Date: 2025-08-26 14:49:35
  */
 import 'package:flutter_template/core/index.dart';
+import 'package:flutter_template/shared/index.dart';
 
-class LoginScreen extends CustomStatelessWidget {
-  const LoginScreen({super.key});
+class MobileScreen extends CustomStatelessWidget {
+  const MobileScreen({super.key});
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
