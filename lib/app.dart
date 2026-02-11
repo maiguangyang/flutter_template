@@ -6,7 +6,7 @@
 
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_template/core/index.dart';
-import 'package:flutter_template/theme/index.dart';
+import 'package:flutter_template/shared/index.dart';
 
 /// 入口层
 class MyApp extends CustomStatefulWidget {
