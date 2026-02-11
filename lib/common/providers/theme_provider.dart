@@ -8,7 +8,7 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_oxygen/flutter_oxygen.dart';
-import 'package:flutter_template/config/config.dart';
+import 'package:flutter_template/core/index.dart';
 import 'package:flutter_template/theme/index.dart';
 import 'package:riverpod/riverpod.dart';
 

@@ -5,7 +5,7 @@
  */
 import 'dart:ui';
 
-import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/core/index.dart';
 import 'package:flutter_template/theme/index.dart';
 
 class AppTheme {

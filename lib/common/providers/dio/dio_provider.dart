@@ -5,7 +5,7 @@
  */
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_template/config/config.dart';
+import 'package:flutter_template/core/index.dart';
 
 import 'interceptors/index.dart';
 

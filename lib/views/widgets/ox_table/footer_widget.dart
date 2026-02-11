@@ -3,7 +3,7 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-09-26 08:42:07
  */
-import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/core/index.dart';
 import 'package:flutter_template/views/widgets/index.dart';
 
 class FooterWidget<T> extends CustomStatelessWidget {

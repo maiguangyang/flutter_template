@@ -2,7 +2,7 @@
   "CustomStatelessWidget": {
     "prefix": "sw",
     "body": [
-      "import 'package:flutter_template/abstracts/index.dart';",
+      "import 'package:flutter_template/core/index.dart';",
       "",
       "class ${1:name} extends CustomStatelessWidget {",
       "  const ${1:name}({super.key});",
@@ -18,7 +18,7 @@
   "CustomStatefulWidget": {
     "prefix": "sfw",
     "body": [
-      "import 'package:flutter_template/abstracts/index.dart';",
+      "import 'package:flutter_template/core/index.dart';",
       "",
       "/// 入口层",
       "class ${1:name} extends CustomStatefulWidget {",

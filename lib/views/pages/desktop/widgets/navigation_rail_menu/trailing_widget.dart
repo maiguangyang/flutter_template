@@ -3,7 +3,7 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-09-02 09:15:56
  */
-import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/core/index.dart';
 
 class TrailingWidget extends CustomStatelessWidget {
   const TrailingWidget({super.key});

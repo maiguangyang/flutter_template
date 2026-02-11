@@ -3,7 +3,7 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-09-17 13:24:27
  */
-import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/core/index.dart';
 
 class ModelDialogWidget extends CustomStatelessWidget {
   const ModelDialogWidget({super.key});

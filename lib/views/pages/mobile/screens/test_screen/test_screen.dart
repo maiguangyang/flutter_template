@@ -3,7 +3,7 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-08-26 14:49:35
  */
-import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/core/index.dart';
 
 class TestScreen extends CustomStatelessWidget {
   const TestScreen({super.key});

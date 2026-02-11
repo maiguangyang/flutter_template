@@ -3,7 +3,7 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-11-10 08:18:11
  */
-import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/core/index.dart';
 
 /// 入口层
 class AppLifecycleWrapper extends CustomStatefulWidget {

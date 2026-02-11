@@ -4,7 +4,7 @@
  * @Date: 2025-08-22 13:37:54
  */
 
-import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/core/index.dart';
 import 'package:flutter_template/views/data/index.dart';
 import 'package:flutter_template/views/pages/desktop/dialogs/index.dart';
 import 'package:flutter_template/views/widgets/index.dart';

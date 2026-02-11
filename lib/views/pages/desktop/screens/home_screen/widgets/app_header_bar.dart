@@ -3,7 +3,7 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-08-26 19:58:17
  */
-import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/core/index.dart';
 import 'package:flutter_template/views/application/index.dart';
 
 class AppHeaderBar extends CustomStatelessWidget

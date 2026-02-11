@@ -3,11 +3,11 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-09-15 15:32:01
  */
-import 'package:material_table_view/material_table_view.dart' hide TableColumn;
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/core/index.dart';
 import 'package:flutter_template/theme/index.dart';
 import 'package:flutter_template/views/data/models/index.dart';
+import 'package:material_table_view/material_table_view.dart' hide TableColumn;
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'header_widget.dart';
 import 'row_widget.dart';

@@ -4,7 +4,7 @@
  * @Date: 2025-08-26 09:22:08
  */
 import 'package:dio/dio.dart';
-import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/core/index.dart';
 
 /// 把 Dio 或其他异常转成统一的 AppException
 class ErrorMapper {

@@ -4,7 +4,7 @@
  * @Date: 2025-07-07 20:32:30
  */
 
-import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/core/index.dart';
 
 import 'app_lifecycle_wrapper.dart';
 import 'app_localization_wrapper.dart';

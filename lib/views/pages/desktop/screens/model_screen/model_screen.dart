@@ -3,7 +3,7 @@
  * @Email: maiguangyang@163.com
  * @Date: 2025-09-03 10:47:44
  */
-import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/core/index.dart';
 import 'package:flutter_template/views/application/index.dart';
 import 'package:flutter_template/views/data/models/index.dart';
 import 'package:flutter_template/views/pages/desktop/widgets/index.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/core/index.dart';
 import 'package:flutter_template/views/application/index.dart';
 import 'package:flutter_template/views/pages/desktop/widgets/index.dart';
 

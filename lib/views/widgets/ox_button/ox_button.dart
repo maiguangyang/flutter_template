@@ -1,4 +1,4 @@
-import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/core/index.dart';
 import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 
 import 'ox_button_enum.dart';

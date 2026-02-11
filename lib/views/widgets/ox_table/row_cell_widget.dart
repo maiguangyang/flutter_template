@@ -4,7 +4,7 @@
  * @Date: 2025-09-26 08:42:07
  */
 import 'package:ellipsized_text/ellipsized_text.dart';
-import 'package:flutter_template/abstracts/index.dart';
+import 'package:flutter_template/core/index.dart';
 
 import 'table_column.dart';
 
