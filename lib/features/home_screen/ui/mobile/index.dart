@@ -1,6 +1,5 @@
 import 'package:flutter_template/core/index.dart';
-import 'package:flutter_template/shared/index.dart';
-import 'package:flutter_template/views/application/notifiers/index.dart';
+import 'package:flutter_template/shared/index.dart' hide AppHeaderBar;
 
 import 'widgets/app_header_bar.dart';
 

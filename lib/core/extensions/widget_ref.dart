@@ -6,7 +6,6 @@
 
 import 'package:flutter_template/core/index.dart';
 import 'package:flutter_template/shared/index.dart';
-import 'package:flutter_template/views/application/index.dart';
 
 extension WidgetRefExtension on WidgetRef {
   /// **********

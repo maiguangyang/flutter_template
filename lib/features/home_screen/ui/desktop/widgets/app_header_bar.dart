@@ -4,7 +4,7 @@
  * @Date: 2025-08-26 19:58:17
  */
 import 'package:flutter_template/core/index.dart';
-import 'package:flutter_template/views/application/index.dart';
+import 'package:flutter_template/shared/index.dart';
 
 class AppHeaderBar extends CustomStatelessWidget
     implements PreferredSizeWidget {

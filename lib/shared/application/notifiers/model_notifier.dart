@@ -1,0 +1,34 @@
+/*
+ * @Author: Marlon.M
+ * @Email: maiguangyang@163.com
+ * @Date: 2025-09-17 20:34:56
+ */
+
+import 'package:flutter_template/shared/index.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'model_notifier.g.dart';
+
+/// Notifier 管理 ModelState
+/// 使用 autoDispose 在页面离开时自动释放内存
+@riverpod
+class AsyncModelNotifier extends _$AsyncModelNotifier {
+  ModelRepository get _repository => ref.watch(modelRepositoryProvider);
+
+  @override
+  FutureOr<List<ModelEntity>> build() async {
+    return _fetchData();
+  }
+
+  // 内部私有方法，只返回数据，不操作 state
+  Future<List<ModelEntity>> _fetchData() async {
+    final result = await _repository.getModels();
+    return result?.data ?? [];
+  }
+
+  /// getModels
+  Future<void> getModels() async {
+    state = AsyncValue.loading();
+    state = await AsyncValue.guard(_fetchData);
+  }
+}

@@ -7,8 +7,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_oxygen/core/index.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_template/core/index.dart';
 import 'package:flutter_template/shared/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -4,8 +4,7 @@
  * @Date: 2025-08-26 14:49:35
  */
 import 'package:flutter_template/core/index.dart';
-import 'package:flutter_template/shared/index.dart';
-import 'package:flutter_template/views/pages/desktop/widgets/index.dart';
+import 'package:flutter_template/shared/widgets/index.dart';
 
 class DesktopScreen extends CustomStatelessWidget {
   const DesktopScreen({super.key});
