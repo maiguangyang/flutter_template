@@ -75,6 +75,9 @@ void main(List<String> args) {
       projectName,
       screenClassName,
     ),
+
+    // ── README ──
+    '$basePath/README.md': _readmeTemplate(screenClassName, name),
   };
 
   for (final entry in files.entries) {
@@ -141,6 +144,42 @@ export 'providers/index.dart';
 String _dataIndex() => '''export 'models/index.dart';
 export 'repositories/index.dart';
 export 'services/index.dart';
+''';
+
+String _readmeTemplate(String cls, String name) =>
+    '''# Feature: $cls
+
+## 功能描述
+
+<!-- 简要描述该功能模块的用途 -->
+
+## 目录说明
+
+| 目录/文件 | 说明 |
+|-----------|------|
+| `application/notifiers/` | 页面专属状态管理 |
+| `application/providers/` | 页面专属依赖注入 |
+| `data/models/` | 页面独有数据模型 |
+| `data/repositories/` | 页面独有数据仓库 |
+| `data/services/` | 页面独有 API 服务 |
+| `ui/desktop/` | 桌面端页面 |
+| `ui/desktop/widgets/` | 桌面端子组件 |
+| `ui/mobile/` | 移动端页面 |
+| `ui/mobile/widgets/` | 移动端子组件 |
+
+## 路由信息
+
+- **Name**: `$name`
+- **Path**: `/$name`
+- **Auth**: 否
+
+## 依赖的 Shared 模块
+
+<!-- 列出该 Feature 使用了哪些 shared 的 Notifier/Repository -->
+
+## 备注
+
+<!-- 其他补充说明 -->
 ''';
 
 String _uiIndex(String pkg, String cls) =>
