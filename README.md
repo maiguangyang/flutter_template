@@ -6,101 +6,194 @@
 
 # FlutterTemplate
 
-## 该项目使用 flutter >= 3.35.1 版本开发，后面有变化这里会更新，再通知大家
+> Flutter >= 3.35.1 | 多平台（iOS / Android / macOS / Windows / Web）白牌模板项目
 
-### 目录结构
+## 系统架构
 
 ```
-assets/                   # 静态文件
+UI → Notifier → Repository → ApiService → 后端 API
+                    ↕
+               Model / Entity
+```
+
+项目采用**三层架构**：
+
+| 层级 | 目录 | 职责 |
+|------|------|------|
+| **Core** | `lib/core/` | 基础设施，不含业务逻辑 |
+| **Shared** | `lib/shared/` | 跨 Feature 共享的业务逻辑和数据 |
+| **Features** | `lib/features/` | 独立功能模块，按 Feature 隔离 |
+
+## 目录结构
+
+```
+assets/                       # 静态资源（图片、字体、jks）
+docs/                         # 开发文档
+scripts/                      # 构建和辅助脚本
 lib/
-├── abstracts             # 抽象类：很少用，目前就用在代码片段
-├── config                # 配置文件
-├── common                  # 核心文件夹
-    ├── constants         # 常量
-    ├── enums             # 枚举
-    ├── errors            # 枚举
-    ├── l10n              # 国际化配置
-    ├── providers         # 全局providers
-    ├── services          # 全局services
-    ├── utils             # 工具类
-    ├── extensions        # 扩展
-    └── middleware        # 中间件
-├── router                # 路由配置
-├── theme                 # 模板配置
-├── views/                # 表示层
-    ├── application       # 应用层负责业务逻辑与状态调度，是连接 View 与 Repository 的桥梁
-      ├── notifiers       # 保存 UI 状态，调用 Repository 更新数据
-      └── providers       # 将 repository、service 提供给上层使用
-    ├── data              # 数据层（Repository, API, Model）
-      ├── mock            # 模拟数据，方便开发与测试
-      ├── models          # 数据模型定义
-      ├── repository      # 聚合多个 service 或数据源，并转换为业务可用的实体
-      └── services        # 底层服务（如 API 调用、数据库、本地存储）
-    ├── pages             # 屏幕/页面
-    └── widgets           # 可复用的UI组件
-├── app.dart              # App 根组件
-├── bootstrap.dart        # 启动初始化逻辑 (依赖注入, 全局配置等)
-└── main.dart             # 入口文件
+├── core/                     # 基础设施层
+│   ├── abstracts/            # 组件抽象基类（CustomStatelessWidget 等）
+│   ├── config/               # 项目配置（多客户端白牌配置）
+│   ├── enums/                # 全局枚举
+│   ├── errors/               # 异常类和错误映射
+│   ├── extensions/           # Dart 扩展方法
+│   ├── l10n/                 # 国际化（18 种语言）
+│   ├── middleware/           # 路由中间件（authRedirectMiddleware）
+│   ├── mixins/               # 通用 Mixin（PaginationMixin）
+│   ├── network/              # 网络层（Dio Provider + 拦截器）
+│   ├── providers/            # 全局 Provider（Theme、Locale、Lang 等）
+│   ├── theme/                # 主题系统（Design Tokens、AppTheme）
+│   └── utils/                # 工具类
+├── routing/                  # 路由配置
+│   ├── route_path.dart       # 路由路径常量定义
+│   ├── routes.dart           # FlutterRouter 路由列表（Provider）
+│   ├── router.dart           # GoRouter 配置（含 ShellRoute、权限控制）
+│   └── navigator_keys.dart   # 全局 NavigatorKey
+├── shared/                   # 共享层（跨 Feature）
+│   ├── application/          # 共享业务逻辑
+│   │   ├── notifiers/        # 状态管理（Auth、User、Menu 等）
+│   │   └── providers/        # Provider 注入
+│   ├── data/                 # 共享数据层
+│   │   ├── models/           # 数据模型（Entity、DTO、Request/Response）
+│   │   ├── repositories/     # 仓库（聚合 Service，输出 Entity）
+│   │   ├── services/api/     # API 接口调用
+│   │   └── mock/             # Mock 数据
+│   ├── constants/            # 全局常量（API 地址、缓存 Key）
+│   └── widgets/              # 共享组件
+│       ├── common/           # 通用组件（OxButton、OxTable、OxPagination）
+│       ├── desktop/          # 桌面端组件（导航栏、布局、对话框）
+│       └── mobile/           # 移动端组件
+├── features/                 # Feature 模块（每个 Feature 结构一致 ↓）
+│   ├── home_screen/
+│   │   ├── application/      # Feature 专属业务逻辑
+│   │   │   ├── notifiers/
+│   │   │   └── providers/
+│   │   ├── data/             # Feature 专属数据层（按需创建子目录）
+│   │   └── ui/               # UI 层
+│   │       ├── desktop/      # 桌面端页面
+│   │       └── mobile/       # 移动端页面
+│   ├── login_screen/
+│   ├── model_screen/
+│   └── test_screen/
+├── app.dart                  # App 根组件（MaterialApp.router）
+├── bootstrap.dart            # 启动初始化（ProviderContainer、缓存、重试策略）
+└── main.dart                 # 入口（平台初始化、CacheService、GoRouter）
 ```
+
+## 快速开始
 
 ### 安装
 
-```
+```bash
 npm install -g @maiguangyang/oxygen_cli
-```
-
-```
 oxygen_cli create myApp
-```
-或者
-```
+
+# 或者
 npx @maiguangyang/oxygen_cli create myApp
 ```
 
+### 常用命令
+
+| 命令 | 说明 |
+|------|------|
+| `make install` | 安装依赖 |
+| `make code` | 代码生成（Entity `.g.dart`） |
+| `make watch` | 监听文件变化自动生成代码 |
+| `make l10n` | 生成多语言文件 |
+| `make lang` | 自动翻译 `zh_CN.json` 并生成多语言 |
+| `make icon` | 生成字体图标文件 |
+| `make config name=xxx` | 切换白牌客户端配置 |
+| `make start` | Web 端开发启动（Chrome，端口 1988） |
+
+### 构建命令
+
+| 命令 | 说明 |
+|------|------|
+| `make mac` | 构建 macOS Release（.dmg） |
+| `make apk` | 构建 Android Release（.apk） |
+| `make ipa` | 构建 iOS Release（.ipa） |
+| `make html` | 构建 Web Release（.tar.xz） |
+| `make app` | 一键构建 macOS + iOS + Android |
+
+### 测试命令
+
+| 命令 | 说明 |
+|------|------|
+| `make test` | 运行单元测试 + 集成测试 |
+| `make test_widget` | 运行 Widget 测试 |
+| `make test_e2e` | 运行 E2E 测试 |
+| `make test_all` | 运行所有测试 |
+| `make test_coverage` | 生成覆盖率报告 |
+| `make check_tests` | 检查缺少测试的文件 |
+
+## 开发指南
+
+### 新建页面（三步）
+
+1. **定义路径** — `lib/routing/route_path.dart`
+```dart
+static Route myPage = const Route(name: 'myPage', path: '/my-page');
 ```
-  /// 自定义颜色
-  final colors = ref.watch(themeProvider.select((t) => t.colors));
 
-  /// 自定义间距
-  final spacing = ref.watch(themeProvider.select((t) => t.spacing));
-
-  /// 自定义字体
-  final fontSize = ref.watch(themeProvider.select((t) => t.fontSize));
-
-  /// 自定义字体粗细
-  final fontWeight = ref.watch(themeProvider.select((t) => t.fontWeight));
-
-  /// 主题自带颜色方案
-  final colorScheme = ref.watch(themeProvider.select((t) => t.colorScheme));
+2. **注册路由** — `lib/routing/routes.dart`
+```dart
+FlutterRouter(
+  name: RoutePath.myPage.name,
+  path: RoutePath.myPage.path,
+  builder: (context, state) => const MyPageScreen(),
+),
 ```
 
+3. **创建 Feature** — `lib/features/my_page_screen/`
+```
+my_page_screen/
+├── application/     # 业务逻辑（按需）
+│   ├── notifiers/
+│   └── providers/
+├── data/            # 数据层（按需）
+└── ui/
+    ├── desktop/index.dart
+    └── mobile/index.dart
+```
 
-### 开发
+### 主题使用
 
-- 写一个组件，先看看官方的组件是否有合适：https://docs.flutter.cn/reference/widgets
-- 先看一下`.vscode/dart.code-snippets`代码片段，熟悉一下用法
-- 修改`lib/core/l10n/zh_CN.json`后，执行命令自动翻译并生成多语言：`make lang`
-- 修改`lib/core/l10n/language.json`后，执行命令生成多语言：`make l10n`
-- 页面组件（`pages -> mobile -> screens`）：以首页举例
-  1. 入口文件统一命名：`home_screen/home_screen.dart`
-  2. 子组件放在`widgets`，文件名、对外暴露统一带`widget`，例如：`category_widget.dart`、`CategoryWidget`
-- 项目组件：`pages -> mobile -> widgets`，对外暴露的组件名不带`widget`，其子组件文件名、对外暴露统一带`widget`
-- 全局组件：`pages -> widgets`，以`ox_xxxx`文件夹形式命名，对外暴露组件名为：`OxXxxx`，其子组件文件名、对外暴露统一带`widget`
+```dart
+/// 自定义颜色
+final colors = ref.watch(themeProvider.select((t) => t.colors));
 
-- 测试 [常用断言类型](./docs/test.md)
+/// 自定义间距
+final spacing = ref.watch(themeProvider.select((t) => t.spacing));
 
-### Icon 图标
+/// 自定义字体
+final fontSize = ref.watch(themeProvider.select((t) => t.fontSize));
 
-- `https://www.iconfont.cn`，上传 svg 文件到 White Label 项目。
-- 下载最新的字体文件，覆盖替换`assets/fonts/*`，执行命令生成字体文件：`make icon`
-- 使用：`IconFont.loading`
+/// 自定义字体粗细
+final fontWeight = ref.watch(themeProvider.select((t) => t.fontWeight));
+
+/// 主题自带颜色方案
+final colorScheme = ref.watch(themeProvider.select((t) => t.colorScheme));
+```
+
+### 路由跳转
+
+```dart
+// 压栈跳转（可后退）
+NavigatorUtilsCore.go(RoutePath.myPage);
+
+// 替换跳转（不可后退）
+NavigatorUtilsCore.replace(RoutePath.home);
+
+// 带参数跳转
+NavigatorUtilsCore.go(
+  RoutePath.userDetail,
+  pathParameters: {'id': '123'},
+);
+```
 
 ### 国际化
 
-#### 添加项目多语言
-
-1. 修改 `/lib/core/l10n/language.json`
-
+1. 修改 `lib/core/l10n/language.json`
 ```json
 "key": {
   "zh": "",
@@ -108,41 +201,48 @@ npx @maiguangyang/oxygen_cli create myApp
   "es": "",
   "zh_TW": ""
 }
-
-// 插值语法：
-// "en": "{qty} Left",
 ```
 
-1. 运行 `make l10n` 命令
-   
-2. 在代码中使用
+2. 运行 `make l10n`
 
+3. 使用
 ```dart
-appBar: AppBar(
-  title: Text(ref.lang.homePage),
-),
-
-/// 插值语法
-ref.lang.leftQuantity(product.stock)
+ref.lang.homePage
+ref.lang.leftQuantity(product.stock)  // 插值语法
 ```
 
-### 代码片段（在`.dart` 文件中）
-- ，输入 `sfw`： 有状态组件
-- ，输入 `sw`： 无状态组件
+### Icon 图标
 
-### 开发规范
-- 所有`Widget`都要在`Class`上面一行注释是做什么的
-- 开发的时候最好在`Widget build(BuildContext context)`里面打一个`log`，看看是否重复渲染
-- 如果是当前目录下的，不要使用`package`包方式引入，使用：`import './xxxx.dart';`
-- 开发的时候遇到其他页面可能也用到的基础功能组件，记得抽成一个公共组件，例如：`button`
+- 上传 svg 到 [iconfont.cn](https://www.iconfont.cn) 项目
+- 下载字体文件覆盖 `assets/fonts/*`
+- 运行 `make icon`
+- 使用：`IconFont.loading`
 
----
+### 代码片段
 
-- `api`地址统一写在`lib/core/constants/api_endpoints.dart`
-- 记得写多语言：`lib/core/l10n/language.json`
-- 禁止直接使用`Colors.xxx` 和 `Size`
-- 颜色、字体相关这样使用：`ref.themeStore.xxx`，具体可以去看：`lib/core/providers/theme_provider.dart`
-- 禁止直接在页面里面写方法、逻辑、模拟数据，统一放`application`
-- UI 不直接调用 Repository 的方法，而是通过 Notifier 触发动作，并读取状态
-- 一个页面一定要拆分成多个页面子组件来写，最后再组装起来，这样的好处就是页面里面的代码不会太长，可维护性也大大增强
-- 超过 15 位的雪花 ID，在 web 下都有可能出现精度问题，所以目前 ID 统一用 string 类型
+在 `.dart` 文件中（参见 `.vscode/dart.code-snippets`）：
+- 输入 `sfw`：有状态组件
+- 输入 `sw`：无状态组件
+
+## 开发规范
+
+- 所有 Widget 必须在 Class 上方**注释**用途
+- 开发时在 `build()` 中打 `log` 检查是否重复渲染
+- 当前目录下的文件使用 **相对路径** `import './xxxx.dart'` 而非 `package:` 路径
+- 通用组件及时抽成公共组件放入 `shared/widgets/`
+- API 地址统一写在 `lib/shared/constants/api_endpoints.dart`
+- 多语言写在 `lib/core/l10n/language.json`
+- **禁止**直接使用 `Colors.xxx` 和硬编码 `Size`，使用 `ref.themeStore.xxx`
+- **禁止**在页面直接写方法/逻辑/模拟数据，统一放 `application/`
+- UI 不直接调用 Repository，通过 Notifier 触发
+- 页面必须拆分成多个子组件再组装
+- 超过 15 位的雪花 ID 统一用 `String` 类型
+
+## 相关文档
+
+- [测试指南](./docs/test.md)
+- [Riverpod 使用](./docs/riverpod/riverpod.md)
+- [颜色主题](./docs/colors.md)
+- [开发流程](./docs/开发流程.md)
+- [架构说明](./docs/说明文档.md)
+- [概念解析](./docs/概念.md)
