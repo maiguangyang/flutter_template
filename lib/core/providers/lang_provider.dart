@@ -5,8 +5,6 @@
  */
 import 'package:flutter_template/core/index.dart';
 
-import 'locale_provider.dart';
-
 final langProvider = Provider<AppLocalizations>((ref) {
   // 读取当前语言
   final locale = ref.watch(localeProvider); // appProvider 返回 Locale

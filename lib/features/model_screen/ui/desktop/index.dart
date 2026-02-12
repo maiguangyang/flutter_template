@@ -4,30 +4,26 @@
  * @Date: 2025-09-03 10:47:44
  */
 import 'package:flutter_template/core/index.dart';
-import 'package:flutter_template/views/application/index.dart';
-import 'package:flutter_template/views/data/models/index.dart';
-import 'package:flutter_template/views/pages/desktop/widgets/index.dart';
-import 'package:flutter_template/views/widgets/index.dart';
-import 'package:flutter_template/views/widgets/ox_table/table_column.dart';
+import 'package:flutter_template/shared/index.dart';
 
 /// 入口层
-class ModelScreen extends CustomStatefulWidget {
-  const ModelScreen({super.key});
+class DesktopScreen extends CustomStatefulWidget {
+  const DesktopScreen({super.key});
 
   @override
-  CustomState<ModelScreen> createState() => _ModelScreenState();
+  CustomState<DesktopScreen> createState() => _DesktopScreenState();
 }
 
 /// 逻辑层
-class _ModelScreenState extends CustomState<ModelScreen> {
+class _DesktopScreenState extends CustomState<DesktopScreen> {
   @override
-  Widget build(BuildContext context) => _ModelScreenView(this);
+  Widget build(BuildContext context) => _DesktopScreenView(this);
 }
 
 /// UI层
-class _ModelScreenView
-    extends CustomStatefulView<ModelScreen, _ModelScreenState> {
-  const _ModelScreenView(super.state);
+class _DesktopScreenView
+    extends CustomStatefulView<DesktopScreen, _DesktopScreenState> {
+  const _DesktopScreenView(super.state);
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {

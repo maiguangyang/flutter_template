@@ -7,6 +7,8 @@
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_template/core/index.dart';
 
+import 'routing/index.dart';
+
 /// 入口层
 class MyApp extends CustomStatefulWidget {
   const MyApp({super.key});
@@ -17,27 +19,27 @@ class MyApp extends CustomStatefulWidget {
 
 /// 逻辑层
 class _MyAppState extends CustomState<MyApp> with WidgetsBindingObserver {
-  late DeviceTypeEnum deviceType;
-  late RouteStrategy routeStrategy;
-  RouterConfig<Object>? routerConfig;
+  // late DeviceTypeEnum deviceType;
+  // late RouteStrategy routeStrategy;
+  // RouterConfig<Object>? routerConfig;
 
   /// 初始化
   void init() async {
     // 获取设备类型并且初始化路由
     // deviceType = DeviceUtilsCore.getDeviceType();
     // routeStrategy = CustomRouter.init(deviceType);
-    deviceType = ref.read(deviceTypeProvider);
-    routeStrategy = ref.read(routeProvider);
+    // deviceType = ref.read(deviceTypeProvider);
+    // routeStrategy = ref.read(routeProvider);
 
-    routeStrategy.navigatorKey ??= GlobalKey<NavigatorState>();
-    routerConfig ??= routeStrategy.generateRoutes();
+    // routeStrategy.navigatorKey ??= GlobalKey<NavigatorState>();
+    // routerConfig ??= routeStrategy.generateRoutes();
   }
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this as WidgetsBindingObserver);
-    init();
+    // init();
   }
 
   @override
@@ -60,12 +62,16 @@ class _MyAppView extends CustomStatefulView<MyApp, _MyAppState> {
     // final isDark = ref.watch(themeProvider.select((s) => s.isDark));
 
     final theme = ref.watch(themeProvider);
+    final goRouter = ref.watch(goRouterProvider);
+    final routes = ref.watch(routesProvider);
 
-    final appRoutes = ref.watch(flutterRouterListProvider);
+    print("goRouter $goRouter");
+
+    // final appRoutes = ref.watch(flutterRouterListProvider);
 
     return MaterialApp.router(
       title: Config.project.appName,
-      routerConfig: state.routerConfig,
+      routerConfig: goRouter,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       debugShowCheckedModeBanner: false,
@@ -74,8 +80,8 @@ class _MyAppView extends CustomStatefulView<MyApp, _MyAppState> {
       themeMode: theme.themeMode,
       builder: NavigatorUtilsCore.init(
         // 初始化路由
-        routers: appRoutes,
-        deviceType: state.deviceType,
+        routers: routes,
+        deviceType: DeviceUtilsCore.getDeviceType(),
         isDesktop: DeviceUtilsCore.isDesktop,
         appName: Config.project.appName,
         builder: FlutterSmartDialog.init(

@@ -11,7 +11,7 @@ import 'package:flutter_oxygen/flutter_oxygen.dart';
 /// path：路由路径
 ///
 /// 所有path不能用驼峰
-class Routes {
+class RoutePath {
   /// 首页
   static Route home = const Route(name: 'home', path: '/home');
 

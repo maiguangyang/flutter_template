@@ -15,7 +15,7 @@ class MobileScreen extends CustomStatelessWidget {
     final primary = colorScheme.primary;
 
     return Scaffold(
-      appBar: AppBar(title: Text(ref.lang.loginPage)),
+      appBar: AppBar(title: Text(ref.lang.testPage)),
       body: Container(
         alignment: AlignmentGeometry.center,
         child: Column(
@@ -23,9 +23,9 @@ class MobileScreen extends CustomStatelessWidget {
           children: [
             TextButton(
               onPressed: () {
-                NavigatorUtilsCore.go(RoutePath.test);
+                NavigatorUtilsCore.go(RoutePath.login);
               },
-              child: Text("打开测试页", style: TextStyle(color: primary)),
+              child: Text("打开登录页", style: TextStyle(color: primary)),
             ),
           ],
         ),

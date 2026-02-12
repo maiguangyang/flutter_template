@@ -5,6 +5,7 @@
  */
 
 import 'package:flutter_template/core/index.dart';
+import 'package:flutter_template/routing/index.dart';
 import 'package:flutter_template/shared/index.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -24,21 +25,21 @@ class AsyncModelMenuNotifier extends _$AsyncModelMenuNotifier {
         label: "聊天",
         icon: Icons.chat_bubble_outline,
         iconColor: colors.orange.withValues(alpha: 0.8),
-        route: Routes.test,
+        route: RoutePath.test,
         isHideLabel: true,
       ),
       MenuEntity(
         label: "开发者",
         icon: Icons.terminal_outlined,
         iconColor: colors.green.withValues(alpha: 0.8),
-        route: Routes.test,
+        route: RoutePath.test,
         isHideLabel: true,
       ),
       MenuEntity(
         label: "模型",
         icon: Icons.folder_copy_outlined,
         iconColor: colors.geekBlue.withValues(alpha: 0.8),
-        route: Routes.model,
+        route: RoutePath.model,
         isHideLabel: true,
       ),
 

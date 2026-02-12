@@ -4,10 +4,11 @@
  * @Date: 2025-08-26 14:49:35
  */
 import 'package:flutter_template/core/index.dart';
-import 'package:flutter_template/views/pages/desktop/widgets/index.dart';
+import 'package:flutter_template/routing/index.dart';
+import 'package:flutter_template/shared/index.dart';
 
-class TestScreen extends CustomStatelessWidget {
-  const TestScreen({super.key});
+class DesktopScreen extends CustomStatelessWidget {
+  const DesktopScreen({super.key});
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
@@ -23,7 +24,7 @@ class TestScreen extends CustomStatelessWidget {
             children: [
               TextButton(
                 onPressed: () {
-                  NavigatorUtilsCore.go(Routes.login);
+                  NavigatorUtilsCore.go(RoutePath.login);
                 },
                 child: Text("打开登录页", style: TextStyle(color: primary)),
               ),

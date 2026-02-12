@@ -1,4 +1,5 @@
 import 'package:flutter_template/core/index.dart';
+import 'package:flutter_template/routing/index.dart';
 import 'package:flutter_template/shared/index.dart';
 
 /// 入口层
@@ -95,7 +96,7 @@ class _DesktopScreenView
               SizedBox(height: 10),
               TextButton(
                 onPressed: () {
-                  NavigatorUtilsCore.go(Routes.login);
+                  NavigatorUtilsCore.go(RoutePath.login);
                 },
                 child: Text(
                   "打开${ref.lang.loginPage}",

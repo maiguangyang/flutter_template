@@ -5,20 +5,17 @@
  */
 
 import 'package:flutter_template/core/index.dart';
+import 'package:flutter_template/features/index.dart';
+import 'package:flutter_template/routing/index.dart';
 
-import 'screens/home_screen/home_screen.dart';
-import 'screens/login_screen/login_screen.dart';
-import 'screens/model_screen/model_screen.dart';
-import 'screens/test_screen/test_screen.dart';
-
-/// Desktop 路由 Provider
-final desktopRoutesProvider = Provider<List<FlutterRouter>>((ref) {
+/// routes 路由 Provider
+final routesProvider = Provider<List<FlutterRouter>>((ref) {
   final lang = ref.watch(langProvider);
 
   return [
     FlutterRouter(
-      name: Routes.home.name,
-      path: Routes.home.path,
+      name: RoutePath.home.name,
+      path: RoutePath.home.path,
       title: lang.homePage,
       width: 720,
       height: 480,
@@ -27,26 +24,26 @@ final desktopRoutesProvider = Provider<List<FlutterRouter>>((ref) {
       maximize: false,
       minimize: false,
       resizable: false,
-      builder: (context, state) => const HomeScreen(),
+      builder: (context, state) => HomeScreen(),
     ),
     FlutterRouter(
-      name: Routes.login.name,
-      path: Routes.login.path,
+      name: RoutePath.login.name,
+      path: RoutePath.login.path,
       title: lang.loginPage,
       hideTitleBar: true,
-      builder: (context, state) => const LoginScreen(),
+      builder: (context, state) => LoginScreen(),
     ),
     FlutterRouter(
-      name: Routes.test.name,
-      path: Routes.test.path,
+      name: RoutePath.test.name,
+      path: RoutePath.test.path,
       title: lang.testPage,
       hideTitleBar: true,
-      builder: (context, state) => const TestScreen(),
+      builder: (context, state) => TestScreen(),
     ),
 
     FlutterRouter(
-      name: Routes.model.name,
-      path: Routes.model.path,
+      name: RoutePath.model.name,
+      path: RoutePath.model.path,
       title: lang.modelPage,
       width: 1560,
       height: 880,

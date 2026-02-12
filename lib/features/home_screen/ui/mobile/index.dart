@@ -1,4 +1,5 @@
 import 'package:flutter_template/core/index.dart';
+import 'package:flutter_template/routing/index.dart';
 import 'package:flutter_template/shared/index.dart' hide AppHeaderBar;
 
 import 'widgets/app_header_bar.dart';
@@ -84,7 +85,7 @@ class _MobileScreenView
             SizedBox(height: 10),
             TextButton(
               onPressed: () {
-                NavigatorUtilsCore.go(Routes.login);
+                NavigatorUtilsCore.go(RoutePath.login);
               },
               child: Text(
                 "打开${ref.lang.loginPage}",

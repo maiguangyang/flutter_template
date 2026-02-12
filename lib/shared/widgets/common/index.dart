@@ -7,3 +7,4 @@ export 'ox_button/index.dart';
 export 'ox_draggable/ox_draggable.dart';
 export 'ox_pagination/ox_pagination.dart';
 export 'ox_table/ox_table.dart';
+export 'ox_table/table_column.dart';

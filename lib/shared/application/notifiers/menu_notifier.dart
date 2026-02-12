@@ -5,6 +5,7 @@
  */
 
 import 'package:flutter_template/core/index.dart';
+import 'package:flutter_template/routing/index.dart';
 import 'package:flutter_template/shared/index.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -18,16 +19,16 @@ class AsyncMenuNotifier extends _$AsyncMenuNotifier {
       /// ***********
       ///  destination
       /// ***********
-      MenuEntity(label: "首页", icon: Icons.home, route: Routes.home),
+      MenuEntity(label: "首页", icon: Icons.home, route: RoutePath.home),
       MenuEntity(
         label: "会议",
         icon: Icons.video_camera_front,
-        route: Routes.test,
+        route: RoutePath.test,
       ),
       MenuEntity(
         label: "IM",
         icon: Icons.chat,
-        route: Routes.login,
+        route: RoutePath.login,
         badgeCount: 10,
       ),
 
@@ -37,43 +38,43 @@ class AsyncMenuNotifier extends _$AsyncMenuNotifier {
       MenuEntity(
         label: "收件箱",
         icon: Icons.email_outlined,
-        route: Routes.login,
+        route: RoutePath.login,
         type: MenuTypeEnumCore.controller,
         showBadge: true,
       ),
       MenuEntity(
         label: "文件管理",
         icon: Icons.folder_outlined,
-        route: Routes.login,
+        route: RoutePath.login,
         type: MenuTypeEnumCore.controller,
       ),
       MenuEntity(
         label: "备忘录",
         icon: Icons.note_alt_outlined,
-        route: Routes.login,
+        route: RoutePath.login,
         type: MenuTypeEnumCore.controller,
         showBadge: true,
       ),
       MenuEntity(
         label: "Gitlab",
-        route: Routes.login,
+        route: RoutePath.login,
         type: MenuTypeEnumCore.controller,
       ),
       MenuEntity(
         label: "PMX",
-        route: Routes.login,
+        route: RoutePath.login,
         type: MenuTypeEnumCore.controller,
       ),
       MenuEntity(
         label: "PlanBan",
         icon: Icons.view_kanban_outlined,
-        route: Routes.login,
+        route: RoutePath.login,
         type: MenuTypeEnumCore.controller,
       ),
       MenuEntity(
         label: "模型管理",
         icon: Icons.file_download_outlined,
-        route: Routes.model,
+        route: RoutePath.model,
         type: MenuTypeEnumCore.controller,
       ),
 
@@ -95,7 +96,7 @@ class AsyncMenuNotifier extends _$AsyncMenuNotifier {
       MenuEntity(
         label: "设置",
         icon: Icons.settings,
-        route: Routes.login,
+        route: RoutePath.login,
         type: MenuTypeEnumCore.trailing,
         isHideLabel: true,
       ),

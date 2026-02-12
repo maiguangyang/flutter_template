@@ -4,6 +4,7 @@
  * @Date: 2025-07-08 21:33:12
  */
 import 'package:flutter_template/core/index.dart';
+import 'package:flutter_template/routing/index.dart';
 import 'package:flutter_template/shared/index.dart';
 import 'package:go_router/go_router.dart';
 
@@ -32,7 +33,7 @@ String? authRedirectMiddleware(BuildContext context, GoRouterState state) {
   final currentRouteName = state.topRoute?.name;
 
   /// 是否在登录页
-  final isLoginPage = currentRouteName == Routes.login.name;
+  final isLoginPage = currentRouteName == RoutePath.login.name;
 
   /// 使用缓存的 RouteStrategy 而不是创建新实例
   final routes = cachedRouteStrategy.allRoutes;
@@ -49,12 +50,12 @@ String? authRedirectMiddleware(BuildContext context, GoRouterState state) {
 
   /// 已登录但在登录页 -> 重定向到首页
   if (isLoggedIn && isLoginPage) {
-    return '/${Routes.home.name}';
+    return '/${RoutePath.home.name}';
   }
 
   /// 未登录且访问受保护路径 -> 重定向到登录页
   if (!isLoggedIn && currentRoute?.auth == true) {
-    return Routes.login.path;
+    return RoutePath.login.path;
   }
 
   /// 其他情况不拦截

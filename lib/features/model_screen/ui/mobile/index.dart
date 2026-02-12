@@ -4,9 +4,10 @@
  * @Date: 2025-08-26 14:49:35
  */
 import 'package:flutter_template/core/index.dart';
+import 'package:flutter_template/routing/index.dart';
 
-class TestScreen extends CustomStatelessWidget {
-  const TestScreen({super.key});
+class MobileScreen extends CustomStatelessWidget {
+  const MobileScreen({super.key});
 
   @override
   Widget buildView(BuildContext context, WidgetRef ref) {
@@ -14,7 +15,7 @@ class TestScreen extends CustomStatelessWidget {
     final primary = colorScheme.primary;
 
     return Scaffold(
-      appBar: AppBar(title: Text(ref.lang.testPage)),
+      appBar: AppBar(title: Text(ref.lang.loginPage)),
       body: Container(
         alignment: AlignmentGeometry.center,
         child: Column(
@@ -22,9 +23,9 @@ class TestScreen extends CustomStatelessWidget {
           children: [
             TextButton(
               onPressed: () {
-                NavigatorUtilsCore.go(Routes.login);
+                NavigatorUtilsCore.go(RoutePath.test);
               },
-              child: Text("打开登录页", style: TextStyle(color: primary)),
+              child: Text("打开测试页", style: TextStyle(color: primary)),
             ),
           ],
         ),

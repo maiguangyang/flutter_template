@@ -5,6 +5,7 @@
  */
 
 import 'package:flutter_template/core/index.dart';
+import 'package:flutter_template/routing/index.dart';
 
 class BackButtonWidget extends CustomStatelessWidget {
   const BackButtonWidget({
@@ -81,7 +82,7 @@ class BackButtonWidget extends CustomStatelessWidget {
       return _buildIconButton(
         icon: Icons.home,
         onPressed: () {
-          NavigatorUtilsCore.replace(Routes.home);
+          NavigatorUtilsCore.replace(RoutePath.home);
         },
       );
     }

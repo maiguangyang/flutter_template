@@ -4,6 +4,7 @@
  * @Date: 2025-08-26 14:49:35
  */
 import 'package:flutter_template/core/index.dart';
+import 'package:flutter_template/routing/index.dart';
 import 'package:flutter_template/shared/widgets/index.dart';
 
 class DesktopScreen extends CustomStatelessWidget {
@@ -23,7 +24,7 @@ class DesktopScreen extends CustomStatelessWidget {
             children: [
               TextButton(
                 onPressed: () {
-                  NavigatorUtilsCore.go(Routes.test);
+                  NavigatorUtilsCore.go(RoutePath.test);
                 },
                 child: Text("打开测试页", style: TextStyle(color: primary)),
               ),
