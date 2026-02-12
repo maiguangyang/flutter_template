@@ -1,35 +1,66 @@
-# WhatsAi 项目宪法 (Project Constitution)
+# 项目宪法 (Project Constitution)
 
-> **指令说明**：本文件是 WhatsAi 项目的最高构建准则。作为 AI 助手，在生成代码、重构或解释逻辑时，**必须**同时遵守架构分层原则、Snippet 模板结构以及详细的代码规范。
+> **指令说明**：本文件是项目的最高构建准则。作为 AI 助手，在生成代码、重构或解释逻辑时，**必须**同时遵守架构分层原则、Snippet 模板结构以及详细的代码规范。
 
 ## 0. 全局上下文 (Context & Imports)
 
 在生成代码前，请默认假设项目具有以下基础路径别名和配置：
 
-- **基础框架类** (`CustomStatefulWidget` 等): `import 'package:whats_ai/abstracts/index.dart';`
-- **通用库**: `import 'package:whats_ai/common/index.dart';` (含 `BaseResponse`, `ApiEndpoints`)
-- **数据层**: `import 'package:whats_ai/views/data/index.dart';`
-- **主题与多语言**: `import 'package:whats_ai/core/theme/theme_provider.dart';` 及 `import 'package:whats_ai/common/l10n/l10n_extension.dart';`
+- **Core 层**（基础设施）: `import 'package:flutter_template/core/index.dart';`
+  - 含 `CustomStatefulWidget`, `CustomStatelessWidget`, `themeProvider`, `langProvider`, `BaseResponse`
+- **Shared 层**（共享业务）: `import 'package:flutter_template/shared/index.dart';`
+  - 含 `application/`（全局 Notifier/Provider）、`data/`（Model/Repository/ApiService）、`widgets/`、`constants/`
+- **Routing**: `import 'package:flutter_template/routing/index.dart';`
+  - 含 `RoutePath`, `goRouterProvider`, `NavigatorUtilsCore`
+- **Features**: `import 'package:flutter_template/features/index.dart';`
+  - 各 Feature 的 UI 入口
+
+> **注意**：`flutter_template` 是模板包名，实际项目中会替换为具体包名（如 `whats_ai`、`my_app`）。
 
 ---
 
 ## I. 核心架构原则 (Layered Architecture)
 
-### 1. 数据流向
+### 1. 三层架构
+
+```mermaid
+graph TD
+    Core[Core 层<br/>基础设施] --> Shared[Shared 层<br/>跨 Feature 共享]
+    Core --> Features[Features 层<br/>独立功能模块]
+    Shared --> Features
+```
+
+| 层级 | 目录 | 职责 |
+|------|------|------|
+| **Core** | `lib/core/` | 基础设施，不含业务逻辑 |
+| **Shared** | `lib/shared/` | 跨 Feature 共享的业务逻辑和数据 |
+| **Features** | `lib/features/` | 独立功能模块，按 Feature 隔离 |
+
+### 2. 数据流向
 严格执行单向依赖，禁止跨层反向调用：
 
 ```mermaid
 graph TD
-    UI[UI层 (views/pages)] -->|监听状态/触发意图| Notifier[业务逻辑层 (Application)]
-    Notifier -->|调用| Repo[仓储层 (Data/Repository)]
-    Repo -->|调用| Service[服务层 (API/DB/Storage)]
+    UI["UI层 (features/xxx_screen/ui)"] -->|监听状态/触发意图| Notifier["业务逻辑层 (application/notifiers)"]
+    Notifier -->|调用| Repo["仓储层 (data/repositories)"]
+    Repo -->|调用| Service["服务层 (data/services)"]
 ```
 
-### 2. 职责边界
+### 3. 职责边界
 - **UI 层**: 严禁包含业务逻辑。只负责 `build`，通过 `ref.read(provider.notifier).method()` 触发逻辑。
 - **Notifier**: 纯状态管理。**UI 逻辑（如 SnackBar, Dialog）** 需通过状态回调或副作用处理，不能直接写在 Notifier 中。
 - **Repository**: 数据聚合者。负责判断 `useMock`，负责 `DTO -> Entity` 转换，负责调用 API。
 - **Service**: 纯粹的数据通道（Dio/Hive）。
+
+### 4. Shared 与 Feature 的边界
+
+| 维度 | `shared/` | `features/xxx_screen/` |
+|------|-----------|------------------------|
+| **作用域** | 全局，跨 Feature 共享 | 仅限当前 Feature 内部使用 |
+| **application/notifiers** | 全局状态（Auth、User、Menu 等） | 页面专属状态（如 OrderFormNotifier） |
+| **data/models** | 通用模型（UserEntity、BaseEntity） | 页面独有模型（如 OrderDetailEntity） |
+| **data/repositories** | 通用仓库（AuthRepository） | 页面独有仓库（如 OrderRepository） |
+| **判断标准** | ≥ 2 个 Feature 会用到 → 放 shared | 只有当前 Feature 用 → 放 feature |
 
 ---
 
@@ -53,7 +84,7 @@ class MyWidget extends CustomStatelessWidget {
 ```
 
 ### 模式 B：页面/复杂组件 (Tri-Layer Architecture)
-*   **适用场景**: 所有路由页面 (`screens/`)、含生命周期 (`initState/dispose`) 的组件。
+*   **适用场景**: 所有路由页面、含生命周期 (`initState/dispose`) 的组件。
 *   **对应 Snippet**: `sfw` (CustomStatefulWidget)
 *   **结构**: **三层分离结构** (Entry -> Logic -> View)
 
@@ -91,25 +122,65 @@ class _MyScreenView extends CustomStatefulView<MyScreen, _MyScreenState> {
 ### 1. 目录结构树
 ```text
 lib/
-├── views/
-│   ├── pages/
-│   │   ├── mobile/          # 移动端页面 {platform}
-│   │   │   ├── routes.dart
-│   │   │   └── screens/
-│   │   │       └── home_screen/         # 页面文件夹 (snake_case)
-│   │   │           ├── home_screen.dart # 入口文件 (使用 sfw)
-│   │   │           └── widgets/         # 页面独有组件 (使用 sw)
-│   │   │               └── home_header_widget.dart
-│   │   └── desktop/
-│   ├── widgets/             # 全局通用组件 (Ox前缀)
-│   ├── application/         # Notifiers & Providers
-│   └── data/                # Repository, APIs, DTOs
+├── core/                         # 基础设施层
+│   ├── abstracts/                # 组件抽象基类
+│   ├── config/                   # 项目配置（多客户端白牌）
+│   ├── enums/                    # 全局枚举
+│   ├── errors/                   # 异常类和错误映射
+│   ├── extensions/               # Dart 扩展方法
+│   ├── l10n/                     # 国际化
+│   ├── middleware/               # 路由中间件（权限控制）
+│   ├── mixins/                   # 通用 Mixin
+│   ├── network/                  # 网络层（Dio + 拦截器）
+│   ├── providers/                # 全局 Provider
+│   ├── theme/                    # 主题系统
+│   └── utils/                    # 工具类
+├── routing/                      # 路由配置
+│   ├── route_path.dart           # 路由路径常量
+│   ├── routes.dart               # FlutterRouter 路由列表
+│   ├── router.dart               # GoRouter 配置
+│   └── navigator_keys.dart       # NavigatorKey
+├── shared/                       # 共享层（跨 Feature）
+│   ├── application/              # 全局业务逻辑
+│   │   ├── notifiers/            # 全局状态（Auth、User、Menu 等）
+│   │   └── providers/            # 全局依赖注入
+│   ├── data/                     # 共享数据层
+│   │   ├── models/               # 通用数据模型
+│   │   ├── repositories/         # 通用仓库
+│   │   ├── services/api/         # API 服务
+│   │   └── mock/                 # Mock 数据
+│   ├── constants/                # 全局常量
+│   └── widgets/                  # 共享组件
+│       ├── common/               # 通用组件（Ox 前缀）
+│       ├── desktop/              # 桌面端组件
+│       └── mobile/               # 移动端组件
+├── features/                     # Feature 模块
+│   └── {name}_screen/            # 每个 Feature 结构一致
+│       ├── application/          # Feature 专属逻辑
+│       │   ├── notifiers/
+│       │   └── providers/
+│       ├── data/                 # Feature 专属数据
+│       │   ├── models/
+│       │   ├── repositories/
+│       │   └── services/
+│       ├── ui/                   # UI 层
+│       │   ├── desktop/index.dart
+│       │   ├── desktop/widgets/  # 桌面端子组件
+│       │   ├── mobile/index.dart
+│       │   ├── mobile/widgets/   # 移动端子组件
+│       │   └── index.dart        # 平台适配入口
+│       └── README.md             # Feature 说明文档
+├── app.dart                      # App 根组件
+├── bootstrap.dart                # 启动初始化
+└── main.dart                     # 入口文件
 ```
 
 ### 2. 命名规则
-- **页面入口文件**: `{name}_screen.dart` / 类名 `{Name}Screen`
+- **Feature 目录**: `{name}_screen/`（使用 `make create name=xxx` 脚手架创建）
+- **页面入口文件**: `ui/index.dart`（平台适配入口）、`ui/desktop/index.dart`、`ui/mobile/index.dart`
 - **子组件文件**: `{name}_widget.dart` / 类名 `{Name}Widget`
 - **全局组件**: `ox_{name}.dart` / 类名 `Ox{Name}`
+- **Feature README**: 每个 Feature 必须包含 `README.md` 说明文档
 
 ---
 
@@ -126,7 +197,8 @@ lib/
 ### 2. Repository 规范 (`rep`)
 - **Mock 控制**: 必须包含 `final bool useMock` 字段。
 - **数据转换**: 必须在 Repository 层完成 `DTO` (网络层对象) 到 `Entity` (业务层对象) 的转换。
-- **返回类型**: `Future<BaseResponse<List<Entity>>?>`。
+- **返回类型**: `Future<BaseResponse<List<Entity>>?>`.
+- **存放目录**: 共享放 `shared/data/repositories/`，Feature 独有放 `features/{name}_screen/data/repositories/`
 
 ### 3. Provider 规范 (`prd`)
 - **缓存策略**: 必须使用 `CacheStrategy` 包装 Entity。
@@ -147,7 +219,7 @@ lib/
 **基本用法**:
 
 ```dart
-import 'package:whats_ai/common/index.dart';
+import 'package:flutter_template/shared/index.dart';
 
 // 创建缓存（自动注册到 CacheRegistry）
 final userCache = CacheStrategy<UserEntity>(
@@ -203,6 +275,7 @@ await CacheRegistry.clearAll();
 - ✅ **ID 类型**: 超过 15 位的 ID 或所有业务 ID 必须使用 `String` 类型。
 - ✅ **注释**: 核心类和方法必须有文档注释。
 - ✅ **Import**: 禁止使用相对路径导入上级目录。**同级目录下的文件引用必须使用相对路径**，禁止使用 `package:` 全路径导入同级文件。
+- ✅ **Feature 文档**: 每个 Feature 目录必须包含 `README.md`，说明功能描述、目录结构、路由信息。
 
 ---
 
@@ -219,7 +292,13 @@ await CacheRegistry.clearAll();
 
 ## VII. 开发工作流 (Development Workflow)
 
-### 1. VSCode Snippets 映射
+### 1. 新建 Feature
+```bash
+make create name=order    # 自动生成 features/order_screen/ 完整目录 + README.md
+```
+然后在 `lib/routing/route_path.dart` 定义路径，在 `lib/routing/routes.dart` 注册路由。
+
+### 2. VSCode Snippets 映射
 AI 应根据指令意图选择以下模板：
 - `sw` : 无状态原子组件 (Stateless)
 - `sfw` : **所有页面 (Screen)** 及复杂组件 (Stateful - 3层分离)
@@ -228,19 +307,29 @@ AI 应根据指令意图选择以下模板：
 - `rep` : 仓储层 (含 Mock/DTO转换)
 - `prd` : 依赖注入 (含 CacheStrategy)
 
-### 2. 常用 Make 命令
-```bash
-make l10n    # 生成多语言
-make code    # 运行 build_runner 生成 .g.dart / .freezed.dart
-make check_tests # 检查覆盖率
-```
+### 3. 常用 Make 命令
+
+| 命令 | 说明 |
+|------|------|
+| `make install` | 安装依赖 |
+| `make create name=xxx` | 创建 Feature 模块脚手架 |
+| `make code` | 代码生成（Entity `.g.dart`） |
+| `make watch` | 监听文件变化自动生成代码 |
+| `make l10n` | 生成多语言文件 |
+| `make lang` | 自动翻译并生成多语言 |
+| `make icon` | 生成字体图标文件 |
+| `make config name=xxx` | 切换白牌客户端配置 |
+| `make start` | Web 端开发启动 |
+| `make test` | 运行单元测试 + 集成测试 |
+| `make test_all` | 运行所有测试 |
+| `make check_tests` | 检查缺少测试的文件 |
 
 ---
 
 ## VIII. 治理 (Governance)
 
 1. **Constitutional Primacy**: 此文档优于任何口头约定。
-2. **Review Gate**: 不符合本规范的代码（如直接在 UI 写逻辑、未用 Freezed、页面未使用三层分离）将被拒绝。
+2. **Review Gate**: 不符合本规范的代码（如直接在 UI 写逻辑、页面未使用三层分离）将被拒绝。
 
 ## IX. 计划合规性检查 (Plan Compliance Checklist)
 
@@ -248,11 +337,13 @@ make check_tests # 检查覆盖率
 
 | 维度 | 检查项 (Checkpoints) | Pass? |
 |------|----------------------|-------|
+| **Architecture** | 代码是否放在正确的层级（shared vs feature）？ | [ ] |
 | **Interfaces** | Repository 是否返回 `Future<BaseResponse<T>>`？是否包含 `useMock`？ | [ ] |
 | **Providers** | Provider 是否使用了 `CacheStrategy` 包装 Entity？ | [ ] |
 | **Snippets** | 是否为每个新文件指定了正确的 Snippet (`sw/sfw/ntf/rep/prd`)？ | [ ] |
 | **Data Flow** | 是否明确 Repository 负责 `DTO -> Entity` 转换？ | [ ] |
 | **UI Rules** | 是否明确禁止硬编码颜色/尺寸，强制使用 `ref.theme`？ | [ ] |
+| **Naming** | Feature 目录是否为 `{name}_screen/`？是否包含 `README.md`？ | [ ] |
 | **Testing** | 计划中是否明确包含 Entity(100%) 和 Repository(80%) 测试？ | [ ] |
 
-**Version**: 1.0.1 | **Ratified**: 2026-01-22 | **Last Amended**: 2026-01-22
+**Version**: 2.0.0 | **Ratified**: 2026-01-22 | **Last Amended**: 2026-02-12
