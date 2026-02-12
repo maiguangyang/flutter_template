@@ -65,10 +65,6 @@ class _MyAppView extends CustomStatefulView<MyApp, _MyAppState> {
     final goRouter = ref.watch(goRouterProvider);
     final routes = ref.watch(routesProvider);
 
-    print("goRouter $goRouter");
-
-    // final appRoutes = ref.watch(flutterRouterListProvider);
-
     return MaterialApp.router(
       title: Config.project.appName,
       routerConfig: goRouter,

@@ -37,7 +37,7 @@ class _MenuItemWidgetState extends CustomState<MenuItemWidget> {
   }
 
   void handleHoverToggle(bool value) {
-    if (value != isHovered) {
+    if (value != isHovered && mounted) {
       setState(() {
         isHovered = value;
       });
