@@ -7,3 +7,4 @@ export 'home_screen/ui/index.dart';
 export 'login_screen/ui/index.dart';
 export 'model_screen/ui/index.dart';
 export 'test_screen/ui/index.dart';
+export 'order_screen/ui/index.dart';

@@ -102,6 +102,7 @@ npx @maiguangyang/oxygen_cli create myApp
 | `make l10n` | 生成多语言文件 |
 | `make lang` | 自动翻译 `zh_CN.json` 并生成多语言 |
 | `make icon` | 生成字体图标文件 |
+| `make create name=xxx` | 创建 Feature 模块脚手架 |
 | `make config name=xxx` | 切换白牌客户端配置 |
 | `make start` | Web 端开发启动（Chrome，端口 1988） |
 
@@ -130,30 +131,24 @@ npx @maiguangyang/oxygen_cli create myApp
 
 ### 新建页面（三步）
 
-1. **定义路径** — `lib/routing/route_path.dart`
+1. **创建 Feature 脚手架**
+```bash
+make create name=myPage
+```
+自动生成 `lib/features/my_page_screen/` 完整目录结构（application/data/ui）并追加 export。
+
+2. **定义路径** — `lib/routing/route_path.dart`
 ```dart
 static Route myPage = const Route(name: 'myPage', path: '/my-page');
 ```
 
-2. **注册路由** — `lib/routing/routes.dart`
+3. **注册路由** — `lib/routing/routes.dart`
 ```dart
 FlutterRouter(
   name: RoutePath.myPage.name,
   path: RoutePath.myPage.path,
   builder: (context, state) => const MyPageScreen(),
 ),
-```
-
-3. **创建 Feature** — `lib/features/my_page_screen/`
-```
-my_page_screen/
-├── application/     # 业务逻辑（按需）
-│   ├── notifiers/
-│   └── providers/
-├── data/            # 数据层（按需）
-└── ui/
-    ├── desktop/index.dart
-    └── mobile/index.dart
 ```
 
 ### 主题使用

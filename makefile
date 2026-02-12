@@ -130,6 +130,9 @@ icon:
 nginx:
 	dart ./scripts/generate_vhosts.dart path=lib/config/nginx_config.json
 
+create:
+	dart ./scripts/create_feature.dart name="$(name)"
+
 start:
 	@$(FLUTTER) run -d chrome --web-renderer canvaskit --web-port=1988
 
