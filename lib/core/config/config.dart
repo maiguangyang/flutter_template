@@ -31,10 +31,10 @@ class Config {
     "version": "0.0.1",
     "password": "123456",
     "defaultLanguage": "en_US",
-    "primaryColor": "shadBlue", // 全部主题色都在 docs/colors.md
+    "primaryColor": "shadBlue",
     "env": "dev",
-    "namespace": "com.proton.myApp.dev",
-  };
+    "namespace": "com.proton.myApp.dev"
+};
 
   /// project
   static ClientItem get project => ClientItem.fromJson(projectJson);

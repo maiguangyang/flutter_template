@@ -6,14 +6,15 @@
 import 'package:flutter_oxygen/scripts/builds/index.dart';
 import 'package:flutter_oxygen/scripts/params.dart';
 import 'package:flutter_oxygen/scripts/utils.dart';
-import 'package:flutter_template/core/index.dart';
+import 'package:flutter_template/core/config/android_config.dart';
+import 'package:flutter_template/core/config/config.dart';
 import 'package:recase/recase.dart';
 
 /// pubspec.yaml
 const String pubspecPath = "pubspec.yaml";
 
 /// 项目配置文件路径
-const String configPath = "lib/config/config.dart";
+const String configPath = "lib/core/config/config.dart";
 
 /// android template
 const String androidTemplate = "scripts/templates/android/build.gradle.kts";
