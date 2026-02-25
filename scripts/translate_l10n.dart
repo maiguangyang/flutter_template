@@ -255,9 +255,14 @@ Map<String, String> generateSourceHashes(Map<String, dynamic> source) {
 /// 调用 AI API 进行翻译
 Future<String> callAI(String text, String targetLang) async {
   final chineseName = languageMap[targetLang] ?? targetLang;
+  // 仅当源文本包含占位符时，追加保留占位符的提示
+  final hasPlaceholders = RegExp(r'\{\w+\}').hasMatch(text);
+  final placeholderHint = hasPlaceholders
+      ? '重要：花括号包裹的变量名是占位符，必须原样保留，不要翻译也不要修改。'
+      : '';
   final systemPrompt =
       '将以下文本翻译为$chineseName，注意只需要输出翻译后的结果，不要额外解释。'
-      '重要：文本中形如 {xxx} 的占位符必须原样保留，不要翻译、不要修改花括号。';
+      '$placeholderHint';
 
   final client = HttpClient();
   try {
