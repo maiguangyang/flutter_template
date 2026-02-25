@@ -9,28 +9,29 @@ class AppLocalizationsMs extends AppLocalizations {
   AppLocalizationsMs([String locale = 'ms']) : super(locale);
 
   @override
-  String get sendTimeout => 'Sambungan melebihi tempoh masa yang ditetapkan.';
+  String get sendTimeout =>
+      'Percubaan untuk menyambung gagal kerana masa yang terlalu lama.';
 
   @override
-  String get authException => 'Tidak diberi kuasa.';
+  String get authException => 'Tidak diluluskan';
 
   @override
-  String get serverException => 'Ralat pelayan.';
+  String get serverException => 'Ralat pada server';
 
   @override
-  String get networkException => 'Ralat rangkaian.';
+  String get networkException => 'Kegagalan rangkaian';
 
   @override
-  String get appException => 'Ralat yang tidak diketahui';
+  String get appException => 'Kegagalan yang tidak diketahui';
 
   @override
-  String get loading => 'Sedang dimuat turun.';
+  String get loading => 'Sedang dimuat naik';
 
   @override
-  String get retry => 'Cuba lagi.';
+  String get retry => 'Ulang cara tersebut sekali lagi';
 
   @override
-  String get page => 'halaman';
+  String get page => 'Halaman';
 
   @override
   String get model => 'model';
@@ -42,28 +43,28 @@ class AppLocalizationsMs extends AppLocalizations {
   String get type => 'Jenis';
 
   @override
-  String get status => 'keadaan';
+  String get status => 'Keadaan/Status';
 
   @override
-  String get action => 'operasi';
+  String get action => 'Pengendalian';
 
   @override
   String get size => 'Saiz';
 
   @override
-  String get paramsSize => 'bilangan parameter';
+  String get paramsSize => 'Jumlah parameter';
 
   @override
-  String get updateTime => 'Tarikh pengubahsuaian';
+  String get updateTime => 'Tarikh perubahan';
 
   @override
   String get homePage => 'Halaman Utama';
 
   @override
-  String get modelPage => 'Pengurusan Model';
+  String get modelPage => 'Pengurusan model';
 
   @override
-  String get loginPage => 'Halaman log masuk';
+  String get loginPage => 'Halaman Log In';
 
   @override
   String get testPage => 'Halaman ujian';

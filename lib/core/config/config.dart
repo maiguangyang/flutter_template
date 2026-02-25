@@ -33,8 +33,8 @@ class Config {
     "defaultLanguage": "en_US",
     "primaryColor": "shadBlue",
     "env": "dev",
-    "namespace": "com.proton.myApp.dev"
-};
+    "namespace": "com.proton.myApp.dev",
+  };
 
   /// project
   static ClientItem get project => ClientItem.fromJson(projectJson);
@@ -43,4 +43,13 @@ class Config {
   static void setProjectName(String name) {
     projectName = name;
   }
+
+  /// AI 接口地址 \
+  static String aiBaseUrl = "http://192.167.167.129:1234/v1";
+
+  /// AI API Key
+  static String apiKey = "sk-1234567890";
+
+  /// AI 翻译模型
+  static String aiMtModel = "hy-mt1.5-1.8b";
 }

@@ -1,7 +1,7 @@
-projectName = $(shell grep '"projectName"' lib/config/config.dart | awk -F'"' '{print $$4}')
-macAppName = $(shell grep '"appName"' lib/config/config.dart | awk -F'"' '{print $$4}')
-defaultVersion = $(shell grep '"version"' lib/config/config.dart | awk -F'"' '{print $$4}')
-env = $(shell grep '"env"' lib/config/config.dart | awk -F'"' '{print $$4}')
+projectName = $(shell grep '"projectName"' lib/core/config/config.dart | awk -F'"' '{print $$4}')
+macAppName = $(shell grep '"appName"' lib/core/config/config.dart | awk -F'"' '{print $$4}')
+defaultVersion = $(shell grep '"version"' lib/core/config/config.dart | awk -F'"' '{print $$4}')
+env = $(shell grep '"env"' lib/core/config/config.dart | awk -F'"' '{print $$4}')
 
 fixed_timestamp := $(shell date +"%m%d%H")
 timestamp = $(fixed_timestamp)
@@ -128,7 +128,7 @@ icon:
 	dart scripts/generate_icon.dart
 
 nginx:
-	dart ./scripts/generate_vhosts.dart path=lib/config/nginx_config.json
+	dart ./scripts/generate_vhosts.dart path=lib/core/config/nginx_config.json
 
 create:
 	dart ./scripts/create_feature.dart name="$(name)"

@@ -9,7 +9,7 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
-  String get sendTimeout => '接続タイムアウト';
+  String get sendTimeout => '接続時間切れ';
 
   @override
   String get authException => '無許可';
@@ -24,7 +24,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get appException => '不明なエラー';
 
   @override
-  String get loading => 'ロード中です';
+  String get loading => '読み込み中';
 
   @override
   String get retry => '再試行';
@@ -51,10 +51,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get size => 'サイズ';
 
   @override
-  String get paramsSize => 'パラメータの数';
+  String get paramsSize => 'パラメータ数';
 
   @override
-  String get updateTime => '変更日';
+  String get updateTime => '変更日付';
 
   @override
   String get homePage => 'ホームページ';

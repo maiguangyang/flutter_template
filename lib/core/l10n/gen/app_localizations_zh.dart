@@ -74,28 +74,28 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   AppLocalizationsZhTw() : super('zh_TW');
 
   @override
-  String get sendTimeout => '連線超時';
+  String get sendTimeout => '连接超时';
 
   @override
-  String get authException => '未獲授權';
+  String get authException => '未授权';
 
   @override
-  String get serverException => '伺服器出現錯誤';
+  String get serverException => '服务器错误';
 
   @override
-  String get networkException => '網路故障';
+  String get networkException => '网络错误';
 
   @override
-  String get appException => '未知錯誤';
+  String get appException => '未知错误';
 
   @override
-  String get loading => '正在載入中…';
+  String get loading => '載入中';
 
   @override
-  String get retry => '重新試試';
+  String get retry => '重試';
 
   @override
-  String get page => '頁數';
+  String get page => '頁';
 
   @override
   String get model => '模型';
@@ -110,7 +110,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get status => '狀態';
 
   @override
-  String get action => '操作過程';
+  String get action => '操作';
 
   @override
   String get size => '尺寸';
@@ -128,8 +128,8 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get modelPage => '模型管理';
 
   @override
-  String get loginPage => '登錄頁面';
+  String get loginPage => '登录页';
 
   @override
-  String get testPage => '測試頁面';
+  String get testPage => '测试页';
 }

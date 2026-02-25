@@ -15,22 +15,22 @@ class AppLocalizationsFr extends AppLocalizations {
   String get authException => 'Non autorisé';
 
   @override
-  String get serverException => 'Erreur du serveur';
+  String get serverException => 'Erreur sur le serveur';
 
   @override
   String get networkException => 'Erreur de réseau';
 
   @override
-  String get appException => 'Erreur inconnue';
+  String get appException => 'Erreurs inconnues';
 
   @override
-  String get loading => 'En chargement…';
+  String get loading => 'En cours de chargement';
 
   @override
-  String get retry => 'Essayer à nouveau';
+  String get retry => 'Réessayer';
 
   @override
-  String get page => 'page';
+  String get page => 'Page';
 
   @override
   String get model => 'modèle';
@@ -42,28 +42,28 @@ class AppLocalizationsFr extends AppLocalizations {
   String get type => 'Type';
 
   @override
-  String get status => 'état';
+  String get status => 'État';
 
   @override
-  String get action => 'Manipulation';
+  String get action => 'Opération';
 
   @override
   String get size => 'Dimensions';
 
   @override
-  String get paramsSize => 'Nombre de paramètres';
+  String get paramsSize => 'Nombres de participants';
 
   @override
   String get updateTime => 'Date de modification';
 
   @override
-  String get homePage => 'Page d\'accueil';
+  String get homePage => 'Page d’accueil';
 
   @override
   String get modelPage => 'Gestion des modèles';
 
   @override
-  String get loginPage => 'Page d\'accueil';
+  String get loginPage => 'Page de connexion';
 
   @override
   String get testPage => 'Page de test';

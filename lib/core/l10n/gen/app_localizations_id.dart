@@ -9,59 +9,58 @@ class AppLocalizationsId extends AppLocalizations {
   AppLocalizationsId([String locale = 'id']) : super(locale);
 
   @override
-  String get sendTimeout =>
-      'Terkaitan gagal karena waktu tunggu melebihi batas.';
+  String get sendTimeout => 'Koneksi melewati batas waktu yang ditentukan';
 
   @override
-  String get authException => 'Tidak berwenang';
+  String get authException => 'Tidak diberi izin';
 
   @override
-  String get serverException => 'Kesalahan server';
+  String get serverException => 'Error pada server';
 
   @override
-  String get networkException => 'Kesalahan jaringan';
+  String get networkException => 'Error di jaringan';
 
   @override
   String get appException => 'Kesalahan yang tidak diketahui';
 
   @override
-  String get loading => 'Sedang diunduh…';
+  String get loading => 'Sedang dimuat';
 
   @override
-  String get retry => 'Coba lagi.';
+  String get retry => 'Coba lagi';
 
   @override
-  String get page => 'halaman';
+  String get page => 'Halaman';
 
   @override
   String get model => 'model';
 
   @override
-  String get modelName => 'Nama model';
+  String get modelName => 'Nama Model';
 
   @override
-  String get type => 'tipe';
+  String get type => 'Tipe';
 
   @override
-  String get status => 'keadaan';
+  String get status => 'Keadaan/Status';
 
   @override
-  String get action => 'operasikan';
+  String get action => 'Pengoperasian';
 
   @override
-  String get size => 'ukuran';
+  String get size => 'Ukuran';
 
   @override
-  String get paramsSize => 'jumlah parameter';
+  String get paramsSize => 'Jumlah parameter';
 
   @override
-  String get updateTime => 'Tanggal perubahan';
+  String get updateTime => 'Tanggal Perubahan';
 
   @override
   String get homePage => 'Halaman Utama';
 
   @override
-  String get modelPage => 'Manajemen Model';
+  String get modelPage => 'Manajemen model';
 
   @override
   String get loginPage => 'Halaman login';

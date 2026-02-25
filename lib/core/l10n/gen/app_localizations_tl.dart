@@ -9,62 +9,62 @@ class AppLocalizationsTl extends AppLocalizations {
   AppLocalizationsTl([String locale = 'tl']) : super(locale);
 
   @override
-  String get sendTimeout => 'Nagkaroon ng timeout sa pagkonekta';
+  String get sendTimeout => 'Timeout sa pagkokonekta';
 
   @override
-  String get authException => 'Hindi awtorisadong gumawa nito.';
+  String get authException => 'Hindi pinahihintulutan';
 
   @override
-  String get serverException => 'Mga error sa server';
+  String get serverException => 'Error sa server.';
 
   @override
-  String get networkException => 'Mga error sa network';
+  String get networkException => 'Maliit na problema sa network.';
 
   @override
-  String get appException => 'Di-kilalang error';
+  String get appException => 'Hindi kilalang mga error';
 
   @override
-  String get loading => 'Naglo-load…';
+  String get loading => 'Naglo-load pa ako ng datos.';
 
   @override
-  String get retry => 'Subukang muli';
+  String get retry => 'subukan muli';
 
   @override
   String get page => 'pahina';
 
   @override
-  String get model => 'Modelo';
+  String get model => 'model';
 
   @override
   String get modelName => 'Pangalan ng modelo';
 
   @override
-  String get type => 'uri';
+  String get type => 'Type';
 
   @override
   String get status => 'kalagayan';
 
   @override
-  String get action => 'pagpapatakbo';
+  String get action => 'Pagpapatakbo/Operasyon';
 
   @override
   String get size => 'Laki';
 
   @override
-  String get paramsSize => 'Halaga ng parametro';
+  String get paramsSize => 'Bilang ng mga parameter';
 
   @override
-  String get updateTime => 'Tarikh ng pagbabago';
+  String get updateTime => 'petsa ng pagbabago';
 
   @override
-  String get homePage => 'Pangunahing Pahina';
+  String get homePage => 'Pahina ng Ulat';
 
   @override
-  String get modelPage => 'Pamamahala ng mga modelong pang-teknoloiya';
+  String get modelPage => 'Pamamahala sa modelo';
 
   @override
   String get loginPage => 'Pahina ng Pag-log-in';
 
   @override
-  String get testPage => 'Pahina para sa pagsubok';
+  String get testPage => 'Pahina ng pagsubok';
 }

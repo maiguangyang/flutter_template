@@ -9,7 +9,7 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
-  String get sendTimeout => 'Tempo de espera para conexão expirou.';
+  String get sendTimeout => 'Tempo de espera para conexão falho';
 
   @override
   String get authException => 'Não autorizado';
@@ -21,7 +21,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get networkException => 'Erro de rede';
 
   @override
-  String get appException => 'Erro desconhecido';
+  String get appException => 'Erros desconhecidos';
 
   @override
   String get loading => 'Carregando…';
@@ -30,16 +30,16 @@ class AppLocalizationsPt extends AppLocalizations {
   String get retry => 'Tentar novamente';
 
   @override
-  String get page => 'página';
+  String get page => 'Página';
 
   @override
-  String get model => 'Modelo';
+  String get model => 'modelo';
 
   @override
   String get modelName => 'Nome do modelo';
 
   @override
-  String get type => 'tipo';
+  String get type => 'Tipo';
 
   @override
   String get status => 'estado';
@@ -48,10 +48,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get action => 'Operação';
 
   @override
-  String get size => 'Tamanho';
+  String get size => 'Dimensões';
 
   @override
-  String get paramsSize => 'Quantidade de parâmetros';
+  String get paramsSize => 'Quantidade de participantes';
 
   @override
   String get updateTime => 'Data de modificação';

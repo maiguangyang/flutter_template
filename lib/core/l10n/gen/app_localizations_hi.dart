@@ -9,25 +9,25 @@ class AppLocalizationsHi extends AppLocalizations {
   AppLocalizationsHi([String locale = 'hi']) : super(locale);
 
   @override
-  String get sendTimeout => 'कनेक्शन टाइमआउट हो गया।';
+  String get sendTimeout => 'कनेक्शन ओवरटाइम';
 
   @override
-  String get authException => 'अनधिकृत';
+  String get authException => 'अनधिकृत/अवैध';
 
   @override
-  String get serverException => 'सर्वर में त्रुटि है।';
+  String get serverException => 'सर्वर समस्या';
 
   @override
-  String get networkException => 'नेटवर्क त्रुटि';
+  String get networkException => 'नेटवर्क समस्या/अप्रत्याशित स्थिति';
 
   @override
-  String get appException => 'अज्ञात त्रुटि';
+  String get appException => 'अज्ञात त्रुटियाँ/समस्याएँ';
 
   @override
-  String get loading => 'लोड हो रहा है…';
+  String get loading => 'लोडिंग के दौरान…';
 
   @override
-  String get retry => 'पुनः प्रयास करें।';
+  String get retry => 'फिर से प्रयास करें';
 
   @override
   String get page => 'पृष्ठ';
@@ -39,25 +39,25 @@ class AppLocalizationsHi extends AppLocalizations {
   String get modelName => 'मॉडल का नाम';
 
   @override
-  String get type => 'प्रकार';
+  String get type => 'प्रकार/वर्ग';
 
   @override
-  String get status => 'स्थिति';
+  String get status => 'स्थिति/चरित्र';
 
   @override
-  String get action => 'संचालन';
+  String get action => 'ऑपरेशन/कार्यवाही';
 
   @override
-  String get size => 'आकार';
+  String get size => 'आकार/साइज़';
 
   @override
-  String get paramsSize => 'पैरामीटर की मात्रा';
+  String get paramsSize => 'संख्यात्मक मान';
 
   @override
-  String get updateTime => 'संशोधन तिथि';
+  String get updateTime => 'संशोधन तिथि/दिनांक';
 
   @override
-  String get homePage => 'होम पेज';
+  String get homePage => 'प्रथम पृष्ठ';
 
   @override
   String get modelPage => 'मॉडल प्रबंधन';
@@ -66,5 +66,5 @@ class AppLocalizationsHi extends AppLocalizations {
   String get loginPage => 'लॉगिन पेज';
 
   @override
-  String get testPage => 'परीक्षण पृष्ठ';
+  String get testPage => 'टेस्ट पृष्ठ';
 }

@@ -9,25 +9,25 @@ class AppLocalizationsBn extends AppLocalizations {
   AppLocalizationsBn([String locale = 'bn']) : super(locale);
 
   @override
-  String get sendTimeout => 'সংযোগ স্থাপনে সময় অতিবাহিত হয়ে গেছে';
+  String get sendTimeout => 'কানেকশন টাইমআউট হয়ে গেছে';
 
   @override
-  String get authException => 'অনুমোদন ছাড়াই';
+  String get authException => 'অনুমোদন ছাড়া';
 
   @override
-  String get serverException => 'সার্ভারে ত্রুটি রয়েছে।';
+  String get serverException => 'সার্ভারের ত্রুটি';
 
   @override
-  String get networkException => 'নেটওয়ার্ক ত্রুটি';
+  String get networkException => 'নেটওয়ার্কের সমস্যা';
 
   @override
-  String get appException => 'অজানা ত্রুটি';
+  String get appException => 'অজানা ত্রুটি/ব্যাপার';
 
   @override
-  String get loading => 'লোডিং হচ্ছে…';
+  String get loading => 'লোড করার প্রক্রিয়ায় রয়েছে।';
 
   @override
-  String get retry => 'পুনরায় চেষ্টা করুন।';
+  String get retry => 'আবার চেষ্টা করুন';
 
   @override
   String get page => 'পৃষ্ঠা';
@@ -39,32 +39,32 @@ class AppLocalizationsBn extends AppLocalizations {
   String get modelName => 'মডেলের নাম';
 
   @override
-  String get type => 'ধরন';
+  String get type => '类型';
 
   @override
-  String get status => 'অবস্থা';
+  String get status => 'অবস্থা/পরিস্থিতি';
 
   @override
-  String get action => 'পরিচালনা';
+  String get action => 'কার্যকর করা/নিয়ন্ত্রণ করা';
 
   @override
-  String get size => 'আকার';
+  String get size => 'আকার/বর্গ';
 
   @override
-  String get paramsSize => 'প্যারামিটারের পরিমাণ';
+  String get paramsSize => 'অংশের সংখ্যা';
 
   @override
   String get updateTime => 'পরিবর্তনের তারিখ';
 
   @override
-  String get homePage => 'প্রধান পৃষ্ঠা';
+  String get homePage => 'প্রথম পৃষ্ঠা';
 
   @override
   String get modelPage => 'মডেল ব্যবস্থাপনা';
 
   @override
-  String get loginPage => 'লগইন পেজ';
+  String get loginPage => 'লগইন পৃষ্ঠা';
 
   @override
-  String get testPage => 'পরীক্ষামূলক পৃষ্ঠা';
+  String get testPage => 'টেস্ট পৃষ্ঠা';
 }

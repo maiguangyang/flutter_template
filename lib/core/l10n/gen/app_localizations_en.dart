@@ -9,62 +9,62 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get sendTimeout => 'Connection timeout';
+  String get sendTimeout => 'Send Timeout';
 
   @override
-  String get authException => 'Unauthorized';
+  String get authException => 'Auth Exception';
 
   @override
-  String get serverException => 'Server error';
+  String get serverException => 'Server Exception';
 
   @override
-  String get networkException => 'Network error';
+  String get networkException => 'Network Exception';
 
   @override
-  String get appException => 'Unknown error';
+  String get appException => 'App Exception';
 
   @override
-  String get loading => 'Loading...';
+  String get loading => 'Loading';
 
   @override
   String get retry => 'Retry';
 
   @override
-  String get page => 'page';
+  String get page => 'Page';
 
   @override
-  String get model => 'model';
+  String get model => 'Model';
 
   @override
-  String get modelName => 'Model name';
+  String get modelName => 'Model Name';
 
   @override
-  String get type => 'type';
+  String get type => 'Type';
 
   @override
-  String get status => 'status';
+  String get status => 'Status';
 
   @override
-  String get action => 'operation';
+  String get action => 'Action';
 
   @override
-  String get size => 'Dimensions';
+  String get size => 'Size';
 
   @override
-  String get paramsSize => 'number of parameters';
+  String get paramsSize => 'Params Size';
 
   @override
-  String get updateTime => 'Modification date';
+  String get updateTime => 'Update Time';
 
   @override
-  String get homePage => 'Home page';
+  String get homePage => 'Home Page';
 
   @override
-  String get modelPage => 'Model management';
+  String get modelPage => 'Model Page';
 
   @override
-  String get loginPage => 'Login page';
+  String get loginPage => 'Login Page';
 
   @override
-  String get testPage => 'test page';
+  String get testPage => 'Test Page';
 }

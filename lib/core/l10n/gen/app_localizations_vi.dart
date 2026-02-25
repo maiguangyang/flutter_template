@@ -9,28 +9,28 @@ class AppLocalizationsVi extends AppLocalizations {
   AppLocalizationsVi([String locale = 'vi']) : super(locale);
 
   @override
-  String get sendTimeout => 'Thời gian kết nối hết hạn';
+  String get sendTimeout => 'Thời gian kết nối quá dài';
 
   @override
-  String get authException => 'Chưa được cấp quyền';
+  String get authException => 'Không được phép';
 
   @override
   String get serverException => 'Lỗi máy chủ';
 
   @override
-  String get networkException => 'Lỗi mạng';
+  String get networkException => 'Lỗi kết nối mạng';
 
   @override
-  String get appException => 'Lỗi chưa được xác định';
+  String get appException => 'Lỗi không xác định';
 
   @override
-  String get loading => 'Đang tải...';
+  String get loading => 'Đang được tải lên';
 
   @override
-  String get retry => 'Thử lại';
+  String get retry => 'Làm lại lần nữa';
 
   @override
-  String get page => 'trang';
+  String get page => 'Trang';
 
   @override
   String get model => 'mô hình';
@@ -42,10 +42,10 @@ class AppLocalizationsVi extends AppLocalizations {
   String get type => 'Loại hình';
 
   @override
-  String get status => 'trạng thái';
+  String get status => 'Trạng thái';
 
   @override
-  String get action => 'thao tác';
+  String get action => 'Thao tác';
 
   @override
   String get size => 'Kích thước';
@@ -54,7 +54,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get paramsSize => 'Số lượng tham số';
 
   @override
-  String get updateTime => 'Ngày sửa đổi';
+  String get updateTime => 'Ngày chỉnh sửa';
 
   @override
   String get homePage => 'Trang chủ';
@@ -66,5 +66,5 @@ class AppLocalizationsVi extends AppLocalizations {
   String get loginPage => 'Trang đăng nhập';
 
   @override
-  String get testPage => 'Trang kiểm thử';
+  String get testPage => 'Trang kiểm tra';
 }

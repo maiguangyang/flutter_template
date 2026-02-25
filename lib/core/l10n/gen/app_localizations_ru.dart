@@ -9,26 +9,25 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get sendTimeout =>
-      'Произошло истечение времени на установление соединения.';
+  String get sendTimeout => 'Переговоры прервались из-за таймаута соединения';
 
   @override
-  String get authException => 'Нет разрешения';
+  String get authException => 'Не имею права доступа';
 
   @override
-  String get serverException => 'Ошибка на сервере';
+  String get serverException => 'Ошибка сервера';
 
   @override
-  String get networkException => 'Ошибка в сети';
+  String get networkException => 'Сетевая ошибка';
 
   @override
-  String get appException => 'Неизвестная ошибка';
+  String get appException => 'Неизвестные ошибки';
 
   @override
-  String get loading => 'Загрузка в процессе…';
+  String get loading => 'Загрузка в процессе';
 
   @override
-  String get retry => 'попытка снова';
+  String get retry => 'Попробуйте снова';
 
   @override
   String get page => 'страница';
@@ -40,13 +39,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get modelName => 'Название модели';
 
   @override
-  String get type => 'тип';
+  String get type => 'Тип';
 
   @override
-  String get status => 'состояние';
+  String get status => 'Статус';
 
   @override
-  String get action => 'манипуляции';
+  String get action => 'Командование';
 
   @override
   String get size => 'Размеры';

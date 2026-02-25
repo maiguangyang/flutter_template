@@ -12,7 +12,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get sendTimeout => '연결 시간 초과';
 
   @override
-  String get authException => '권한이 없음';
+  String get authException => '무단 접근';
 
   @override
   String get serverException => '서버 오류';
@@ -24,10 +24,10 @@ class AppLocalizationsKo extends AppLocalizations {
   String get appException => '알 수 없는 오류';
 
   @override
-  String get loading => '로딩 중입니다.';
+  String get loading => '로딩 중';
 
   @override
-  String get retry => '재시도';
+  String get retry => '다시 시도해보세요';
 
   @override
   String get page => '페이지';
@@ -51,10 +51,10 @@ class AppLocalizationsKo extends AppLocalizations {
   String get size => '크기';
 
   @override
-  String get paramsSize => '매개변수의 수';
+  String get paramsSize => '숫자 개수';
 
   @override
-  String get updateTime => '수정 날짜';
+  String get updateTime => '변경된 날짜';
 
   @override
   String get homePage => '홈페이지';

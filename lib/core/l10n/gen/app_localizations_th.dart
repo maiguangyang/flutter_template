@@ -10,7 +10,7 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get sendTimeout =>
-      'การเชื่อมต่อล้มเหลวเนื่องจากเวลาที่ใช้ในการเชื่อมต่อนานเกินไป';
+      'การเชื่อมต่อล้มเหลวเนื่องจากเวลาผ่านไปเกินขีดจำกัด';
 
   @override
   String get authException => 'ไม่ได้รับอนุญาต';
@@ -19,52 +19,52 @@ class AppLocalizationsTh extends AppLocalizations {
   String get serverException => 'ข้อผิดพลาดของเซิร์ฟเวอร์';
 
   @override
-  String get networkException => 'ข้อผิดพลาดของเครือข่าย';
+  String get networkException => 'ข้อผิดพลาดในเครือข่าย';
 
   @override
-  String get appException => 'ข้อผิดพลาดที่ยังไม่ทราบสาเหตุ';
+  String get appException => 'ข้อผิดพลาดที่ไม่ทราบสาเหตุ';
 
   @override
-  String get loading => 'กำลังโหลดอยู่…';
+  String get loading => 'กำลังโหลดอยู่';
 
   @override
-  String get retry => 'ลองใหม่';
+  String get retry => 'ลองทำอีกครั้ง';
 
   @override
   String get page => 'หน้า';
 
   @override
-  String get model => 'แบบจำลอง';
+  String get model => 'โมเดล';
 
   @override
-  String get modelName => 'ชื่อแบบจำลอง';
+  String get modelName => 'ชื่อโมเดล';
 
   @override
-  String get type => 'ประเภท';
+  String get type => 'ประเภท/รูปแบบ';
 
   @override
   String get status => 'สถานะ';
 
   @override
-  String get action => 'การดำเนินการ';
+  String get action => 'การควบคุม/การทำงาน';
 
   @override
   String get size => 'ขนาด';
 
   @override
-  String get paramsSize => 'จำนวนพารามิเตอร์';
+  String get paramsSize => 'จำนวนองค์ประกอบ';
 
   @override
-  String get updateTime => 'วันที่ที่มีการเปลี่ยนแปลง';
+  String get updateTime => 'วันที่แก้ไข';
 
   @override
-  String get homePage => 'หน้าแรก';
+  String get homePage => 'หน้าปก';
 
   @override
-  String get modelPage => 'การจัดการแบบจำลอง';
+  String get modelPage => 'การจัดการโมเดล';
 
   @override
-  String get loginPage => 'หน้าเข้าสู่ระบบ';
+  String get loginPage => 'หน้าล็อกอิน';
 
   @override
   String get testPage => 'หน้าทดสอบ';

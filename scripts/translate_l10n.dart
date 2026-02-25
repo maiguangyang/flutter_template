@@ -22,22 +22,24 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter_template/core/config/config.dart';
+
 // ============================================================================
 // 配置
 // ============================================================================
 
-const String aiApiUrl = String.fromEnvironment(
+String aiApiUrl = String.fromEnvironment(
   'AI_API_URL',
-  defaultValue: 'http://192.167.167.129:1234/v1/chat/completions',
+  defaultValue: '${Config.aiBaseUrl}/chat/completions',
 );
 
-const String aiModel = String.fromEnvironment(
+String aiModel = String.fromEnvironment(
   'AI_MODEL',
-  defaultValue: 'default',
+  defaultValue: Config.aiMtModel,
 );
 
 // 路径配置
-const String l10nDir = 'lib/common/l10n';
+const String l10nDir = 'lib/core/l10n';
 const String sourceFile = '$l10nDir/zh_CN.json';
 const String cacheFile = '$l10nDir/.translation-cache.json';
 
@@ -379,14 +381,14 @@ Future<TranslateResult> translateFile(
   final keysToTranslate = [...newKeys, ...changedKeys];
 
   if (keysToTranslate.isEmpty) {
-    print('  ✓ $targetLang: 无需翻译');
+    print('  ✓ ${languageMap[targetLang]}[$targetLang]: 无需翻译');
     return TranslateResult(skipped: targetData.length);
   }
 
   final actionDesc = changedKeys.isNotEmpty
       ? '翻译 ${newKeys.length} 新增 + ${changedKeys.length} 修改'
       : '翻译 ${newKeys.length} 新增';
-  print('  $targetLang: $actionDesc...');
+  print('  ${languageMap[targetLang]}[$targetLang]: $actionDesc...');
 
   // 翻译键
   final newTranslations = <String, String>{};
@@ -422,7 +424,26 @@ Future<TranslateResult> translateFile(
 /// 生成源语言 ARB 文件
 void generateSourceArb(Map<String, dynamic> sourceData) {
   final arbFile = File('$l10nDir/app_zh.arb');
-  final arbData = {'@@locale': 'zh', ...sourceData};
+  final arbData = <String, dynamic>{'@@locale': 'zh'};
+
+  // 检测占位符的正则（匹配 {name} 格式）
+  final placeholderRegex = RegExp(r'\{(\w+)\}');
+
+  sourceData.forEach((key, value) {
+    arbData[key] = value;
+
+    // 自动为含占位符的消息生成 @key 元数据
+    if (value is String) {
+      final matches = placeholderRegex.allMatches(value);
+      if (matches.isNotEmpty) {
+        final placeholders = <String, dynamic>{};
+        for (final match in matches) {
+          placeholders[match.group(1)!] = {'type': 'String'};
+        }
+        arbData['@$key'] = {'placeholders': placeholders};
+      }
+    }
+  });
 
   const encoder = JsonEncoder.withIndent('  ');
   arbFile.writeAsStringSync('${encoder.convert(arbData)}\n');
