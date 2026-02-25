@@ -255,7 +255,9 @@ Map<String, String> generateSourceHashes(Map<String, dynamic> source) {
 /// 调用 AI API 进行翻译
 Future<String> callAI(String text, String targetLang) async {
   final chineseName = languageMap[targetLang] ?? targetLang;
-  final systemPrompt = '将以下文本翻译为$chineseName，注意只需要输出翻译后的结果，不要额外解释：';
+  final systemPrompt =
+      '将以下文本翻译为$chineseName，注意只需要输出翻译后的结果，不要额外解释。'
+      '重要：文本中形如 {xxx} 的占位符必须原样保留，不要翻译、不要修改花括号。';
 
   final client = HttpClient();
   try {
